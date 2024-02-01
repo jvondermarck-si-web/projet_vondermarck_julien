@@ -10,7 +10,6 @@ import {FooterComponent} from "./core/layout/footer/footer.component";
   standalone: true,
   imports: [RouterOutlet, TuiRootModule, TuiDialogModule, TuiAlertModule, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: '',
     providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
 })
 export class AppComponent {
