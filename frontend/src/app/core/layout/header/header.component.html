@@ -17,11 +17,15 @@
       <input tuiTextfield />
     </tui-input>
 
-    <!-- Shopping cart icon (not visible on xs) -->
-    <img class="hidden sm:block" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
+    <!-- Shopping cart icon (visible on small screens) -->
+    <a routerLink="/">
+      <img class="hidden sm:block hover:opacity-70 transition-opacity w-full h-full" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
+    </a>
 
-    <!-- User account icon (not visible on xs) -->
-    <img class="hidden sm:block" src="/assets/img/account_logo.svg" alt="User account" />
+    <!-- User account icon (visible on small screens) -->
+    <a routerLink="/sign-in">
+      <img class="hidden sm:block hover:opacity-70 transition-opacity w-full h-full" src="/assets/img/account_logo.svg" alt="User account" />
+    </a>
 
     <!-- Burger menu (visible on small screens) -->
     <img class="lg:hidden" src="/assets/img/burger_menu.svg" alt="Burger menu" />

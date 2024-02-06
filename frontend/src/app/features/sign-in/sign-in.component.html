@@ -1,0 +1,55 @@
+<section class="flex flex-col items-center">
+  <h1 class="font-bold text-4xl my-10">Sign up to Livalie</h1>
+
+  <div class="bg-white rounded-3xl shadow-lg lg:w-[500px] sm:w-4/6 w-5/6 h-full sm:px-20 px-10 py-10">
+    <form
+      class="flex flex-col gap-4"
+      [formGroup]="signInFormGroup"
+    >
+      <tui-input formControlName="emailFormControl" tuiTextfieldIconLeft="tuiIconMailLarge">
+        Type an email
+        <input
+          tuiTextfield
+          type="email"
+        />
+      </tui-input>
+
+      <tui-input formControlName="passwordFormControl" tuiTextfieldIconLeft="tuiIconLockLarge">
+        Type a password
+        <input
+          tuiTextfield
+          type="password"
+        />
+      </tui-input>
+
+      <div class="flex justify-between items-center">
+        <div class="flex gap-2">
+          <tui-checkbox formControlName="rememberMeFormControl"></tui-checkbox>
+          <label>Remember me</label>
+        </div>
+
+        <label>Forgot <b> password ? </b></label>
+      </div>
+
+      <button
+        tuiButton
+        type="submit"
+        class="bg-primary
+        text-white
+        font-bold
+        py-2
+        rounded-2xl
+        hover:bg-primary-dark
+        transition
+        duration-300
+        ease-in-out
+        transform
+        hover:scale-105
+        "
+      >
+        Sign up
+      </button>
+    </form>
+  </div>
+
+</section>

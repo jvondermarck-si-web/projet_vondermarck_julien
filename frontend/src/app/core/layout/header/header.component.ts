@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {TuiDataListWrapperModule, TuiInputModule, TuiSelectModule} from "@taiga-ui/kit";
 import {TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
     TuiDataListWrapperModule,
     ReactiveFormsModule,
     TuiPrimitiveTextfieldModule,
+    RouterLink,
   ],
   templateUrl: './header.component.html',
 })
