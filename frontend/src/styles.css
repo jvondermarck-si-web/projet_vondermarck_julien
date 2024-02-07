@@ -4,3 +4,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* styles.css */
+@layer base {
+  h1 {
+      @apply mt-8 text-2xl sm:text-4xl font-bold mt-12;
+  }
+}

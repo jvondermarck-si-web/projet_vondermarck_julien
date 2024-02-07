@@ -11,25 +11,25 @@ export class ProductService {
       image: 'assets/img/caputo.svg',
       title: 'Caputo Flour 1kg Dede Pizzeria Mulino Di Napoli 1924',
       info: '1Kg of flour',
-      price: '100.00'
+      price: '12€'
     },
     {
       image: 'assets/img/olive_oil.svg',
       title: 'Olive oil',
       info: '60ml',
-      price: '200.00'
+      price: '2.99€'
     },
     {
       image: 'assets/img/italian_tshirt.svg',
-      title: 'T-Shirt Everybody Loves Italian Girls de ygtd de tftf tdd',
+      title: 'T-Shirt Everybody Loves Italian Girls',
       info: 'Size from S to XL',
-      price: '300.00'
+      price: '19.99€'
     },
     {
       image: 'assets/img/coffee.svg',
       title: 'Italian coffee pot',
       info: '20ml',
-      price: '400.00'
+      price: '4.99€'
     }
   ];
 

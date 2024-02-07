@@ -1,16 +1,16 @@
-<div class="rounded-lg shadow-lg grid grid-rows-2 grid-cols-1 h-full auto-rows-min">
+<div class="rounded-lg shadow-lg grid grid-rows-2 grid-cols-1 h-full transition-transform duration-500 hover:-translate-y-2">
   <div class="bg-white relative flex items-center justify-center">
     <img [src]="product.image" alt="food" class="object-scale-down w-52 h-44">
     <img src="assets/img/italy_flag_bar.svg" alt="food" class="absolute bottom-[-6px]">
   </div>
   <div class="bg-gray-100 py-5 px-5 flex flex-col justify-between">
     <div>
-      <h1 class="text-xl font-bold capitalize line-clamp-3">{{ product.title }}</h1>
+      <p class="text-xl font-bold capitalize line-clamp-3">{{ product.title }}</p>
       <p class="text-gray-500 mt-1 text-xl font-light line-clamp-1">{{ product.info }}</p>
     </div>
     <div class="flex justify-between items-end">
       <p class="text-green-600 mt-1 text-3xl font-medium">{{ product.price }}</p>
-      <img src="assets/img/add_to_cart.svg" alt="Add product to cart" class="w">
+      <img src="assets/img/add_to_cart.svg" alt="Add product to cart" class="cursor-pointer">
     </div>
   </div>
 </div>

@@ -16,14 +16,15 @@
     <img src="assets/img/italian_flag_blob.svg" alt="hero" class="hidden sm:block lg:w-1/2 sm:w-auto lg:h-auto sm:h-80 absolute top-0 right-0" >
   </div>
 
-  <h1 class="mt-8 text-2xl sm:text-4xl font-bold mt-12">Categories</h1>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 mb-20">
+  <!-- Categories -->
+  <h1>Categories</h1>
+  <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 mb-20">
     <app-category-card *ngFor="let category of categories" [category]="category"></app-category-card>
   </div>
 
-  <h1 class="mt-8 text-2xl sm:text-4xl font-bold mt-12">Best Sellers</h1>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 mb-20 ">
+  <!-- Best Sellers -->
+  <h1>Best Sellers</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 mb-20 ">
       <app-product-card *ngFor="let product of bestSellersProducts" [product]="product"></app-product-card>
   </div>
 </section>
