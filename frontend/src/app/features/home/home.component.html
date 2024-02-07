@@ -18,22 +18,7 @@
 
   <h1 class="mt-8 text-2xl sm:text-4xl font-bold mt-12">Categories</h1>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 mb-20">
-    <div class="bg-white rounded-lg shadow-lg py-10 px-4 flex flex-col items-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-      <img src="assets/img/category_food.svg" alt="food" class="object-contain w-60 h-52">
-      <h2 class="mt-10 text-4xl font-bold mt-2 uppercase font-italiana justify-center flex">Food</h2>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg py-10 px-4 flex flex-col items-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-      <img src="assets/img/category_kitchen.svg" alt="wine" class="object-contain w-60 h-52">
-      <h2 class="mt-10 text-4xl font-bold mt-2 uppercase font-italiana justify-center flex">Kitchen</h2>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg py-10 px-4 flex flex-col items-center transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-      <img src="assets/img/category_fashion.svg" alt="food" class="object-contain w-60 h-52">
-      <h2 class="mt-10 text-4xl font-bold mt-2 uppercase font-italiana justify-center flex">Fashion</h2>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg py-10 px-4 flex flex-col items-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-      <img src="assets/img/category_culture.svg" alt="food" class="object-contain w-60 h-52">
-      <h2 class="mt-10 text-4xl font-bold mt-2 uppercase font-italiana justify-center flex">Culture</h2>
-    </div>
+    <app-category-card *ngFor="let category of categories" [category]="category"></app-category-card>
   </div>
 
   <h1 class="mt-8 text-2xl sm:text-4xl font-bold mt-12">Best Sellers</h1>
