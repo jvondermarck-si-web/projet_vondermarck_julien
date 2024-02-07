@@ -17,6 +17,18 @@ import {RouterLink} from "@angular/router";
     RouterLink,
   ],
   templateUrl: './header.component.html',
+  styles : [`
+    .link {
+      height: auto;
+      width: auto;
+      position: relative;
+      display: block;
+    }
+    .link img {
+      width: 100%;
+      height: 100%;
+    }
+  `]
 })
 export class HeaderComponent {
   readonly languages = [

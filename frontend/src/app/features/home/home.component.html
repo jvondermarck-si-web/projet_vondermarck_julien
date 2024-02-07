@@ -38,71 +38,7 @@
 
   <h1 class="mt-8 text-2xl sm:text-4xl font-bold mt-12">Best Sellers</h1>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 mb-20">
-    <div class="rounded-lg shadow-lg grid grid-rows-2 grid-cols-1">
-      <div class="bg-white relative flex items-center justify-center">
-        <img src="assets/img/caputo.svg" alt="food" class="object-scale-down w-52 h-44	">
-        <img src="assets/img/italy_flag_bar.svg" alt="food" class="absolute bottom-[-6px]">
-      </div>
-      <div class="bg-gray-100 py-5 px-5 flex flex-col justify-between">
-        <div>
-          <h1 class="text-xl font-bold capitalize line-clamp-3">Caputo flour 1kg dede Pizzeria mulino di Napoli 1924</h1>
-          <p class="text-gray-500 mt-1 text-xl font-light line-clamp-1 ">1Kg of flour</p>
-        </div>
-        <div class="flex justify-between items-end	">
-          <p class="text-green-600 mt-1 text-3xl font-medium">£2.99</p>
-          <img src="assets/img/add_to_cart.svg" alt="food" class="w">
-        </div>
-      </div>
-    </div>
-    <div class="rounded-lg shadow-lg grid grid-rows-2 grid-cols-1">
-      <div class="bg-white relative flex items-center justify-center">
-        <img src="assets/img/olive_oil.svg" alt="food" class="object-scale-down w-52 h-44	">
-        <img src="assets/img/italy_flag_bar.svg" alt="food" class="absolute bottom-[-6px]">
-      </div>
-      <div class="bg-gray-100 py-5 px-5 flex flex-col justify-between	">
-        <div>
-          <h1 class="text-xl font-bold capitalize line-clamp-3">Olive oil</h1>
-          <p class="text-gray-500 mt-1 text-xl font-light line-clamp-1 ">60ml</p>
-        </div>
-        <div class="flex justify-between items-end	">
-          <p class="text-green-600 mt-1 text-3xl font-medium">£2.99</p>
-          <img src="assets/img/add_to_cart.svg" alt="food" class="w">
-        </div>
-      </div>
-    </div>
-    <div class="rounded-lg shadow-lg grid grid-rows-2 grid-cols-1">
-      <div class="bg-white relative flex items-center justify-center">
-        <img src="assets/img/italian_tshirt.svg" alt="food" class="object-scale-down w-52 h-44	">
-        <img src="assets/img/italy_flag_bar.svg" alt="food" class="absolute bottom-[-6px]">
-      </div>
-      <div class="bg-gray-100 py-5 px-5 flex flex-col justify-between	">
-        <div>
-          <h1 class="text-xl font-bold capitalize line-clamp-3">T-shirt Everybody loves italian girls</h1>
-          <p class="text-gray-500 mt-1 text-xl font-light line-clamp-1 ">Size from S to XL</p>
-        </div>
-        <div class="flex justify-between items-end	">
-          <p class="text-green-600 mt-1 text-3xl font-medium">£2.99</p>
-          <img src="assets/img/add_to_cart.svg" alt="food" class="w">
-        </div>
-      </div>
-    </div>
-    <div class="rounded-lg shadow-lg grid grid-rows-2 grid-cols-1">
-      <div class="bg-white relative flex items-center justify-center">
-        <img src="assets/img/coffee.svg" alt="food" class="object-scale-down w-52 h-44	">
-        <img src="assets/img/italy_flag_bar.svg" alt="food" class="absolute bottom-[-6px]">
-      </div>
-      <div class="bg-gray-100 py-5 px-5 flex flex-col justify-between	">
-        <div>
-          <h1 class="text-xl font-bold capitalize line-clamp-3">Italian Coffee pot </h1>
-          <p class="text-gray-500 mt-1 text-xl font-light line-clamp-1 ">20ml</p>
-        </div>
-        <div class="flex justify-between items-end	">
-          <p class="text-green-600 mt-1 text-3xl font-medium">£2.99</p>
-          <img src="assets/img/add_to_cart.svg" alt="food" class="w">
-        </div>
-      </div>
-    </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 mb-20 ">
+      <app-product-card *ngFor="let product of bestSellersProducts" [product]="product"></app-product-card>
   </div>
-
 </section>
