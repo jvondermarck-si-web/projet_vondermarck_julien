@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {TuiCheckboxModule, TuiInputModule} from "@taiga-ui/kit";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
-import {TuiButtonModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {TuiButtonModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-sign-in',
@@ -12,6 +13,8 @@ import {TuiButtonModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
     TuiButtonModule,
     TuiTextfieldControllerModule,
     TuiCheckboxModule,
+    TuiNotificationModule,
+    RouterLink,
   ],
   templateUrl: './sign-in.component.html'
 })
