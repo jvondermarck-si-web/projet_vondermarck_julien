@@ -1,0 +1,125 @@
+<section class="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 justify-center gap-x-10 items-center min-h-[calc(100vh-132.8px)] my-10">
+
+  <!-- Left side - Forms -->
+  <div class="flex flex-col items-center justify-self-center w-3/4 lg:w-full">
+    <h1 class="text-center mt-0">🤌🏼 Ready to live the dolce vita ?</h1><br>
+    <div class="text-gray-500 flex flex-col items-center text-sm">
+      <label>Let’s get started, create your account now.</label>
+    </div>
+
+    <div class="w-full h-full mt-5">
+      <form
+        class="flex flex-col gap-4 lg:w-full"
+        [formGroup]="signUpFormGroup"
+      >
+        <!-- 1st Row -->
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <tui-input formControlName="emailFormControl" tuiTextfieldIconLeft="tuiIconMailLarge">
+            Type an email
+            <input
+              tuiTextfield
+              type="email"
+            />
+          </tui-input>
+
+          <tui-input formControlName="passwordFormControl" tuiTextfieldIconLeft="tuiIconLockLarge">
+            Type a password
+            <input
+              tuiTextfield
+              type="password"
+            />
+          </tui-input>
+        </div>
+
+        <!-- 2nd Row -->
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <div class="col-span-2 font-bold text-xl">Personal information</div>
+        </div>
+
+        <!-- 3rd Row -->
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <tui-input formControlName="firstNameFormControl">
+            First Name
+            <input tuiTextfield type="text" />
+          </tui-input>
+
+          <tui-input formControlName="lastNameFormControl">
+            Last Name
+            <input tuiTextfield type="text" />
+          </tui-input>
+        </div>
+
+        <!-- 4th Row -->
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <tui-input formControlName="civilityFormControl">
+            Civility
+            <input tuiTextfield type="text" />
+          </tui-input>
+
+          <tui-input formControlName="phoneNumberFormControl">
+            Phone Number
+            <input tuiTextfield type="tel" />
+          </tui-input>
+        </div>
+
+        <!-- 5th Row -->
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <div class="col-span-2 font-bold text-xl">Address</div>
+        </div>
+
+        <!-- 6th Row -->
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <tui-input formControlName="addressFormControl">
+            Address
+            <input tuiTextfield type="text" />
+          </tui-input>
+
+          <tui-input formControlName="postalCodeFormControl">
+            Postal Code
+            <input tuiTextfield type="text" />
+          </tui-input>
+        </div>
+
+        <!-- 7th Row -->
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <tui-input formControlName="cityFormControl">
+            City
+            <input tuiTextfield type="text" />
+          </tui-input>
+
+          <tui-input formControlName="countryFormControl">
+            Country
+            <input tuiTextfield type="text" />
+          </tui-input>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-[#008C45]
+        text-white
+        font-bold
+        py-2
+        rounded-lg
+        hover:bg-primary-dark
+        transition
+        duration-300
+        ease-in-out
+        transform
+        hover:scale-105
+        "
+        >
+          Sign up
+        </button>
+      </form>
+    </div>
+    <tui-notification class="w-full mt-5">
+      Already have an account? <a routerLink="/sign-in" class="font-bold">Sign in</a> here to enjoy more pizza...
+    </tui-notification>
+  </div>
+
+  <!-- Right side - Image -->
+  <div class="justify-self-start hidden lg:block">
+    <img src="assets/img/sign-up/sign-up_visual.png" alt="Visual italy sign up"/>
+  </div>
+
+</section>
