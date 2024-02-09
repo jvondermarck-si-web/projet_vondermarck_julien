@@ -17,14 +17,14 @@
   </div>
 
   <!-- Categories -->
-  <h1>Categories</h1>
-  <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 mb-20">
+  <h1 class="text-3xl sm:text-4xl font-bold lg:mt-12">Categories</h1>
+  <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:mt-10 mb-20">
     <app-category-card *ngFor="let category of categories" [category]="category"></app-category-card>
   </div>
 
   <!-- Best Sellers -->
-  <h1>Best Sellers</h1>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 mb-20 ">
+  <h1 class="text-3xl sm:text-4xl font-bold lg:mt-12">Best Sellers</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:mt-10 mb-20 ">
       <app-product-card *ngFor="let product of bestSellersProducts" [product]="product"></app-product-card>
   </div>
 </section>
