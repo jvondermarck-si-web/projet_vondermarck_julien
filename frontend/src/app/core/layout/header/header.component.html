@@ -5,10 +5,10 @@
   </button>
 
   <!-- Nav links -->
-  <div class="hidden lg:flex gap-10">
-    <p class="uppercase font-bold text-lg text-gray-600 hover:text-red-500 transition-colors">Products</p>
-    <p class="uppercase font-bold text-lg text-gray-600 hover:text-red-500 transition-colors">About</p>
-    <p class="uppercase font-bold text-lg text-gray-600 hover:text-red-500 transition-colors">Contact</p>
+  <div class="hidden lg:flex gap-10 uppercase font-bold text-lg text-gray-600">
+    <a routerLink="/" class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">Products</a>
+    <a routerLink="/" class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">About</a>
+    <a routerLink="/" class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">Contact</a>
   </div>
 
   <!-- Search bar and icons -->
@@ -24,24 +24,26 @@
       <img class="hover:opacity-70 transition-opacity w-full h-full" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
     </a>
 
-    <tui-hosted-dropdown
-      tuiDropdownAlign="center"
-      tuiDropdownHover
-      [content]="content"
-      [tuiDropdownOffset]="0"
-      [(open)]="isOpenDropdownAccount"
-    >
-      <button tuiButton tuiHostedDropdownHost class="w-full h-full">
-        <img class="hover:opacity-70 transition-opacity" src="/assets/img/account_logo.svg" alt="User account" />
-      </button>
-      <ng-template #content>
-        <tui-data-list>
-          <button tuiOption routerLink="/account">My account</button>
-          <button tuiOption routerLink="/sign-in">Sign-in</button>
-          <button tuiOption routerLink="/sign-up">Sign-up</button>
-        </tui-data-list>
-      </ng-template>
-    </tui-hosted-dropdown>
+    <ng-container class="hidden sm:block">
+      <tui-hosted-dropdown
+        tuiDropdownAlign="center"
+        tuiDropdownHover
+        [content]="content"
+        [tuiDropdownOffset]="0"
+        [(open)]="isOpenDropdownAccount"
+      >
+        <button tuiButton tuiHostedDropdownHost class="w-full h-full">
+          <img class="hover:opacity-70 transition-opacity" src="/assets/img/account_logo.svg" alt="User account" />
+        </button>
+        <ng-template #content>
+          <tui-data-list>
+            <button tuiOption routerLink="/account">My account</button>
+            <button tuiOption routerLink="/sign-in">Sign-in</button>
+            <button tuiOption routerLink="/sign-up">Sign-up</button>
+          </tui-data-list>
+        </ng-template>
+      </tui-hosted-dropdown>
+    </ng-container>
 
     <!-- Burger menu (visible on small screens) -->
     <button
