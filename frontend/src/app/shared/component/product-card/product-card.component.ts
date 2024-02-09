@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import {Product} from "../../models/product.interface";
+import {TuiAlertService} from "@taiga-ui/core";
 
 @Component({
   selector: 'app-product-card',
@@ -11,5 +12,23 @@ export class ProductCardComponent {
 
   /** Product to display */
   @Input() product!: Product;
+
+  /**
+   * Constructor
+   * @param alerts - Service to display notifications
+   */
+  constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}
+
+  /**
+   * Displays a notification when a product is added to the cart.
+   */
+  showAddToCartNotification(): void {
+    if (this.product?.title) {
+      const message = `${this.product.title} has been added successfully.`;
+      this.alerts.open(message, { label: 'Added to cart!', status: 'success' }).subscribe();
+    } else {
+      console.error('Product title is missing.'); // Handle the error appropriately.
+    }
+  }
 
 }
