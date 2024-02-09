@@ -24,13 +24,14 @@
       <img class="hover:opacity-70 transition-opacity w-full h-full" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
     </a>
 
-    <div class="hidden sm:block flex align-middle">
+    <div class="hidden sm:block">
       <tui-hosted-dropdown
         tuiDropdownAlign="center"
         tuiDropdownHover
         [content]="content"
         [tuiDropdownOffset]="0"
         [(open)]="isOpenDropdownAccount"
+        class="w-full h-full"
       >
         <button tuiButton tuiHostedDropdownHost class="w-full h-full">
           <img class="hover:opacity-70 transition-opacity" src="/assets/img/account_logo.svg" alt="User account" />
