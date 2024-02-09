@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import {TuiDataListWrapperModule, TuiInputModule, TuiSelectModule} from "@taiga-ui/kit";
-import {TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {TuiAccordionModule, TuiDataListWrapperModule, TuiInputModule, TuiSelectModule} from "@taiga-ui/kit";
+import {TuiLinkModule, TuiPrimitiveTextfieldModule, TuiSvgModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from "@angular/router";
+import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
+import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-header',
@@ -15,6 +18,12 @@ import {RouterLink} from "@angular/router";
     ReactiveFormsModule,
     TuiPrimitiveTextfieldModule,
     RouterLink,
+    TuiSidebarModule,
+    TuiActiveZoneModule,
+    TuiAccordionModule,
+    TuiSvgModule,
+    NgForOf,
+    TuiLinkModule,
   ],
   templateUrl: './header.component.html',
   styles : [`
@@ -31,15 +40,22 @@ import {RouterLink} from "@angular/router";
   `]
 })
 export class HeaderComponent {
-  readonly languages = [
-    'IT',
-    'EN',
-    'FR',
-  ];
+
+  /** Language form control */
+  readonly languages = ['IT', 'EN', 'FR'];
   formLanguage = new FormControl();
+
+  /** Links for the burger menu */
+  readonly categoriesLinks = ['Food', 'Cooking', 'Fashion', 'Culture'];
+  readonly accountLinks = ['Sign-in', 'Sign-up', 'My account'];
+  openBurgerMenu = false;
 
   constructor() {
     this.formLanguage.setValue('EN');
+  }
+
+  toggleBurgerMenu(open: boolean) {
+    this.openBurgerMenu = open;
   }
 
 }
