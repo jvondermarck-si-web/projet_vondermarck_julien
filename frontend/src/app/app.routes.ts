@@ -7,14 +7,17 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    title: 'Livalie - Home',
   },
   {
     path: 'sign-in',
     component: SignInComponent,
+    title: 'Livalie - Sign In',
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
+    title: 'Livalie - Sign Up',
   },
   {
     path: '**',
