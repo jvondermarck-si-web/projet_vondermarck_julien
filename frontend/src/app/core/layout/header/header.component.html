@@ -6,9 +6,9 @@
 
   <!-- Nav links -->
   <div class="hidden lg:flex gap-10 uppercase font-bold text-lg text-gray-600">
-    <a routerLink="/" class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">Products</a>
-    <a routerLink="/" class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">About</a>
-    <a routerLink="/" class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">Contact</a>
+    <ng-container *ngFor="let link of ['Products', 'About', 'Contact']">
+      <a routerLink="/" class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">{{ link }}</a>
+    </ng-container>
   </div>
 
   <!-- Search bar and icons -->
