@@ -1,6 +1,8 @@
 <nav class="h-16 my-2 flex items-center justify-between items-center px-10 lg:gap-10 gap-5 w-full max-w-screen-xl mx-auto">
   <!-- Livalie Logo -->
-  <img class="w-20 h-20 sm:w-max sm:h-max" src="assets/img/livalie_logo.svg" alt="Livalie Logo" />
+  <button routerLink="/" class="w-24 h-24 sm:w-48 sm:h-14">
+    <img src="assets/img/livalie_logo.svg" alt="Livalie Logo" />
+  </button>
 
   <!-- Nav links -->
   <div class="hidden lg:flex gap-10">
@@ -22,10 +24,24 @@
       <img class="hover:opacity-70 transition-opacity w-full h-full" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
     </a>
 
-    <!-- User account icon (visible on small screens) -->
-    <a routerLink="/sign-in" class="hidden sm:block">
-      <img class="hover:opacity-70 transition-opacity w-full h-full" src="/assets/img/account_logo.svg" alt="User account" />
-    </a>
+    <tui-hosted-dropdown
+      tuiDropdownAlign="center"
+      tuiDropdownHover
+      [content]="content"
+      [tuiDropdownOffset]="0"
+      [(open)]="isOpenDropdownAccount"
+    >
+      <button tuiButton tuiHostedDropdownHost class="w-full h-full">
+        <img class="hover:opacity-70 transition-opacity" src="/assets/img/account_logo.svg" alt="User account" />
+      </button>
+      <ng-template #content>
+        <tui-data-list>
+          <button tuiOption routerLink="/account">My account</button>
+          <button tuiOption routerLink="/sign-in">Sign-in</button>
+          <button tuiOption routerLink="/sign-up">Sign-up</button>
+        </tui-data-list>
+      </ng-template>
+    </tui-hosted-dropdown>
 
     <!-- Burger menu (visible on small screens) -->
     <button

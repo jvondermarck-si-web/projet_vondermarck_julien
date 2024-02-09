@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import {TuiAccordionModule, TuiDataListWrapperModule, TuiInputModule, TuiSelectModule} from "@taiga-ui/kit";
-import {TuiLinkModule, TuiPrimitiveTextfieldModule, TuiSvgModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {
+  TuiDataListModule,
+  TuiDropdownModule, TuiHostedDropdownModule,
+  TuiLinkModule,
+  TuiPrimitiveTextfieldModule,
+  TuiSvgModule,
+  TuiTextfieldControllerModule
+} from "@taiga-ui/core";
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from "@angular/router";
 import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
@@ -24,36 +31,30 @@ import {NgForOf} from "@angular/common";
     TuiSvgModule,
     NgForOf,
     TuiLinkModule,
+    TuiDropdownModule,
+    TuiDataListModule,
+    TuiHostedDropdownModule,
   ],
   templateUrl: './header.component.html',
-  styles : [`
-    .link {
-      height: auto;
-      width: auto;
-      position: relative;
-      display: block;
-    }
-    .link img {
-      width: 100%;
-      height: 100%;
-    }
-  `]
 })
 export class HeaderComponent {
 
   /** Language form control */
   readonly languages = ['IT', 'EN', 'FR'];
-  formLanguage = new FormControl();
+  formLanguage = new FormControl('EN');
 
   /** Links for the burger menu */
   readonly categoriesLinks = ['Food', 'Cooking', 'Fashion', 'Culture'];
   readonly accountLinks = ['Sign-in', 'Sign-up', 'My account'];
   openBurgerMenu = false;
 
-  constructor() {
-    this.formLanguage.setValue('EN');
-  }
+  /** Dropdown on links */
+  isOpenDropdownAccount = false;
 
+  /**
+   * Toggles the burger menu (on mobile)
+   * @param open - True to open the burger menu, false to close it
+   */
   toggleBurgerMenu(open: boolean) {
     this.openBurgerMenu = open;
   }
