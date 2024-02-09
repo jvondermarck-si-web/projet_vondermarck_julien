@@ -1,0 +1,64 @@
+{
+  "home": {
+    "title": {
+      "the": "La",
+      "but": "da",
+      "livalie": "Livalie"
+    },
+    "description": "Il tuo negozio italiano unico per tutte le cose che un italiano deve avere, altrimenti la Befana si prenderà cura di te!",
+    "title-categories": "Categorie",
+    "best-sellers": "I più venduti",
+    "categories": {
+      "food": "Cibo",
+      "cooking": "Cucina",
+      "fashion": "Moda",
+      "culture": "Cultura"
+    }
+  },
+  "header": {
+    "search-placeholder": "Cerca prodotti",
+    "my-account": "Il mio account",
+    "sign-in": "Accedi",
+    "sign-up": "Iscriviti",
+    "categories": "Categorie",
+    "account": "Account",
+    "language": "Lingua",
+    "nav-links": {
+      "products": "Prodotti",
+      "about": "Chi siamo",
+      "contact": "Contatti"
+    }
+  },
+  "sign-in": {
+    "title": "👋🏼 Pronto a riconnetterti con l'Italia?",
+    "glad-to-see-you": "Felice di rivederti!",
+    "login-with-account": "Accedi con il tuo account qui sotto.",
+    "type-email": "Inserisci un'email",
+    "type-password": "Inserisci una password",
+    "remember-me": "Ricordami",
+    "forgot-password": "Password dimenticata?",
+    "sign-in": "Accedi",
+    "no-account": "Non hai un account?",
+    "sign-up": "Iscriviti",
+    "to-get-free-pizza": "qui per ottenere una pizza gratuita..."
+  },
+  "sign-up": {
+    "title": "🍕 Pronto a vivere la dolce vita?",
+    "lets-get-started": "Iniziamo, crea il tuo account ora.",
+    "type-email": "Digita un'email",
+    "type-password": "Digita una password",
+    "personal-info": "Informazioni personali",
+    "first-name": "Nome",
+    "last-name": "Cognome",
+    "civility": "Civiltà",
+    "phone-number": "Numero di telefono",
+    "address": "Indirizzo",
+    "postal-code": "Codice postale",
+    "city": "Città",
+    "country": "Paese",
+    "sign-up": "Iscriviti",
+    "already-have-account": "Hai già un account?",
+    "sign-in": "Accedi",
+    "to-enjoy-more-pizza": "qui per gustare più pizza..."
+  }
+}

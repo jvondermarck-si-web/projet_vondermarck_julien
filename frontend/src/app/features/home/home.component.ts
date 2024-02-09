@@ -2,19 +2,21 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from "../../shared/models/product.interface";
 import {ProductService} from "../../core/services/product.service";
 import {CategoryService} from "../../core/services/category.service";
-import {ProductCardComponent} from "../../shared/component/product-card/product-card.component";
+import {ProductCardComponent} from "../../shared/components/product-card/product-card.component";
 import {CommonModule} from "@angular/common";
 import {Category} from "../../shared/models/category.interface";
 import {CategoryCardComponent} from "./shared/components/category-card/category-card.component";
+import {TranslocoPipe} from "@ngneat/transloco";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    ProductCardComponent,
-    CommonModule,
-    CategoryCardComponent,
-  ],
+    imports: [
+        ProductCardComponent,
+        CommonModule,
+        CategoryCardComponent,
+        TranslocoPipe,
+    ],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {

@@ -1,0 +1,64 @@
+{
+  "home": {
+    "title": {
+      "the": "The",
+      "but": "but at",
+      "livalie": "Livalie's"
+    },
+    "description": "Your one-stop italian shop for all the things an Italian must have, or Befana will take care of you !",
+    "title-categories": "Categories",
+    "best-sellers": "Best Sellers",
+    "categories": {
+      "food": "Food",
+      "cooking": "Cooking",
+      "fashion": "Fashion",
+      "culture": "Culture"
+    }
+  },
+  "header": {
+    "search-placeholder": "Search products",
+    "my-account": "My account",
+    "sign-in": "Sign-in",
+    "sign-up": "Sign-up",
+    "categories": "Categories",
+    "account": "Account",
+    "language": "Language",
+    "nav-links": {
+      "products": "Products",
+      "about": "About",
+      "contact": "Contact"
+    }
+  },
+  "sign-in": {
+    "title": "👋🏼 Ready to reconnect with Italy?",
+    "glad-to-see-you": "Glad to see you again!",
+    "login-with-account": "Login with your account below.",
+    "type-email": "Type an email",
+    "type-password": "Type a password",
+    "remember-me": "Remember me",
+    "forgot-password": "Forgot password?",
+    "sign-in": "Sign in",
+    "no-account": "You don’t have any account?",
+    "sign-up": "Sign up",
+    "to-get-free-pizza": "here to get a free pizza..."
+  },
+  "sign-up": {
+    "title": "🍕 Ready to live the dolce vita?",
+    "lets-get-started": "Let’s get started, create your account now.",
+    "type-email": "Type an email",
+    "type-password": "Type a password",
+    "personal-info": "Personal information",
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "civility": "Civility",
+    "phone-number": "Phone Number",
+    "address": "Address",
+    "postal-code": "Postal Code",
+    "city": "City",
+    "country": "Country",
+    "sign-up": "Sign up",
+    "already-have-account": "Already have an account?",
+    "sign-in": "Sign in",
+    "to-enjoy-more-pizza": "here to enjoy more pizza..."
+  }
+}

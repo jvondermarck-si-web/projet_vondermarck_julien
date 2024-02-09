@@ -1,0 +1,64 @@
+{
+  "home": {
+    "title": {
+      "the": "La",
+      "but": "mais à",
+      "livalie": "Livalie"
+    },
+    "description": "Votre boutique italienne unique pour tout ce qu'un Italien doit avoir, ou Befana s'occupera de vous !",
+    "title-categories": "Catégories",
+    "best-sellers": "Meilleures ventes",
+    "categories": {
+      "food": "Nourriture",
+      "cooking": "Cuisine",
+      "fashion": "Mode",
+      "culture": "Culture"
+    }
+  },
+  "header": {
+    "search-placeholder": "Rechercher des produits",
+    "my-account": "Mon compte",
+    "sign-in": "Se connecter",
+    "sign-up": "S'inscrire",
+    "categories": "Catégories",
+    "account": "Compte",
+    "language": "Langue",
+    "nav-links": {
+      "products": "Produits",
+      "about": "À propos",
+      "contact": "Contact"
+    }
+  },
+  "sign-in": {
+    "title": "👋🏼 Prêt à vous reconnecter avec l'Italie ?",
+    "glad-to-see-you": "Ravi de vous revoir !",
+    "login-with-account": "Connectez-vous avec votre compte ci-dessous.",
+    "type-email": "Saisissez une adresse e-mail",
+    "type-password": "Saisissez un mot de passe",
+    "remember-me": "Se souvenir de moi",
+    "forgot-password": "Mot de passe oublié ?",
+    "sign-in": "Se connecter",
+    "no-account": "Vous n'avez pas de compte ?",
+    "sign-up": "Inscrivez-vous",
+    "to-get-free-pizza": "ici pour obtenir une pizza gratuite..."
+  },
+  "sign-up": {
+    "title": "🍕 Prêt à vivre la dolce vita ?",
+    "lets-get-started": "Commençons, créez votre compte maintenant.",
+    "type-email": "Saisissez une adresse e-mail",
+    "type-password": "Saisissez un mot de passe",
+    "personal-info": "Informations personnelles",
+    "first-name": "Prénom",
+    "last-name": "Nom",
+    "civility": "Civilité",
+    "phone-number": "Numéro de téléphone",
+    "address": "Adresse",
+    "postal-code": "Code postal",
+    "city": "Ville",
+    "country": "Pays",
+    "sign-up": "S'inscrire",
+    "already-have-account": "Vous avez déjà un compte ?",
+    "sign-in": "Se connecter",
+    "to-enjoy-more-pizza": "ici pour profiter de plus de pizza..."
+  }
+}

@@ -6,16 +6,19 @@
 
   <!-- Nav links -->
   <div class="hidden lg:flex gap-10 uppercase font-bold text-lg text-gray-600">
-    <ng-container *ngFor="let link of ['Products', 'About', 'Contact']">
-      <a routerLink="/" class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">{{ link }}</a>
+    <ng-container *ngFor="let link of ['products', 'about', 'contact']">
+      <a routerLink="/" class="relative w-max block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
+        {{ 'header.nav-links.' + link | transloco }}
+      </a>
     </ng-container>
   </div>
+
 
   <!-- Search bar and icons -->
   <div class="flex gap-5 lg:gap-8 w-full">
     <!-- Search input -->
     <tui-input class="w-full" tuiTextfieldIconLeft="tuiIconSearch" tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
-      Search products
+      {{ 'header.search-placeholder' | transloco }}
       <input tuiTextfield />
     </tui-input>
 
@@ -38,9 +41,9 @@
         </button>
         <ng-template #content>
           <tui-data-list>
-            <button tuiOption routerLink="/account">My account</button>
-            <button tuiOption routerLink="/sign-in">Sign-in</button>
-            <button tuiOption routerLink="/sign-up">Sign-up</button>
+            <button tuiOption routerLink="/account">{{ 'header.my-account' | transloco }}</button>
+            <button tuiOption routerLink="/sign-in">{{ 'header.sign-in' | transloco }}</button>
+            <button tuiOption routerLink="/sign-up">{{ 'header.sign-up' | transloco }}</button>
           </tui-data-list>
         </ng-template>
       </tui-hosted-dropdown>
@@ -61,7 +64,7 @@
       <div *tuiSidebar="openBurgerMenu; direction: 'right'">
         <tui-accordion [rounded]="false" class="">
           <tui-accordion-item borders="top-bottom">
-            <p class="font-bold text-xl">Categories</p>
+            <p class="font-bold text-xl">{{ 'header.categories' | transloco }}</p>
             <ng-template tuiAccordionItemContent>
               <a
                 *ngFor="let categoryLink of categoriesLinks"
@@ -75,7 +78,7 @@
             </ng-template>
           </tui-accordion-item>
           <tui-accordion-item borders="top-bottom">
-            <p class="font-bold text-xl">Account</p>
+            <p class="font-bold text-xl">{{ 'header.account' | transloco }}</p>
             <ng-template tuiAccordionItemContent>
               <a
                 *ngFor="let accountLink of accountLinks"
@@ -89,17 +92,9 @@
             </ng-template>
           </tui-accordion-item>
           <tui-accordion-item borders="top-bottom">
-            <p class="font-bold text-xl">Language</p>
+            <p class="font-bold text-xl">{{ 'header.language' | transloco }}</p>
             <ng-template tuiAccordionItemContent>
-              <tui-select
-                tuiTextfieldSize="m"
-                [formControl]="formLanguage"
-                [tuiTextfieldLabelOutside]="true"
-                class="w-full"
-              >
-                <input tuiTextfield />
-                <tui-data-list-wrapper *tuiDataList [items]="languages"></tui-data-list-wrapper>
-              </tui-select>
+              <app-language-switcher></app-language-switcher>
             </ng-template>
           </tui-accordion-item>
         </tui-accordion>
@@ -108,15 +103,7 @@
 
     <!-- Language dropdown (visible on large screens) -->
     <div class="hidden lg:block">
-      <tui-select
-        tuiTextfieldSize="m"
-        [formControl]="formLanguage"
-        [tuiTextfieldLabelOutside]="true"
-        class="w-20"
-      >
-        <input tuiTextfield />
-        <tui-data-list-wrapper *tuiDataList [items]="languages"></tui-data-list-wrapper>
-      </tui-select>
+      <app-language-switcher></app-language-switcher>
     </div>
   </div>
 </nav>

@@ -2,28 +2,28 @@
   <div class="flex">
     <div class="sm:w-1/2 lg:mt-20 sm:mt-5 py-10">
       <div class="font-italiana font-semibold text-5xl sm:text-6xl lg:text-7xl lg:leading-none">
-        <span>La dolce vita, </span>
-        <br><span>but at</span>
+        <span>{{ 'home.title.the' | transloco }} dolce vita, </span>
+        <br><span>{{ 'home.title.but' | transloco }}</span>
         <span
           class="bg-gradient-to-b from-[#008C45] from-0% to-[#CD212A] via-90% text-transparent bg-clip-text opacity-90 ">
-        Livalie’s 
+        {{ 'home.title.livalie' | transloco }} 
       </span>
       </div>
       <p class="text-lg sm:text-xl text-gray-500 mt-1 break-words">
-        Your one-stop italian shop for all the things an Italian must have, or Befana will take care of you !
+        {{ 'home.description' | transloco }}
       </p>
     </div>
     <img src="assets/img/italian_flag_blob.svg" alt="hero" class="hidden sm:block lg:w-1/2 sm:w-auto lg:h-auto sm:h-80 absolute top-0 right-0" >
   </div>
 
   <!-- Categories -->
-  <h1 class="text-3xl sm:text-4xl font-bold lg:mt-12">Categories</h1>
+  <h1 class="text-3xl sm:text-4xl font-bold lg:mt-12">{{ 'home.title-categories' | transloco }}</h1>
   <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:mt-10 mb-20">
     <app-category-card *ngFor="let category of categories" [category]="category"></app-category-card>
   </div>
 
   <!-- Best Sellers -->
-  <h1 class="text-3xl sm:text-4xl font-bold lg:mt-12">Best Sellers</h1>
+  <h1 class="text-3xl sm:text-4xl font-bold lg:mt-12">{{ 'home.best-sellers' | transloco }}</h1>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:mt-10 mb-20 ">
       <app-product-card *ngFor="let product of bestSellersProducts" [product]="product"></app-product-card>
   </div>

@@ -3,19 +3,21 @@ import {TuiCheckboxModule, TuiInputModule} from "@taiga-ui/kit";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {TuiButtonModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {RouterLink} from "@angular/router";
+import {TranslocoPipe} from "@ngneat/transloco";
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [
-    TuiInputModule,
-    ReactiveFormsModule,
-    TuiButtonModule,
-    TuiTextfieldControllerModule,
-    TuiCheckboxModule,
-    TuiNotificationModule,
-    RouterLink,
-  ],
+    imports: [
+        TuiInputModule,
+        ReactiveFormsModule,
+        TuiButtonModule,
+        TuiTextfieldControllerModule,
+        TuiCheckboxModule,
+        TuiNotificationModule,
+        RouterLink,
+        TranslocoPipe,
+    ],
   templateUrl: './sign-in.component.html'
 })
 export class SignInComponent {

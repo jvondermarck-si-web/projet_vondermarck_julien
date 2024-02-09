@@ -1,58 +1,51 @@
 <section class="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 justify-center gap-x-10 items-center justify-center min-h-screen">
 
-    <!-- Left side - Forms -->
-    <div class="flex flex-col items-center lg:justify-self-end justify-self-center w-3/4">
-      <h2 class="text-center mt-0 lg:text-3xl text-3xl font-bold">👋🏼 Ready to reconnect with Italy?</h2>
-      <div class="text-gray-500 flex flex-col items-center mt-5 text-sm">
-        <label>Glad to see you again !</label>
-        <label>Login with your account below.</label>
-      </div>
+  <!-- Left side - Forms -->
+  <div class="flex flex-col items-center lg:justify-self-end justify-self-center w-3/4">
+    <h2 class="text-center mt-0 lg:text-3xl text-3xl font-bold">{{ 'sign-in.title' | transloco }}</h2>
+    <div class="text-gray-500 flex flex-col items-center mt-5 text-sm">
+      <label>{{ 'sign-in.glad-to-see-you' | transloco }}</label>
+      <label>{{ 'sign-in.login-with-account' | transloco }}</label>
+    </div>
 
-      <div class="w-full h-full mt-5">
-        <form
-          class="flex flex-col gap-4 lg:w-full"
-          [formGroup]="signInFormGroup"
-        >
-          <tui-input formControlName="emailFormControl" tuiTextfieldIconLeft="tuiIconMailLarge">
-            Type an email
-            <input
-              tuiTextfield
-              type="email"
-            />
-          </tui-input>
+    <div class="w-full h-full mt-5">
+      <form class="flex flex-col gap-4 lg:w-full" [formGroup]="signInFormGroup">
+        <tui-input formControlName="emailFormControl" tuiTextfieldIconLeft="tuiIconMailLarge">
+          {{ 'sign-in.type-email' | transloco }}
+          <input tuiTextfield type="email" />
+        </tui-input>
 
-          <tui-input formControlName="passwordFormControl" tuiTextfieldIconLeft="tuiIconLockLarge">
-            Type a password
-            <input
-              tuiTextfield
-              type="password"
-            />
-          </tui-input>
+        <tui-input formControlName="passwordFormControl" tuiTextfieldIconLeft="tuiIconLockLarge">
+          {{ 'sign-in.type-password' | transloco }}
+          <input tuiTextfield type="password" />
+        </tui-input>
 
-          <div class="flex justify-between items-center">
-            <div class="flex gap-2">
-              <tui-checkbox formControlName="rememberMeFormControl"></tui-checkbox>
-              <label>Remember me</label>
-            </div>
-
-            <label>Forgot <b> password ? </b></label>
+        <div class="flex justify-between items-center">
+          <div class="flex gap-2">
+            <tui-checkbox formControlName="rememberMeFormControl"></tui-checkbox>
+            <label>{{ 'sign-in.remember-me' | transloco }}</label>
           </div>
 
-          <button
-            type="submit"
-            class="bg-[#008C45] text-white font-bold py-2 rounded-lg hover:bg-primary-dark transition duration-300 ease-in-out transform hover:scale-105">
-            Sign in
-          </button>
-        </form>
-      </div>
-      <tui-notification class="w-full mt-5">
-        You don’t have any account ? <a routerLink="/sign-up" class="font-bold">Sign up</a> here to get a free pizza...
-      </tui-notification>
-    </div>
+          <label>{{ 'sign-in.forgot-password' | transloco }}</label>
+        </div>
 
-    <!-- Right side - Image -->
-    <div class="justify-self-start hidden lg:block">
-      <img src="assets/img/sign-in/sign-in_visual.png"  alt="Visual italy sign in"/>
+        <button
+          type="submit"
+          class="bg-[#008C45] text-white font-bold py-2 rounded-lg hover:bg-primary-dark transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          {{ 'sign-in.sign-in' | transloco }}
+        </button>
+      </form>
     </div>
+    <tui-notification class="w-full mt-5">
+      {{ 'sign-in.no-account' | transloco }} <a routerLink="/sign-up" class="font-bold">{{ 'sign-in.sign-up' | transloco }}</a>
+      {{ 'sign-in.to-get-free-pizza' | transloco }}
+    </tui-notification>
+  </div>
 
-  </section>
+  <!-- Right side - Image -->
+  <div class="justify-self-start hidden lg:block">
+    <img src="assets/img/sign-in/sign-in_visual.png" alt="Visual italy sign in" />
+  </div>
+
+</section>

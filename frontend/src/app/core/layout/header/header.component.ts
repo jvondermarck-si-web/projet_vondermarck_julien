@@ -8,11 +8,13 @@ import {
   TuiSvgModule,
   TuiTextfieldControllerModule
 } from "@taiga-ui/core";
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from "@angular/router";
 import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {NgForOf} from "@angular/common";
+import {LanguageSwitcherComponent} from "../../../shared/components/language-switcher/language-switcher.component";
+import {TranslocoPipe} from "@ngneat/transloco";
 
 @Component({
   selector: 'app-header',
@@ -34,14 +36,12 @@ import {NgForOf} from "@angular/common";
     TuiDropdownModule,
     TuiDataListModule,
     TuiHostedDropdownModule,
+    LanguageSwitcherComponent,
+    TranslocoPipe,
   ],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-
-  /** Language form control */
-  readonly languages = ['IT', 'EN', 'FR'];
-  formLanguage = new FormControl('EN');
 
   /** Links for the burger menu */
   readonly categoriesLinks = ['Food', 'Cooking', 'Fashion', 'Culture'];
