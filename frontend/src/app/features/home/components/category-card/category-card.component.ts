@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Category} from "../../../../../shared/models/category.interface";
+import {Category} from "../../../../shared/models/category.interface";
 import {TranslocoPipe} from "@ngneat/transloco";
 
 @Component({

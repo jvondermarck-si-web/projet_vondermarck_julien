@@ -5,7 +5,7 @@ import {CategoryService} from "../../core/services/category.service";
 import {ProductCardComponent} from "../../shared/components/product-card/product-card.component";
 import {CommonModule} from "@angular/common";
 import {Category} from "../../shared/models/category.interface";
-import {CategoryCardComponent} from "./shared/components/category-card/category-card.component";
+import {CategoryCardComponent} from "./components/category-card/category-card.component";
 import {TranslocoPipe} from "@ngneat/transloco";
 
 @Component({
