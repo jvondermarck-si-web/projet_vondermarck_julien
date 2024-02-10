@@ -1,4 +1,4 @@
-<section class="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 justify-center gap-x-10 items-center min-h-[calc(100vh-132.8px)] my-10">
+<section class="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 justify-center gap-x-10 m-8 ">
 
   <!-- Left side - Forms -->
   <div class="flex flex-col items-center justify-self-center w-3/4 lg:w-full">
@@ -11,9 +11,15 @@
       <form class="flex flex-col gap-4 lg:w-full" [formGroup]="signUpFormGroup">
         <!-- 1st Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.type-email' | transloco }}" controlName="emailFormControl" icon="tuiIconMailLarge" type="email"></app-form-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.type-login' | transloco }}" controlName="loginFormControl" icon="tuiIconLogInLarge" type="text"></app-form-input>
 
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.type-email' | transloco }}" controlName="emailFormControl" icon="tuiIconMailLarge" type="email"></app-form-input>
+        </div>
+
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
           <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.type-password' | transloco }}" controlName="passwordFormControl" icon="tuiIconLockLarge" type="password"></app-form-input>
+
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.type-confirm-password' | transloco }}" controlName="passwordFormControl" icon="tuiIconLockLarge" type="password"></app-form-input>
         </div>
 
         <!-- 2nd Row -->
@@ -23,16 +29,16 @@
 
         <!-- 3rd Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.first-name' | transloco }}" controlName="firstNameFormControl"></app-form-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.first-name' | transloco }}" controlName="firstNameFormControl" icon="tuiIconUserLarge"></app-form-input>
 
-          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.last-name' | transloco }}" controlName="lastNameFormControl"></app-form-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.last-name' | transloco }}" controlName="lastNameFormControl" icon="tuiIconUserLarge"></app-form-input>
         </div>
 
         <!-- 4th Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.civility' | transloco }}" controlName="civilityFormControl"></app-form-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.civility' | transloco }}" controlName="civilityFormControl" icon="tuiIconUserLarge"></app-form-input>
 
-          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.phone-number' | transloco }}" controlName="phoneNumberFormControl" type="tel"></app-form-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.phone-number' | transloco }}" controlName="phoneNumberFormControl" type="tel" icon="tuiIconPhoneLarge"></app-form-input>
         </div>
 
         <!-- 5th Row -->
@@ -42,16 +48,16 @@
 
         <!-- 6th Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.address' | transloco }}" controlName="addressFormControl"></app-form-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.address' | transloco }}" controlName="addressFormControl" icon="tuiIconNavigationLarge"></app-form-input>
 
-          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.postal-code' | transloco }}" controlName="postalCodeFormControl"></app-form-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.postal-code' | transloco }}" controlName="postalCodeFormControl" icon="tuiIconNavigationLarge"></app-form-input>
         </div>
 
         <!-- 7th Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.city' | transloco }}" controlName="cityFormControl"></app-form-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.city' | transloco }}" controlName="cityFormControl" icon="tuiIconNavigationLarge"></app-form-input>
 
-          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.country' | transloco }}" controlName="countryFormControl"></app-form-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.country' | transloco }}" controlName="countryFormControl" icon="tuiIconNavigationLarge"></app-form-input>
         </div>
 
         <button type="submit" class="bg-[#008C45] text-white font-bold py-2 rounded-lg hover:bg-primary-dark transition duration-300 ease-in-out transform hover:scale-105">
@@ -66,8 +72,9 @@
   </div>
 
   <!-- Right side - Image -->
-  <div class="justify-self-start hidden lg:block">
+  <div class="flex items-center justify-center hidden lg:block">
     <img src="assets/img/sign-up/sign-up_visual.png" alt="Visual italy sign up"/>
   </div>
+
 
 </section>

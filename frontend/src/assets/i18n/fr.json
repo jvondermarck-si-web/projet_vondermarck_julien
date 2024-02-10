@@ -46,6 +46,8 @@
     "title": "🍕 Prêt à vivre la dolce vita ?",
     "lets-get-started": "Commençons, créez votre compte maintenant.",
     "type-email": "Saisissez une adresse e-mail",
+    "type-login": "Saisissez un login",
+    "type-confirm-password": "Confirmez le mot de passe",
     "type-password": "Saisissez un mot de passe",
     "personal-info": "Informations personnelles",
     "first-name": "Prénom",

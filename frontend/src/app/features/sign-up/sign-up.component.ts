@@ -23,7 +23,9 @@ export class SignUpComponent {
 
     signUpFormGroup = new FormGroup({
       emailFormControl: new FormControl(''),
+      loginFormControl: new FormControl(''),
       passwordFormControl: new FormControl(''),
+      confirmPasswordFormControl: new FormControl(''),
       firstNameFormControl: new FormControl(''),
       lastNameFormControl: new FormControl(''),
       civilityFormControl: new FormControl(''),
@@ -34,4 +36,7 @@ export class SignUpComponent {
       countryFormControl: new FormControl(''),
     });
 
+    onSubmit(): void {
+      console.log(this.signUpFormGroup.value);
+    }
 }
