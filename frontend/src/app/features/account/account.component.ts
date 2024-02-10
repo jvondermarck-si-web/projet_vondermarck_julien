@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {TranslocoPipe} from "@ngneat/transloco";
 import {TuiInputModule} from "@taiga-ui/kit";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
@@ -24,6 +24,16 @@ import {CommonModule} from "@angular/common";
 })
 export class AccountComponent {
 
-  activeTab: string = 'MyDetails';
+  isMobile = window.innerWidth < 640; // Adjust the breakpoint as needed
+  activeTab: 'NavItems' | 'MyDetails' | 'MyOrders' = this.isMobile ? 'NavItems' : 'MyDetails';
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.isMobile = window.innerWidth < 640;
+    this.activeTab = this.isMobile ? 'NavItems' : 'MyDetails';
+  }
+
+  setActiveTab(tab: 'NavItems' | 'MyDetails' | 'MyOrders'): void {
+    this.activeTab = tab;
+  }
 }

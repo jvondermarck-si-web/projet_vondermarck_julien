@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {TranslocoPipe} from "@ngneat/transloco";
 import {FormInputComponent} from "../../../../shared/components/form-input/form-input.component";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
@@ -15,6 +15,9 @@ import {UserService} from "../../../../core/services/user.service";
   templateUrl: './my-details.component.html'
 })
 export class MyDetailsComponent {
+
+  @Output() backClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   updateUserAccountFormGroup = new FormGroup({
     emailFormControl: new FormControl(''),
     loginFormControl: new FormControl(''),
@@ -47,5 +50,9 @@ export class MyDetailsComponent {
         countryFormControl: userData.country,
       });
       }
+  }
+
+  goBackClick() {
+    this.backClicked.emit(true);
   }
 }

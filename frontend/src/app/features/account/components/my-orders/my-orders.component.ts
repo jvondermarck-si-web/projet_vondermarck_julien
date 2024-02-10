@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-my-orders',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './my-orders.component.html'
 })
 export class MyOrdersComponent {
+  @Output() backClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  goBackClick() {
+    this.backClicked.emit(true);
+  }
 }
