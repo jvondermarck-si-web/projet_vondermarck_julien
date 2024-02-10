@@ -3,9 +3,9 @@
   <form class="flex flex-col gap-4 lg:w-full" [formGroup]="updateUserAccountFormGroup">
     <!-- 1st Row -->
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-      <app-form-input [parentForm]="updateUserAccountFormGroup" label="{{ 'sign-up.type-email' | transloco }}" controlName="emailFormControl" icon="tuiIconMailLarge" type="email"></app-form-input>
+      <app-form-input [parentForm]="updateUserAccountFormGroup" label="{{ 'sign-up.type-login' | transloco }}" controlName="loginFormControl" icon="tuiIconLogInLarge" type="text"></app-form-input>
 
-      <app-form-input [parentForm]="updateUserAccountFormGroup" label="{{ 'sign-up.type-password' | transloco }}" controlName="passwordFormControl" icon="tuiIconLockLarge" type="password"></app-form-input>
+      <app-form-input [parentForm]="updateUserAccountFormGroup" label="{{ 'sign-up.type-email' | transloco }}" controlName="emailFormControl" icon="tuiIconMailLarge" type="email"></app-form-input>
     </div>
 
     <!-- 2nd Row -->

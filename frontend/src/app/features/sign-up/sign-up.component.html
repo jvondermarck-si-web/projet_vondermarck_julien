@@ -8,7 +8,7 @@
     </div>
 
     <div class="w-full h-full mt-5">
-      <form class="flex flex-col gap-4 lg:w-full" [formGroup]="signUpFormGroup">
+      <form class="flex flex-col gap-4 lg:w-full" [formGroup]="signUpFormGroup" (ngSubmit)="onSubmit($event)">
         <!-- 1st Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
           <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.type-login' | transloco }}" controlName="loginFormControl" icon="tuiIconLogInLarge" type="text"></app-form-input>
@@ -72,8 +72,8 @@
   </div>
 
   <!-- Right side - Image -->
-  <div class="flex items-center justify-center hidden lg:block">
-    <img src="assets/img/sign-up/sign-up_visual.png" alt="Visual italy sign up"/>
+  <div class="flex items-center justify-center hidden lg:block ">
+    <img class="w-[587px] h-[710px]" src="assets/img/sign-up/sign-up_visual.png" alt="Visual italy sign up"/>
   </div>
 
 

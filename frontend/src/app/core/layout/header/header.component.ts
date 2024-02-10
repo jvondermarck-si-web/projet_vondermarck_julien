@@ -45,7 +45,7 @@ export class HeaderComponent {
 
   /** Links for the burger menu */
   readonly categoriesLinks = ['Food', 'Cooking', 'Fashion', 'Culture'];
-  readonly accountLinks = ['Sign-in', 'Sign-up', 'My account'];
+  readonly accountLinks = ['Sign-in', 'Sign-up', 'Account'];
   openBurgerMenu = false;
 
   /** Dropdown on links */
