@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import {SignInComponent} from "./features/sign-in/sign-in.component";
 import {SignUpComponent} from "./features/sign-up/sign-up.component";
+import {AccountComponent} from "./features/account/account.component";
 
 export const routes: Routes = [
   {
@@ -18,6 +19,11 @@ export const routes: Routes = [
     path: 'sign-up',
     component: SignUpComponent,
     title: 'Livalie - Sign Up',
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+    title: 'Livalie - Account',
   },
   {
     path: '**',

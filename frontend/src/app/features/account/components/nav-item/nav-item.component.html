@@ -1,0 +1,18 @@
+<div (click)="onClick()" class="cursor-pointer hover:bg-gray-50">
+
+  <div class="h-0.5 w-full flex justify-center">
+    <div class="h-0.5 bg-gray-400 w-full"></div>
+  </div>
+
+  <div class="flex items-center justify-between mt-3 pb-3">
+    <div class="flex items-center">
+      <img src="{{ icon }}" alt="My details" class="w-5 h-5">
+      <p class="ml-3 text-gray-400 uppercase">{{ label }}</p>
+    </div>
+    <img src="assets/img/account/right_arrow.svg" alt="Right arrow" class="w-5 h-5">
+  </div>
+
+  <div *ngIf="isLastItem;" class="h-0.5 w-full flex justify-center">
+    <div class="h-0.5 bg-gray-400 w-full"></div>
+  </div>
+</div>

@@ -11,15 +11,9 @@
       <form class="flex flex-col gap-4 lg:w-full" [formGroup]="signUpFormGroup">
         <!-- 1st Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <tui-input formControlName="emailFormControl" tuiTextfieldIconLeft="tuiIconMailLarge">
-            {{ 'sign-up.type-email' | transloco }}
-            <input tuiTextfield type="email" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.type-email' | transloco }}" controlName="emailFormControl" icon="tuiIconMailLarge" type="email"></app-form-input>
 
-          <tui-input formControlName="passwordFormControl" tuiTextfieldIconLeft="tuiIconLockLarge">
-            {{ 'sign-up.type-password' | transloco }}
-            <input tuiTextfield type="password" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.type-password' | transloco }}" controlName="passwordFormControl" icon="tuiIconLockLarge" type="password"></app-form-input>
         </div>
 
         <!-- 2nd Row -->
@@ -29,28 +23,16 @@
 
         <!-- 3rd Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <tui-input formControlName="firstNameFormControl">
-            {{ 'sign-up.first-name' | transloco }}
-            <input tuiTextfield type="text" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.first-name' | transloco }}" controlName="firstNameFormControl"></app-form-input>
 
-          <tui-input formControlName="lastNameFormControl">
-            {{ 'sign-up.last-name' | transloco }}
-            <input tuiTextfield type="text" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.last-name' | transloco }}" controlName="lastNameFormControl"></app-form-input>
         </div>
 
         <!-- 4th Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <tui-input formControlName="civilityFormControl">
-            {{ 'sign-up.civility' | transloco }}
-            <input tuiTextfield type="text" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.civility' | transloco }}" controlName="civilityFormControl"></app-form-input>
 
-          <tui-input formControlName="phoneNumberFormControl">
-            {{ 'sign-up.phone-number' | transloco }}
-            <input tuiTextfield type="tel" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.phone-number' | transloco }}" controlName="phoneNumberFormControl" type="tel"></app-form-input>
         </div>
 
         <!-- 5th Row -->
@@ -60,45 +42,19 @@
 
         <!-- 6th Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <tui-input formControlName="addressFormControl">
-            {{ 'sign-up.address' | transloco }}
-            <input tuiTextfield type="text" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.address' | transloco }}" controlName="addressFormControl"></app-form-input>
 
-          <tui-input formControlName="postalCodeFormControl">
-            {{ 'sign-up.postal-code' | transloco }}
-            <input tuiTextfield type="text" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.postal-code' | transloco }}" controlName="postalCodeFormControl"></app-form-input>
         </div>
 
         <!-- 7th Row -->
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          <tui-input formControlName="cityFormControl">
-            {{ 'sign-up.city' | transloco }}
-            <input tuiTextfield type="text" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.city' | transloco }}" controlName="cityFormControl"></app-form-input>
 
-          <tui-input formControlName="countryFormControl">
-            {{ 'sign-up.country' | transloco }}
-            <input tuiTextfield type="text" />
-          </tui-input>
+          <app-form-input [parentForm]="signUpFormGroup" label="{{ 'sign-up.country' | transloco }}" controlName="countryFormControl"></app-form-input>
         </div>
 
-        <button
-          type="submit"
-          class="bg-[#008C45]
-        text-white
-        font-bold
-        py-2
-        rounded-lg
-        hover:bg-primary-dark
-        transition
-        duration-300
-        ease-in-out
-        transform
-        hover:scale-105
-        "
-        >
+        <button type="submit" class="bg-[#008C45] text-white font-bold py-2 rounded-lg hover:bg-primary-dark transition duration-300 ease-in-out transform hover:scale-105">
           {{ 'sign-up.sign-up' | transloco }}
         </button>
       </form>

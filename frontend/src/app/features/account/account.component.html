@@ -1,0 +1,23 @@
+<section class="px-8">
+  <h1 class="text-3xl sm:text-4xl font-bold lg:mt-10">My account</h1>
+
+  <div class="flex shadow-xl">
+    <div class="flex-none bg-white min-h-screen w-56 mt-5 rounded-tl-xl border	">
+      <div class="py-8 px-5 h-full">
+
+        <app-nav-item label="My details" icon="assets/img/account/my_details.svg" (tabSelected)="activeTab='MyDetails'"></app-nav-item>
+        <app-nav-item label="My orders" icon="assets/img/account/my_orders.svg" (tabSelected)="activeTab='MyOrders'" [isLastItem]="true"></app-nav-item>
+      </div>
+    </div>
+    <div class="grow-1 bg-white min-h-screen w-full mt-5 rounded-tr-xl border	">
+      <div class="px-10 py-6">
+        <div *ngIf="activeTab === 'MyDetails'">
+          <app-my-details></app-my-details>
+        </div>
+        <div *ngIf="activeTab === 'MyOrders'">
+          <app-my-orders></app-my-orders>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
