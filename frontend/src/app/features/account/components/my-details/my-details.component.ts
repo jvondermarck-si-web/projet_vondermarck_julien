@@ -3,6 +3,7 @@ import {TranslocoPipe} from "@ngneat/transloco";
 import {FormInputComponent} from "../../../../shared/components/form-input/form-input.component";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {UserService} from "../../../../core/services/user.service";
+import {TabComponent} from "../../models/tab-component.interface";
 
 @Component({
   selector: 'app-my-details',
@@ -14,9 +15,7 @@ import {UserService} from "../../../../core/services/user.service";
   ],
   templateUrl: './my-details.component.html'
 })
-export class MyDetailsComponent {
-
-  @Output() backClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+export class MyDetailsComponent implements TabComponent {
 
   updateUserAccountFormGroup = new FormGroup({
     emailFormControl: new FormControl(''),
@@ -52,7 +51,4 @@ export class MyDetailsComponent {
       }
   }
 
-  goBackClick() {
-    this.backClicked.emit(true);
-  }
 }

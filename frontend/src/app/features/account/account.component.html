@@ -3,23 +3,28 @@
 
   <div class="flex shadow-xl bg-white min-h-screen w-full">
     <!-- Navigation Section -->
-    <div *ngIf="(isMobile && activeTab === 'NavItems') || !isMobile" class="flex-none w-full sm:w-56 mt-5 rounded-tl-xl border">
+    <div *ngIf="shouldDisplaySection('Navigation')" class="flex-none w-full sm:w-56 mt-5 rounded-tl-xl border">
       <div class="py-8 px-5 h-full">
-        <app-nav-item label="My details" icon="assets/img/account/my_details.svg" (tabSelected)="setActiveTab('MyDetails')"></app-nav-item>
-        <app-nav-item label="My orders" icon="assets/img/account/my_orders.svg" (tabSelected)="setActiveTab('MyOrders')" [isLastItem]="true"></app-nav-item>
+        <app-nav-item label="My details" icon="assets/img/account/my_details.svg" (tabSelected)="setActiveSectionTab('MyDetails')"></app-nav-item>
+        <app-nav-item label="My orders" icon="assets/img/account/my_orders.svg" (tabSelected)="setActiveSectionTab('MyOrders')" [isLastItem]="true"></app-nav-item>
       </div>
     </div>
 
     <!-- Details Section -->
-    <div *ngIf="(isMobile && activeTab !== 'NavItems') || !isMobile" class="grow-1 w-full mt-5 rounded-tr-xl border">
+    <div *ngIf="shouldDisplaySection('Details')" class="grow-1 w-full mt-5 rounded-tr-xl border">
       <div class="px-10 py-6">
-        <div *ngIf="activeTab === 'MyDetails'">
-          <app-my-details (backClicked)="setActiveTab('NavItems')"></app-my-details>
+        <!-- Common Header -->
+        <div class="flex items-center">
+          <button class="sm:hidden" (click)="setActiveSectionTab('Navigation')">
+            <img src="assets/img/account/left_arrow.svg" alt="Right arrow" class="block mr-5 w-6 h-6" >
+          </button>
+          <h1 class="text-3xl font-bold ">{{ tabTitles[activeTab] }}</h1>
         </div>
-        <div *ngIf="activeTab === 'MyOrders'">
-          <app-my-orders (backClicked)="setActiveTab('NavItems')"></app-my-orders>
-        </div>
+
+        <!-- Dynamic Component -->
+        <ng-container [ngComponentOutlet]="tabSectionComponents[activeTab]"></ng-container>
       </div>
     </div>
+
   </div>
 </section>

@@ -14,9 +14,9 @@ export class NavItemComponent {
   @Input() label: string = '';
   @Input() icon: string = '';
   @Input() isLastItem: boolean = false;
-  @Output() tabSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output() tabSelected: EventEmitter<void> = new EventEmitter<void>();
 
   onClick(): void {
-    this.tabSelected.emit(this.label);
+    this.tabSelected.emit();
   }
 }

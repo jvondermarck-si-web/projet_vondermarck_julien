@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {TabComponent} from "../../models/tab-component.interface";
 
 @Component({
   selector: 'app-my-orders',
@@ -6,10 +7,6 @@ import {Component, EventEmitter, Output} from '@angular/core';
   imports: [],
   templateUrl: './my-orders.component.html'
 })
-export class MyOrdersComponent {
-  @Output() backClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+export class MyOrdersComponent implements TabComponent {
 
-  goBackClick() {
-    this.backClicked.emit(true);
-  }
 }
