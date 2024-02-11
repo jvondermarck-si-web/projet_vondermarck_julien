@@ -1,6 +1,7 @@
 <div class="flex items-center">
-  <img src="assets/img/account/left_arrow.svg" alt="Right arrow" class="sm:hidden mr-5 w-6 h-6" (click)="goBackClick()">
-  <h1 class="text-3xl font-bold ">My details</h1>
+  <button class="hidden" (click)="goBackClick()">
+    <img src="assets/img/account/left_arrow.svg" alt="Right arrow" class="hidden sm:block mr-5 w-6 h-6" >
+  </button>  <h1 class="text-3xl font-bold ">My details</h1>
 </div>
 <div class="lg:w-3/4 w-full h-full mt-5">
   <form class="flex flex-col gap-4 lg:w-full" [formGroup]="updateUserAccountFormGroup">
