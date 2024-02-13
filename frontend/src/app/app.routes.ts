@@ -8,22 +8,22 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Livalie - Home',
+    title: 'Home | Livalie',
   },
   {
     path: 'sign-in',
     component: SignInComponent,
-    title: 'Livalie - Sign In',
+    title: 'Sign-in | Livalie',
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
-    title: 'Livalie - Sign Up',
+    title: 'Sign-up | Livalie',
   },
   {
     path: 'account',
     component: AccountComponent,
-    title: 'Livalie - Account',
+    title: 'Account | Livalie',
   },
   {
     path: '**',
