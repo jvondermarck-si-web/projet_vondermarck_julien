@@ -2,10 +2,20 @@
   tuiTextfieldSize="m"
   [formControl]="formLanguage"
   [tuiTextfieldLabelOutside]="true"
-  class="w-20"
+  [valueContent]="selectedLanguageContent"
+  class="w-28"
 >
-  <input tuiTextfield />
   <tui-data-list-wrapper
-    *tuiDataList [items]="languages">
+    *tuiDataList
+    [items]="languages"
+    [itemContent]="selectedLanguageContent"
+  >
   </tui-data-list-wrapper>
 </tui-select>
+
+<ng-template #selectedLanguageContent let-item>
+  <div class="flex">
+    <img class="aspect-[4/3] w-6 mr-2" [src]="item.iso | tuiFlag"  alt="Flag {{item.lang}}"/>
+    <p>{{item.lang}}</p>
+  </div>
+</ng-template>
