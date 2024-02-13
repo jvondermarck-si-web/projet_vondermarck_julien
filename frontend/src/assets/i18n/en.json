@@ -58,9 +58,20 @@
     "postal-code": "Postal Code",
     "city": "City",
     "country": "Country",
+    "country-placeholder": "Select a country",
     "sign-up": "Sign up",
     "already-have-account": "Already have an account?",
     "sign-in": "Sign in",
-    "to-enjoy-more-pizza": "here to enjoy more pizza..."
+    "to-enjoy-more-pizza": "here to enjoy more pizza...",
+    "error-form-message": "Please fill all the fields correctly",
+    "error-password-message": "Passwords must match",
+    "error-title": "An error occured",
+    "success-sign-up": "Successfully signed up",
+    "success-welcome": "Welcome"
+  },
+  "account": {
+    "title": "My account",
+    "my-orders": "My orders",
+    "my-details": "My details"
   }
 }

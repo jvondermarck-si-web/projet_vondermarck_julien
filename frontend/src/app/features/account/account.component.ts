@@ -1,5 +1,5 @@
 import {Component, HostListener, Type} from '@angular/core';
-import {TranslocoPipe} from "@ngneat/transloco";
+import {TranslocoPipe, TranslocoService} from "@ngneat/transloco";
 import {TuiInputModule} from "@taiga-ui/kit";
 import {FormInputComponent} from "../../shared/components/form-input/form-input.component";
 import {NavItemComponent} from "./components/nav-item/nav-item.component";
@@ -8,6 +8,7 @@ import {MyOrdersComponent} from "./components/my-orders/my-orders.component";
 import {CommonModule} from "@angular/common";
 import {TabComponent} from "./models/tab-component.interface";
 import {TabSectionDetailsName} from "./models/tab-section-details-name.type";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-account',
@@ -51,10 +52,14 @@ export class AccountComponent {
   };
 
   /** Map of tab names to titles */
-  tabTitles: { [key in string]: string } = {
-    'MyDetails': 'My details',
-    'MyOrders': 'My orders',
-  };
+  tabTitles: { [key in string]: Observable<string> };
+
+  constructor(private translocoService: TranslocoService) {
+    this.tabTitles = {
+      'MyDetails': this.translocoService.selectTranslate('account.my-details'),
+      'MyOrders': this.translocoService.selectTranslate('account.my-orders'),
+    };
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {

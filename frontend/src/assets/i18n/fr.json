@@ -58,9 +58,20 @@
     "postal-code": "Code postal",
     "city": "Ville",
     "country": "Pays",
+    "country-placeholder": "Sélectionnez un pays",
     "sign-up": "S'inscrire",
     "already-have-account": "Vous avez déjà un compte ?",
     "sign-in": "Se connecter",
-    "to-enjoy-more-pizza": "ici pour profiter de plus de pizza..."
+    "to-enjoy-more-pizza": "ici pour profiter de plus de pizza...",
+    "error-form-message": "Veuillez remplir tous les champs correctement.",
+    "error-password-message": "Les mots de passe ne correspondent pas.",
+    "error-title": "Oups, une erreur est survenue !",
+    "success-sign-up": "Inscription réussie !",
+    "success-welcome": "Bienvenue"
+  },
+  "account": {
+    "title": "Mon compte",
+    "my-orders": "Mes commandes",
+    "my-details": "Mes détails"
   }
 }

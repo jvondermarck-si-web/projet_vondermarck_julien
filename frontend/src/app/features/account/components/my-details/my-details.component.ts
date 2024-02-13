@@ -1,17 +1,44 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import {TranslocoPipe} from "@ngneat/transloco";
 import {FormInputComponent} from "../../../../shared/components/form-input/form-input.component";
-import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserService} from "../../../../core/services/user.service";
 import {TabComponent} from "../../models/tab-component.interface";
+import {
+  TUI_COUNTRIES, TuiCheckboxModule,
+  TuiComboBoxModule,
+  TuiDataListWrapperModule, TuiFilterByInputPipeModule,
+  TuiInputModule,
+  TuiInputPhoneInternationalModule
+} from "@taiga-ui/kit";
+import {TuiCountryIsoCode} from "@taiga-ui/i18n";
+import {mapCountryNames} from "../../../../shared/utils/taiga-country-name-mapper";
+import {TuiLetModule, TuiMapperPipeModule} from "@taiga-ui/cdk";
+import {AsyncPipe, CommonModule} from "@angular/common";
+import {Observable} from "rxjs";
+import {TuiButtonModule, TuiDataListModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-my-details',
   standalone: true,
   imports: [
+    CommonModule,
+    TuiInputModule,
+    ReactiveFormsModule,
+    TuiTextfieldControllerModule,
+    TuiCheckboxModule,
+    TuiComboBoxModule,
     TranslocoPipe,
     FormInputComponent,
-    ReactiveFormsModule
+    TuiDataListWrapperModule,
+    TuiMapperPipeModule,
+    TuiFilterByInputPipeModule,
+    AsyncPipe,
+    TuiInputPhoneInternationalModule,
+    FormsModule,
+    TuiDataListModule,
+    TuiLetModule,
   ],
   templateUrl: './my-details.component.html'
 })
@@ -31,7 +58,11 @@ export class MyDetailsComponent implements TabComponent {
     countryFormControl: new FormControl(''),
   });
 
-  constructor(private userService: UserService)
+  countries: TuiCountryIsoCode[] = Object.values(TuiCountryIsoCode)
+  countryNameMapper = mapCountryNames;
+  countryIsoCode = TuiCountryIsoCode.FR;
+
+  constructor(private userService: UserService, @Inject(TUI_COUNTRIES) readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>)
   {
     const userData = this.userService.getUserData();
     if (userData) {
