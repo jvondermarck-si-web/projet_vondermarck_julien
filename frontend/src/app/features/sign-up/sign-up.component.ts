@@ -5,15 +5,15 @@ import {Component, Inject} from '@angular/core';
   TuiComboBoxModule,
   TuiDataListWrapperModule,
   TuiFilterByInputPipeModule,
-  TuiInputModule, TuiInputPhoneInternationalModule
-  } from "@taiga-ui/kit";
+  TuiInputModule, TuiInputPhoneInternationalModule, TuiInputPhoneModule
+} from "@taiga-ui/kit";
   import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
   import {
-  TuiAlertService,
-  TuiButtonModule,
+    TuiAlertService,
+    TuiButtonModule,
     TuiDataListModule,
-  TuiNotificationModule,
-  TuiTextfieldControllerModule
+    TuiNotificationModule, TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule
 } from "@taiga-ui/core";
   import {Router, RouterLink} from "@angular/router";
 import {TranslocoPipe, TranslocoService} from "@ngneat/transloco";
@@ -50,6 +50,8 @@ import { mapCountryNames } from "../../shared/utils/taiga-country-name-mapper";
       FormsModule,
       TuiDataListModule,
       TuiLetModule,
+      TuiPrimitiveTextfieldModule,
+      TuiInputPhoneModule,
     ],
   templateUrl: './sign-up.component.html'
 })

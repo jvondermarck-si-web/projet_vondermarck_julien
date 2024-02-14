@@ -3,7 +3,7 @@
   <!-- Left side - Forms -->
   <div class="flex flex-col items-center justify-self-center w-3/4 lg:w-full">
     <h1 class="text-center mt-0 lg:text-3xl text-3xl font-bold">{{ 'sign-up.title' | transloco }}</h1><br>
-    <div class="text-gray-500 flex flex-col items-center text-sm">
+    <div class="text-gray-500 flex flex-col text-center text-sm">
       <label>{{ 'sign-up.lets-get-started' | transloco }}</label>
     </div>
 
@@ -60,8 +60,8 @@
           </tui-input>
 
           <tui-input-phone-international formControlName="phoneNumberFormControl" [countries]="countries"
-                                         [(countryIsoCode)]="countryIsoCode">
-            {{ 'sign-up.phone-number' | transloco }}
+                                           [(countryIsoCode)]="countryIsoCode">
+              {{ 'sign-up.phone-number' | transloco }}
           </tui-input-phone-international>
         </div>
 
@@ -104,7 +104,7 @@
         </button>
       </form>
     </div>
-    <tui-notification class="w-full mt-5">
+    <tui-notification class="w-full h-full mt-5 ">
       {{ 'sign-up.already-have-account' | transloco }} <a routerLink="/sign-in" class="font-bold">{{ 'sign-up.sign-in' | transloco }}</a>
       {{ 'sign-up.to-enjoy-more-pizza' | transloco }}
     </tui-notification>
