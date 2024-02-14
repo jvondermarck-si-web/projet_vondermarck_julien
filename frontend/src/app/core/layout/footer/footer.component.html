@@ -1,5 +1,62 @@
-<footer class="bg-[#008C45] p-4">
-  <p class="text-right text-sm font-bold text-end text-white">
-    Made by <span class="font-normal">Julien Von Der Marck</span>
-  </p>
+<footer class="bg-[#232323] py-8 px-10">
+  <section class="w-full max-w-screen-xl mx-auto">
+    <div class="flex flex-col sm:flex-row items-center sm:justify-center gap-8 sm:gap-20">
+
+      <div class="flex flex-col items-center">
+        <img src="assets/img/livalie_logo.svg" alt="Livalie Logo" />
+        <div class="text-center w-max	text-2xl text-white font-italiana ">
+          <p>{{ 'footer.title-dolce-vita' | transloco }}</p>
+          <p>{{ 'footer.title-of-your-groceries' | transloco }}</p>
+        </div>
+      </div>
+      <div>
+        <div class="flex sm:gap-20 gap-10 flex-wrap justify-center">
+          <div>
+            <h1 class="text-[#008C45] text-xl font-bold mb-2 font-italiana uppercase">{{ 'footer.products' | transloco }}</h1>
+            <ul class="text-white text-sm cursor-pointer">
+              <li class="">{{ 'home.categories.food' | transloco }}</li>
+              <li class="">{{ 'home.categories.cooking' | transloco }}</li>
+              <li class="">{{ 'home.categories.fashion' | transloco }}</li>
+              <li class="">{{ 'home.categories.culture' | transloco }}</li>
+            </ul>
+          </div>
+
+          <div>
+            <h1 class="text-[#008C45] text-xl font-bold mb-2 font-italiana uppercase">{{ 'footer.company' | transloco }}</h1>
+            <ul class="text-white text-sm cursor-pointer">
+              <li class="">{{ 'footer.about' | transloco }}</li>
+              <li class="">{{ 'footer.services' | transloco }}</li>
+              <li class="">{{ 'footer.community' | transloco }}</li>
+              <li class="">{{ 'footer.testimonials' | transloco }}</li>
+            </ul>
+          </div>
+
+          <div>
+            <h1 class="text-[#008C45] text-xl font-bold mb-2 font-italiana uppercase">{{ 'footer.contact' | transloco }}</h1>
+            <ul class="text-white text-sm cursor-pointer">
+              <a href="https://www.linkedin.com/in/julien-von-der-marck">
+                <li>
+                  <tui-svg src="tuiIconLinkedin"></tui-svg>LinkedIn
+                </li>
+              </a>
+              <a href="https://github.com/jvondermarck">
+                <li >
+                  <tui-svg src="tuiIconGithub"></tui-svg>Github
+                </li>
+              </a>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="h-[1.5px] bg-[#008C45] my-5"></div>
+
+    <div class="flex justify-center w-full">
+      <p class="text-sm italic text-white">
+        Copyright ©2024 - Julien Von Der Marck
+      </p>
+    </div>
+  </section>
 </footer>

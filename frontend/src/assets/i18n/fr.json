@@ -73,5 +73,16 @@
     "title": "Mon compte",
     "my-orders": "Mes commandes",
     "my-details": "Mes détails"
+  },
+  "footer": {
+    "company": "Entreprise",
+    "about": "À propos",
+    "services": "Services",
+    "contact": "Contact",
+    "community": "Communauté",
+    "testimonials": "Témoignages",
+    "products": "Produits",
+    "title-dolce-vita": "La dolce vita",
+    "title-of-your-groceries": "de vos courses."
   }
 }
