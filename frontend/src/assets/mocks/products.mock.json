@@ -26,5 +26,12 @@
         "info": "20ml",
         "price": "4.99€",
         "isBestSeller": true
+      },
+      {
+        "image": "assets/img/products/mascarpone.png",
+        "title": "Mascarpone",
+        "info": "250mg",
+        "price": "2.99€",
+        "isBestSeller": false
       }
 ]

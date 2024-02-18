@@ -7,7 +7,7 @@
   <!-- Nav links -->
   <div class="hidden lg:flex gap-10 uppercase font-bold text-lg text-gray-600">
     <ng-container *ngFor="let link of ['products', 'about', 'contact']">
-      <a routerLink="/" class="relative w-max block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
+      <a routerLink="/{{link}}" class="relative w-max block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
         {{ 'header.nav-links.' + link | transloco }}
       </a>
     </ng-container>

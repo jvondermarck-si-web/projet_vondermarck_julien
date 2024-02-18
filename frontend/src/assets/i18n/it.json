@@ -84,5 +84,9 @@
     "products": "Prodotti",
     "title-dolce-vita": "La dolce vita",
     "title-of-your-groceries": "della vostra spesa."
+  },
+  "products": {
+    "title": "Products",
+    "description": "Trovate qui i migliori prodotti italiani."
   }
 }

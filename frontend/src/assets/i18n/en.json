@@ -84,5 +84,9 @@
     "products": "Products",
     "title-dolce-vita": "The dolce vita",
     "title-of-your-groceries": "of your groceries."
+  },
+  "products": {
+    "title": "Products",
+    "description": "Find the best products from Italy here."
   }
 }
