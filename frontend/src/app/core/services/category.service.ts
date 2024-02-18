@@ -9,19 +9,19 @@ export class CategoryService {
   private categories: Category[] = [
     {
       name: "Food",
-      image: "assets/img/category_food.svg",
+      image: "assets/img/categories/category_food.png",
     },
     {
       name: "Cooking",
-      image: "assets/img/category_kitchen.svg",
+      image: "assets/img/categories/category_kitchen.png",
     },
     {
       name: "Fashion",
-      image: "assets/img/category_fashion.svg",
+      image: "assets/img/categories/category_fashion.png",
     },
     {
       name: "Culture",
-      image: "assets/img/category_culture.svg",
+      image: "assets/img/categories/category_culture.png",
     }
   ];
 

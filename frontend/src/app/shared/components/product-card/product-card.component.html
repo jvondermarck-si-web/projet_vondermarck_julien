@@ -1,6 +1,6 @@
-<div [routerLink]="['/product', product.id]" class="rounded-xl shadow-lg grid grid-rows-2 grid-cols-1 h-full transition-transform duration-500 hover:-translate-y-2 ">
+<div [routerLink]="['/product', product.id]" class="rounded-xl shadow-lg grid grid-rows-2 grid-cols-1 h-full sm:transition-transform duration-500 sm:hover:-translate-y-2 ">
   <div class="bg-white relative flex items-center justify-center rounded-t-xl">
-    <img [src]="product.image" alt="{{ product.title }}" class="object-scale-down w-52 h-44">
+    <img [src]="product.image" alt="{{ product.title }}" class="object-scale-down w-auto sm:h-40 h-32">
     <img src="../../../../assets/img/italy_flag_bar.svg" alt="Italian flag between image and information" class="absolute bottom-[-6px]">
   </div>
   <div class="bg-gray-100 py-5 px-5 flex flex-col justify-between rounded-b-xl">
@@ -9,8 +9,8 @@
       <p class="text-gray-500 mt-1 text-xl font-light line-clamp-1">{{ product.info }}</p>
     </div>
     <div class="flex justify-between items-end">
-      <p class="text-green-600 mt-1 text-3xl font-medium">{{ product.price }}</p>
-      <img (click)="showAddToCartNotification()" src="../../../../assets/img/add_to_cart.svg" alt="Add product to cart" class="cursor-pointer w-14 h-14">
+      <p class="text-green-600 mt-1 text-2xl sm:text-3xl font-medium">{{ product.price }}</p>
+      <img (click)="showAddToCartNotification()" src="../../../../assets/img/add_to_cart.svg" alt="Add product to cart" class="cursor-pointer w-10 h-10 sm:w-14 sm:h-14">
     </div>
   </div>
 </div>

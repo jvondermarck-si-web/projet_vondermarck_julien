@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "image": "assets/img/caputo.svg",
+        "image": "assets/img/products/caputo.png",
         "title": "Caputo Flour 1kg Dede Pizzeria Mulino Di Napoli 1924",
         "info": "1Kg of flour",
         "price": "12€",
@@ -9,15 +9,15 @@
       },
       {
         "id": 2,
-        "image": "assets/img/olive_oil.svg",
-        "title": "Olive oil",
-        "info": "60ml",
-        "price": "2.99€",
+        "image": "assets/img/products/olive_oil.png",
+        "title": "De Cecco Olio di Oliva",
+        "info": "1L",
+        "price": "22.95€",
         "isBestSeller": true
       },
       {
         "id": 3,
-        "image": "assets/img/italian_tshirt.svg",
+        "image": "assets/img/products/tshirt_girl.png",
         "title": "T-Shirt Everybody Loves Italian Girls",
         "info": "Size from S to XL",
         "price": "19.99€",
@@ -25,16 +25,16 @@
       },
       {
         "id": 4,
-        "image": "assets/img/coffee.svg",
-        "title": "Italian coffee pot",
-        "info": "20ml",
+        "image": "assets/img/products/kimbo.png",
+        "title": "Kimbo Espresso Crema Intensa",
+        "info": "1kg - Caffè di Napoli",
         "price": "4.99€",
         "isBestSeller": true
       },
       {
         "id": 5,
         "image": "assets/img/products/mascarpone.png",
-        "title": "Mascarpone",
+        "title": "Galbani Mascarpone",
         "info": "250mg",
         "price": "2.99€",
         "isBestSeller": false
