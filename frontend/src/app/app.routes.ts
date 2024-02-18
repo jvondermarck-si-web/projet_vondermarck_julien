@@ -4,6 +4,7 @@ import {SignInComponent} from "./features/sign-in/sign-in.component";
 import {SignUpComponent} from "./features/sign-up/sign-up.component";
 import {AccountComponent} from "./features/account/account.component";
 import { ProductsComponent } from './features/products/products.component';
+import { ProductDetailComponent } from './features/products/product-detail/product-detail.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,11 @@ export const routes: Routes = [
     path: 'products',
     component: ProductsComponent,
     title: 'Products | Livalie',
+  },
+  {
+    path: 'product/:id',
+    component: ProductDetailComponent,
+    title: 'Product | Livalie',
   },
   {
     path: '**',

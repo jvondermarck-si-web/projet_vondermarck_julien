@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "image": "assets/img/caputo.svg",
         "title": "Caputo Flour 1kg Dede Pizzeria Mulino Di Napoli 1924",
         "info": "1Kg of flour",
@@ -7,6 +8,7 @@
         "isBestSeller": true
       },
       {
+        "id": 2,
         "image": "assets/img/olive_oil.svg",
         "title": "Olive oil",
         "info": "60ml",
@@ -14,6 +16,7 @@
         "isBestSeller": true
       },
       {
+        "id": 3,
         "image": "assets/img/italian_tshirt.svg",
         "title": "T-Shirt Everybody Loves Italian Girls",
         "info": "Size from S to XL",
@@ -21,6 +24,7 @@
         "isBestSeller": true
       },
       {
+        "id": 4,
         "image": "assets/img/coffee.svg",
         "title": "Italian coffee pot",
         "info": "20ml",
@@ -28,6 +32,7 @@
         "isBestSeller": true
       },
       {
+        "id": 5,
         "image": "assets/img/products/mascarpone.png",
         "title": "Mascarpone",
         "info": "250mg",

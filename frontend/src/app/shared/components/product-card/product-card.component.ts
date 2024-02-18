@@ -1,11 +1,12 @@
 import {Component, Inject, Input} from '@angular/core';
 import {Product} from "../../models/product.interface";
 import {TuiAlertService} from "@taiga-ui/core";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './product-card.component.html'
 })
 export class ProductCardComponent {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Product} from "../../shared/models/product.interface";
 import { ApiService } from './api.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,12 @@ export class ProductService {
 
   get products() {
     return this._products.asObservable();
+  }
+
+  getProduct(id: number): Observable<Product | undefined> {
+    return this.products.pipe(
+      map(products => products.find(product => product.id === id))
+    );
   }
 
   constructor(private apiService: ApiService) {

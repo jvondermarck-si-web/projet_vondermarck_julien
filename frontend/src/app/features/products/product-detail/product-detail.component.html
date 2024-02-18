@@ -1,0 +1,17 @@
+<div *ngIf="product$ | async as product" class="mt-10 px-8 flex flex-col md:flex-row min-h-screen">
+    <div class="w-auto mr-10">
+        <img [src]="product.image" alt="{{ product.title }}" class="object-scale-down w-72 h-72 bg-white">
+    </div>
+    <div class="w-full">
+      <h1 class="text-2xl font-bold mb-2">{{ product.title }}</h1>
+      <p class="text-gray-700 mb-2">{{ product.info }}</p>
+      <p class="text-xl font-bold mb-2">{{ product.price }}</p>
+      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" (click)="showAddToCartNotification()">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+  <div class="p-4">
+    
+  </div>
+  

@@ -1,9 +1,9 @@
-<div class="rounded-lg shadow-lg grid grid-rows-2 grid-cols-1 h-full transition-transform duration-500 hover:-translate-y-2">
-  <div class="bg-white relative flex items-center justify-center">
-    <img [src]="product.image" alt="food" class="object-scale-down w-52 h-44">
-    <img src="../../../../assets/img/italy_flag_bar.svg" alt="food" class="absolute bottom-[-6px]">
+<div [routerLink]="['/product', product.id]" class="rounded-xl shadow-lg grid grid-rows-2 grid-cols-1 h-full transition-transform duration-500 hover:-translate-y-2 ">
+  <div class="bg-white relative flex items-center justify-center rounded-t-xl">
+    <img [src]="product.image" alt="{{ product.title }}" class="object-scale-down w-52 h-44">
+    <img src="../../../../assets/img/italy_flag_bar.svg" alt="Italian flag between image and information" class="absolute bottom-[-6px]">
   </div>
-  <div class="bg-gray-100 py-5 px-5 flex flex-col justify-between">
+  <div class="bg-gray-100 py-5 px-5 flex flex-col justify-between rounded-b-xl">
     <div>
       <p class="text-xl font-bold capitalize line-clamp-3">{{ product.title }}</p>
       <p class="text-gray-500 mt-1 text-xl font-light line-clamp-1">{{ product.info }}</p>

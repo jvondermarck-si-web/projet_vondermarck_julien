@@ -63,19 +63,8 @@
       <!-- Nest the directive so it is considered the same active zone -->
       <div *tuiSidebar="openBurgerMenu; direction: 'right'">
         <tui-accordion [rounded]="false" class="">
-          <tui-accordion-item borders="top-bottom">
-            <p class="font-bold text-xl">{{ 'header.categories' | transloco }}</p>
-            <ng-template tuiAccordionItemContent>
-              <a
-                *ngFor="let categoryLink of categoriesLinks"
-                routerLink="/"
-                rel="noreferrer"
-                class="block text-gray-600 text-lg"
-                (click)="toggleBurgerMenu(false)"
-              >
-                {{ categoryLink }}
-              </a>
-            </ng-template>
+          <tui-accordion-item borders="top-bottom" routerLink="/products" rel="noreferrer" (click)="toggleBurgerMenu(false)">
+            <p class="font-bold text-xl" >{{ 'header.nav-links.products' | transloco }}</p>
           </tui-accordion-item>
           <tui-accordion-item borders="top-bottom">
             <p class="font-bold text-xl">{{ 'header.account' | transloco }}</p>
