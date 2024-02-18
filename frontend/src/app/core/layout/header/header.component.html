@@ -1,4 +1,4 @@
-<nav class="h-16 my-2 flex items-center justify-between items-center px-10 lg:gap-10 gap-5 w-full max-w-screen-xl mx-auto">
+<nav class="h-16 my-2 flex justify-between items-center px-10 lg:gap-10 gap-5 w-full max-w-screen-xl mx-auto">
   <!-- Livalie Logo -->
   <button routerLink="/" class="w-24 h-24 sm:w-48 sm:h-14">
     <img src="assets/img/livalie_logo.svg" alt="Livalie Logo" />
@@ -17,7 +17,7 @@
   <!-- Search bar and icons -->
   <div class="flex gap-5 lg:gap-8 w-full">
     <!-- Search input -->
-    <tui-input class="w-full" tuiTextfieldIconLeft="tuiIconSearch" tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
+    <tui-input class="w-full" [formControl]="searchProduct" tuiTextfieldIconLeft="tuiIconSearch" tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
       {{ 'header.search-placeholder' | transloco }}
       <input tuiTextfield />
     </tui-input>

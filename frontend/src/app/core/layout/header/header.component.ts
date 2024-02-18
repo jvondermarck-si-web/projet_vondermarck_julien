@@ -8,7 +8,7 @@ import {
   TuiSvgModule,
   TuiTextfieldControllerModule
 } from "@taiga-ui/core";
-import { ReactiveFormsModule} from '@angular/forms';
+import { FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from "@angular/router";
 import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
@@ -50,6 +50,8 @@ export class HeaderComponent {
 
   /** Dropdown on links */
   isOpenDropdownAccount = false;
+
+  searchProduct: FormControl = new FormControl('');
 
   /**
    * Toggles the burger menu (on mobile)

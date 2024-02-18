@@ -3,4 +3,5 @@ export interface Product {
   title: string;
   info: string;
   price: string;
+  isBestSeller: boolean;
 }
