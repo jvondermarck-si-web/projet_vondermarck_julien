@@ -5,11 +5,11 @@
   </div>
   <div class="bg-gray-100 py-5 px-5 flex flex-col justify-between rounded-b-xl">
     <div>
-      <p class="text-xl font-bold capitalize line-clamp-3">{{ product.title }}</p>
-      <p class="text-gray-500 mt-1 text-xl font-light line-clamp-1">{{ product.info }}</p>
+      <p class="text-sm sm:text-xl font-bold capitalize line-clamp-3">{{ product.title }}</p>
+      <p class="text-gray-500 mt-1 text-sm sm:text-xl font-light line-clamp-1">{{ product.info }}</p>
     </div>
-    <div class="flex justify-between items-end">
-      <p class="text-green-600 mt-1 text-2xl sm:text-3xl font-medium">{{ product.price }}</p>
+    <div class="flex justify-between items-end mt-3">
+      <p class="text-green-600 mt-1 text-xl sm:text-3xl font-medium">{{ product.price }}<span class="text-sm sm:text-xl">€</span> </p>
       <img (click)="showAddToCartNotification()" src="../../../../assets/img/add_to_cart.svg" alt="Add product to cart" class="cursor-pointer w-10 h-10 sm:w-14 sm:h-14">
     </div>
   </div>

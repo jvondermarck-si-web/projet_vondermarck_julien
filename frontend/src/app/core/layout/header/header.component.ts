@@ -15,31 +15,33 @@ import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {NgForOf} from "@angular/common";
 import {LanguageSwitcherComponent} from "../../../shared/components/language-switcher/language-switcher.component";
 import {TranslocoPipe} from "@ngneat/transloco";
+import { SearchProductComponent } from "../../../shared/components/search-product/search-product.component";
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    TuiInputModule,
-    TuiTextfieldControllerModule,
-    TuiSelectModule,
-    TuiDataListWrapperModule,
-    ReactiveFormsModule,
-    TuiPrimitiveTextfieldModule,
-    RouterLink,
-    TuiSidebarModule,
-    TuiActiveZoneModule,
-    TuiAccordionModule,
-    TuiSvgModule,
-    NgForOf,
-    TuiLinkModule,
-    TuiDropdownModule,
-    TuiDataListModule,
-    TuiHostedDropdownModule,
-    LanguageSwitcherComponent,
-    TranslocoPipe,
-  ],
-  templateUrl: './header.component.html',
+    selector: 'app-header',
+    standalone: true,
+    templateUrl: './header.component.html',
+    imports: [
+        TuiInputModule,
+        TuiTextfieldControllerModule,
+        TuiSelectModule,
+        TuiDataListWrapperModule,
+        ReactiveFormsModule,
+        TuiPrimitiveTextfieldModule,
+        RouterLink,
+        TuiSidebarModule,
+        TuiActiveZoneModule,
+        TuiAccordionModule,
+        TuiSvgModule,
+        NgForOf,
+        TuiLinkModule,
+        TuiDropdownModule,
+        TuiDataListModule,
+        TuiHostedDropdownModule,
+        LanguageSwitcherComponent,
+        TranslocoPipe,
+        SearchProductComponent
+    ]
 })
 export class HeaderComponent {
 

@@ -17,6 +17,7 @@
   },
   "header": {
     "search-placeholder": "Rechercher des produits",
+    "no-results": "Aucun résultat trouvé.",
     "my-account": "Mon compte",
     "sign-in": "Se connecter",
     "sign-up": "S'inscrire",

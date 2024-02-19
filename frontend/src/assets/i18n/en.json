@@ -3,7 +3,7 @@
     "title": {
       "the": "The",
       "but": "but at",
-      "livalie": "Livalie's"
+      "livalie": "Livalie"
     },
     "description": "Your one-stop italian shop for all the things an Italian must have, or Befana will take care of you !",
     "title-categories": "Categories",
@@ -17,6 +17,7 @@
   },
   "header": {
     "search-placeholder": "Search products",
+    "no-results": "No results found.",
     "my-account": "My account",
     "sign-in": "Sign-in",
     "sign-up": "Sign-up",
