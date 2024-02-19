@@ -23,19 +23,21 @@ export class ProductDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      this.product$ = this.productService.getProduct(+id);
-      this.product$.subscribe(product => {
-        if (!product) {
-          this.router.navigate(['/products']);
-        }
-      });
-    } else {
-      console.error('Error getting product.'); // Handle the error appropriately.
-      this.router.navigate(['/']);
-      this.alerts.open('Error getting product.', { label: 'Error', status: 'error' }).subscribe();
-    }
+    // Detect if the id parameter is updated
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id !== null) {
+        this.product$ = this.productService.getProduct(+id);
+        this.product$.subscribe(product => {
+          if (!product) {
+            this.router.navigate(['/products']);
+          }
+        });
+      } else {
+        this.router.navigate(['/']);
+        this.alerts.open('Error getting product.', { label: 'Error', status: 'error' }).subscribe();
+      }
+    });
   }
 
   /**
