@@ -3,11 +3,11 @@ import { Component, Optional } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../core/services/product.service';
 import { Product } from '../../models/product.interface';
-import { Subscription } from 'rxjs';
+import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 import { TuiDataListWrapperModule, TuiInputModule } from '@taiga-ui/kit';
 import { TranslocoPipe } from '@ngneat/transloco';
-import { TuiTextfieldControllerModule } from '@taiga-ui/core';
-import { RouterLink } from '@angular/router';
+import { TuiDataListModule, TuiHostedDropdownModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import { Router, RouterLink } from '@angular/router';
 import { HighlightPipe } from '../../pipes/highlight.pipe';
 
 @Component({
@@ -20,34 +20,49 @@ import { HighlightPipe } from '../../pipes/highlight.pipe';
     TranslocoPipe, 
     TuiTextfieldControllerModule,
     RouterLink,
-    HighlightPipe
+    HighlightPipe,
+    TuiHostedDropdownModule,
+    TuiDataListModule
   ],
   templateUrl: './search-product.component.html'
 })
 export class SearchProductComponent {
+
   private productUpdateSubscription!: Subscription;
 
   public productSearchControl = new FormControl('');
   public filteredProducts: Product[] = [];
   public allProducts: Product[] = [];
   public showProductList : boolean = false;
+  readonly MIN_SEARCH_LENGTH : number = 1;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     // Subscribe to the products observable
     this.productUpdateSubscription = this.productService.products.subscribe(products => this.allProducts = products);
-
-    // Subscribe to the value changes of the product search control and filter the products
-    this.productSearchControl.valueChanges.subscribe((searchText) => {
+    
+    // Subscribe to the product search control value changes
+    this.productSearchControl.valueChanges.pipe(
+      debounceTime(300), // reduce the number of API calls
+      distinctUntilChanged() // only emit when the current value is different than the last
+    ).subscribe((searchControlValue) => {
       this.filteredProducts = [];
       this.showProductList = false;
 
-      if(searchText !== null && searchText.length > 1) {
+      if(searchControlValue !== null && searchControlValue.length > this.MIN_SEARCH_LENGTH) {
         this.showProductList = true;
-        this.filteredProducts = this.allProducts.filter(product => product.title.toLowerCase().includes(searchText.toLowerCase()));
+        this.filteredProducts = this.allProducts.filter(product => product.title.toLowerCase().includes(searchControlValue.toLowerCase()));
       }
     });
+  }
+
+  navigateToProductsPageWithQueryParam(): void {
+    const searchText = this.productSearchControl.value;
+    if (searchText) {
+      this.showProductList = false;
+      this.router.navigate(['/products'], { queryParams: { search: searchText } });
+    }
   }
 
   ngOnDestroy(): void {

@@ -1,4 +1,4 @@
-<div *ngIf="product$ | async as product" class="mt-10 px-8 flex flex-col md:flex-row min-h-screen">
+<div *ngIf="product" class="mt-10 px-8 flex flex-col md:flex-row min-h-screen">
     <div class="w-auto mr-10">
         <img [src]="product.image" alt="{{ product.title }}" class="object-scale-down w-72 h-72 bg-white">
     </div>

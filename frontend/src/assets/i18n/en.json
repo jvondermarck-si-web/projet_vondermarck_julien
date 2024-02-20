@@ -18,6 +18,7 @@
   "header": {
     "search-placeholder": "Search products",
     "no-results": "No results found.",
+    "see-all-products": "See all products",
     "my-account": "My account",
     "sign-in": "Sign-in",
     "sign-up": "Sign-up",
@@ -88,6 +89,7 @@
   },
   "products": {
     "title": "Products",
-    "description": "Italian products are available, will you dare to take a look?"
+    "description": "Italian products are available, will you dare to take a look?",
+    "results-for-search" : "Search results for:" 
   }
 }

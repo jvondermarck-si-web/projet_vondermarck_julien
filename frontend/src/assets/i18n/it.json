@@ -18,6 +18,7 @@
   "header": {
     "search-placeholder": "Cerca prodotti",
     "no-results": "Nessun risultato.",
+    "see-all-products": "Vedi tutti i prodotti",
     "my-account": "Il mio account",
     "sign-in": "Accedi",
     "sign-up": "Iscriviti",
@@ -88,6 +89,7 @@
   },
   "products": {
     "title": "Prodotti",
-    "description": "prodotti italiani sono disponibili, oserete dare un'occhiata?"
+    "description": "prodotti italiani sono disponibili, oserete dare un'occhiata?",
+    "results-for-search" : "Risultati della ricerca per :"
   }
 }

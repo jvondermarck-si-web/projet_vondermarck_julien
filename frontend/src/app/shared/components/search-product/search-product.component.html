@@ -1,23 +1,30 @@
-<tui-input class="w-full" [formControl]="productSearchControl" [tuiTextfieldCleaner]="true" tuiTextfieldIconLeft="tuiIconSearch" tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
-    {{ 'header.search-placeholder' | transloco }}
+<tui-hosted-dropdown [content]="dropdown" [(open)]="showProductList" class="w-full" tuiDropdownLimitWidth="fixed">
+    <tui-input (keyup.enter)="navigateToProductsPageWithQueryParam()" class="w-full" [formControl]="productSearchControl" [tuiTextfieldCleaner]="true" tuiTextfieldIconLeft="tuiIconSearch" tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
+        {{ 'header.search-placeholder' | transloco }}
+    </tui-input>
 
-    <ng-container *ngIf="showProductList">
+    <ng-template #dropdown >
         <tui-data-list-wrapper
-            *tuiDataList
             [items]="filteredProducts"
             [itemContent]="productItemTemplate"
             [emptyContent]="noResultsTemplate">
+
+            <ng-template #productItemTemplate let-product>
+                <div class="flex" (click)="onProductSelected(product)" routerLink="/product/{{product.id}}">
+                    <img class="object-scale-down w-12 h-12 mr-2" [src]="product.image"  alt="Product {{ product.title }}"/>
+                    <p [innerHTML]="product.title | highlight:productSearchControl.value!"></p>
+                </div>
+            </ng-template>
+            
+            <ng-template #noResultsTemplate>
+                <p>{{ 'header.no-results' | transloco }}</p>
+            </ng-template>            
         </tui-data-list-wrapper>
-    </ng-container>
-</tui-input>
 
-<ng-template #productItemTemplate let-product>
-    <div class="flex" (click)="onProductSelected(product)" routerLink="/product/{{product.id}}">
-        <img class="object-scale-down w-12 h-12 mr-2" [src]="product.image"  alt="Product {{ product.title }}"/>
-        <p [innerHTML]="product.title | highlight:productSearchControl.value!"></p>
-    </div>
-</ng-template>
+        <div *ngIf="filteredProducts.length > 0" class="flex justify-center text-sm py-2 font-bold text-green-700 hover:bg-slate-100">
+            <button tuiButton (click)="navigateToProductsPageWithQueryParam()" class="w-full">{{ 'header.see-all-products' | transloco }} ({{ filteredProducts.length }})</button>
+        </div>
+    </ng-template>
+</tui-hosted-dropdown>
 
-<ng-template #noResultsTemplate>
-    <p>{{ 'header.no-results' | transloco }}</p>
-</ng-template>
+

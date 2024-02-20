@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Product } from '../../../shared/models/product.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ProductService } from '../../../core/services/product.service';
 import { TuiAlertService } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
@@ -13,48 +13,39 @@ import { CommonModule } from '@angular/common';
   templateUrl: './product-detail.component.html'
 })
 export class ProductDetailComponent implements OnInit {
-  product$!: Observable<Product | undefined>;
+
+  private productSubscription!: Subscription;
+  public product!: Product | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
-    @Inject(TuiAlertService) private readonly alerts: TuiAlertService
+    private readonly tuiAlertService: TuiAlertService
   ) {}
 
   ngOnInit(): void {
-    // Detect if the id parameter is updated
+     // Detect if the id parameter is updated in the URL to reload the component
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id !== null) {
-        this.product$ = this.productService.getProduct(+id);
-        this.product$.subscribe(product => {
-          if (!product) {
-            this.router.navigate(['/products']);
-          }
+        this.productSubscription = this.productService.getProductFromId(+id).subscribe(product => {
+          this.product = product;
+          if (!product) this.router.navigate(['/products']).then(() => this.tuiAlertService.open('Product not found...', { label: 'An error happened', status: 'error' }).subscribe());
         });
       } else {
-        this.router.navigate(['/']);
-        this.alerts.open('Error getting product.', { label: 'Error', status: 'error' }).subscribe();
+        console.error('No id parameter found in the URL');
       }
     });
   }
 
-  /**
-   * Displays a notification when a product is added to the cart.
-   */
+  ngOnDestroy(): void {
+    if (this.productSubscription) this.productSubscription.unsubscribe();
+  }
+
   showAddToCartNotification(): void {
-    if(this.product$) {
-      this.product$.subscribe(product => {
-        if (product?.title) {
-          const message = `${product.title} has been added successfully.`;
-          this.alerts.open(message, { label: 'Added to cart!', status: 'success' }).subscribe();
-        } else {
-          console.error('Product title is missing.'); // Handle the error appropriately.
-        }
-      });
+    if(this.product) {
+      this.tuiAlertService.open(`${this.product.title} has been added successfully.`, { label: 'Added to cart!', status: 'success' }).subscribe();
     }
   }
-  
 }
-
