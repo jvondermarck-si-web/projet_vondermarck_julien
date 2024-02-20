@@ -10,7 +10,10 @@
     </div>
     <div class="flex justify-between items-end mt-3">
       <p class="text-green-600 mt-1 text-xl sm:text-3xl font-medium">{{ product.price }}<span class="text-sm sm:text-xl">€</span> </p>
-      <img (click)="showAddToCartNotification()" src="../../../../assets/img/add_to_cart.svg" alt="Add product to cart" class="cursor-pointer w-10 h-10 sm:w-14 sm:h-14">
+      <img (click)="showAddToCartNotification(); $event.stopPropagation()" src="../../../../assets/img/add_to_cart.svg" alt="Add product to cart" class="cursor-pointer w-10 h-10 sm:w-14 sm:h-14">
     </div>
   </div>
 </div>
+
+<!-- Note for myself -->
+<!-- $event.stopPropagation() on the image click event is used to prevent the parent div from being clicked and redirecting to the product detail page. -->
