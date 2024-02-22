@@ -12,7 +12,7 @@ import { FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from "@angular/router";
 import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
-import {NgForOf} from "@angular/common";
+import {CommonModule, NgForOf} from "@angular/common";
 import {LanguageSwitcherComponent} from "../../../shared/components/language-switcher/language-switcher.component";
 import {TranslocoPipe} from "@ngneat/transloco";
 import { SearchProductComponent } from "../../../shared/components/search-product/search-product.component";
@@ -40,7 +40,8 @@ import { SearchProductComponent } from "../../../shared/components/search-produc
         TuiHostedDropdownModule,
         LanguageSwitcherComponent,
         TranslocoPipe,
-        SearchProductComponent
+        SearchProductComponent,
+        CommonModule
     ]
 })
 export class HeaderComponent {
@@ -49,6 +50,7 @@ export class HeaderComponent {
   readonly categoriesLinks = ['Food', 'Cooking', 'Fashion', 'Culture'];
   readonly accountLinks = ['Sign-in', 'Sign-up', 'Account'];
   openBurgerMenu = false;
+  isUserLoggedIn = false;
 
   /** Dropdown on links */
   isOpenDropdownAccount = false;

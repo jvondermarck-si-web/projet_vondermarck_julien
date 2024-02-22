@@ -5,7 +5,8 @@
         "title": "Caputo - Farina TIP0 '00' Pizzeria",
         "info": "1 kg - Il Mulino di Napoli",
         "price": "12",
-        "isBestSeller": true
+        "isBestSeller": true,
+        "isFavorite": true
       },
       {
         "id": 2,
@@ -13,7 +14,8 @@
         "title": "De Cecco Olio di Oliva",
         "info": "1L - Extra Virgin",
         "price": "22.95",
-        "isBestSeller": true
+        "isBestSeller": true,
+        "isFavorite": false
       },
       {
         "id": 3,
@@ -21,7 +23,8 @@
         "title": "T-Shirt Everybody Loves Italian Girls",
         "info": "Sizes from S to XL",
         "price": "19.99",
-        "isBestSeller": true
+        "isBestSeller": true,
+        "isFavorite": false
       },
       {
         "id": 4,
@@ -29,7 +32,8 @@
         "title": "Kimbo Espresso Crema Intensa",
         "info": "1kg - Caffè di Napoli",
         "price": "4.99",
-        "isBestSeller": true
+        "isBestSeller": true,
+        "isFavorite": false
       },
       {
         "id": 5,
@@ -37,6 +41,7 @@
         "title": "Galbani Mascarpone",
         "info": "250mg - Best for Tiramisù",
         "price": "2.99",
-        "isBestSeller": false
+        "isBestSeller": false,
+        "isFavorite": false
       }
 ]

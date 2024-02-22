@@ -1,12 +1,12 @@
 <nav class="h-16 my-2 flex justify-between items-center px-10 lg:gap-10 gap-5 w-full max-w-screen-xl mx-auto">
   <!-- Livalie Logo -->
-  <button routerLink="/" class="w-24 h-24 lg:w-48 lg:h-14">
+  <button routerLink="/" class="w-24 h-24 lg:w-28 lg:h-11">
     <img src="assets/img/livalie_logo.svg" alt="Livalie Logo" />
   </button>
 
   <!-- Nav links -->
   <div class="hidden lg:flex gap-10 uppercase font-bold text-lg text-gray-600">
-    <ng-container *ngFor="let link of ['products', 'about', 'contact']">
+    <ng-container *ngFor="let link of ['products']">
       <a routerLink="/{{link}}" class="relative w-max block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
         {{ 'header.nav-links.' + link | transloco }}
       </a>
@@ -21,30 +21,41 @@
 
     <!-- Shopping cart icon (visible on small screens) -->
     <a routerLink="/" class="hidden sm:block">
-      <img class="hover:opacity-70 transition-opacity w-full h-full" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
+      <button class="w-full h-full relative block after:block after:content-[''] after:mt-1 after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
+        <img class="hover:opacity-70 transition-opacity" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
+      </button>
     </a>
 
-    <div class="hidden sm:block">
-      <tui-hosted-dropdown
-        tuiDropdownAlign="center"
-        tuiDropdownHover
-        [content]="content"
-        [tuiDropdownOffset]="0"
-        [(open)]="isOpenDropdownAccount"
-        class="w-full h-full"
-      >
-        <button tuiButton tuiHostedDropdownHost class="w-full h-full">
-          <img class="hover:opacity-70 transition-opacity" src="/assets/img/account_logo.svg" alt="User account" />
-        </button>
-        <ng-template #content>
-          <tui-data-list>
-            <button tuiOption routerLink="/account">{{ 'header.my-account' | transloco }}</button>
-            <button tuiOption routerLink="/sign-in">{{ 'header.sign-in' | transloco }}</button>
-            <button tuiOption routerLink="/sign-up">{{ 'header.sign-up' | transloco }}</button>
-          </tui-data-list>
-        </ng-template>
-      </tui-hosted-dropdown>
-    </div>
+    <ng-container *ngIf="!isUserLoggedIn">
+      <div class="hidden sm:block">
+        <tui-hosted-dropdown
+          tuiDropdownAlign="center"
+          tuiDropdownHover
+          [content]="content"
+          [tuiDropdownOffset]="0"
+          [(open)]="isOpenDropdownAccount"
+          class="w-full h-full"
+        >
+          <button tuiButton tuiHostedDropdownHost class="w-full h-full relative after:block after:content-[''] after:absolute after:h-[3px] after:mt-1 after:bg-[#008C45] after:w-full after:scale-x-0 after:transition after:duration-300 after:origin-center" [class.after:scale-x-100]="isOpenDropdownAccount!">
+            <img class="hover:opacity-70 transition-opacity" src="/assets/img/account_logo.svg" alt="User account" />
+          </button>
+        
+          <ng-template #content>
+            <div class="w-full h-full p-5 flex flex-col gap-3">
+              <button class="bg-green-700 py-1 px-5 rounded-xl text-white text-lg font-bold" routerLink="/sign-in">{{ 'header.sign-in' | transloco }}</button>
+              <p class="text-green-700 font-bold">{{ 'header.info-sign-up' | transloco }} <span class="underline cursor-pointer font-regular" routerLink="/sign-up">{{ 'header.sign-up' | transloco }}</span>🍕</p>
+              <div class="h-0.5 bg-gray-300 w-full"></div>
+              <div class="cursor-pointer">
+                <p class="text-gray-600 font-bold underline" routerLink="/account">{{ 'header.my-account' | transloco }}</p>
+                <p class="text-gray-600 font-bold underline" routerLink="/account">{{ 'header.my-orders' | transloco }}</p>
+                <p class="text-gray-600 font-bold underline" routerLink="/account">{{ 'header.my-favorites' | transloco }}</p>
+              </div>
+            </div>
+            
+          </ng-template>
+        </tui-hosted-dropdown>
+      </div>
+    </ng-container>
 
     <!-- Burger menu (visible on small screens) -->
     <button

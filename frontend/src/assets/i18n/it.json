@@ -16,12 +16,15 @@
     }
   },
   "header": {
-    "search-placeholder": "Cerca prodotti",
+    "search-placeholder": "Cerca prodotti...",
     "no-results": "Nessun risultato.",
     "see-all-products": "Vedi tutti i prodotti",
     "my-account": "Il mio account",
+    "my-orders": "I miei ordini",
+    "my-favorites": "I miei preferiti",
     "sign-in": "Accedi",
-    "sign-up": "Iscriviti",
+    "info-sign-up": "Nuovo cliente?",
+    "sign-up": "Creare il mio account",
     "categories": "Categorie",
     "account": "Account",
     "language": "Lingua",

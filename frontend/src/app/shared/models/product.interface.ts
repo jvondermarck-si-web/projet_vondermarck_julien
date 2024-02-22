@@ -5,4 +5,5 @@ export interface Product {
   info: string;
   price: string;
   isBestSeller: boolean;
+  isFavorite: boolean;
 }
