@@ -28,6 +28,7 @@
     "categories": "Catégories",
     "account": "Compte",
     "language": "Langue",
+    "checkout": "Panier",
     "nav-links": {
       "products": "Produits",
       "about": "À propos",
@@ -94,5 +95,12 @@
     "title": "Produits",
     "description": "produits italiens sont disponibles, allez-vous oser y jeter un oeil ?",
     "results-for-search" : "Résultats de la recherche pour :" 
+  },
+  "checkout": {
+    "title": "Panier",
+    "empty-cart": "Votre panier est vide.",
+    "continue-shopping": "Continuer vos achats",
+    "connect-to-see-cart": "Connectez-vous pour voir votre panier.",
+    "login": "Se connecter"
   }
 }

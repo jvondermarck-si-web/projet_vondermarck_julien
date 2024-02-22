@@ -28,6 +28,7 @@
     "categories": "Categories",
     "account": "Account",
     "language": "Language",
+    "checkout": "Checkout",
     "nav-links": {
       "products": "Products",
       "about": "About",
@@ -94,5 +95,12 @@
     "title": "Products",
     "description": "Italian products are available, will you dare to take a look?",
     "results-for-search" : "Search results for:" 
+  },
+  "checkout": {
+    "title": "Checkout",
+    "empty-cart": "Your cart is empty.",
+    "continue-shopping": "Continue shopping",
+    "connect-to-see-cart": "Connect to see your cart.",
+    "login": "Login"
   }
 }

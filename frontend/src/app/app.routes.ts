@@ -5,6 +5,7 @@ import {SignUpComponent} from "./features/sign-up/sign-up.component";
 import {AccountComponent} from "./features/account/account.component";
 import { ProductsComponent } from './features/products/products.component';
 import { ProductDetailComponent } from './features/products/product-detail/product-detail.component';
+import { CheckoutComponent } from './features/checkout/checkout.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,11 @@ export const routes: Routes = [
     path: 'product/:id',
     component: ProductDetailComponent,
     title: 'Product | Livalie',
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    title: 'Checkout | Livalie',
   },
   {
     path: '**',

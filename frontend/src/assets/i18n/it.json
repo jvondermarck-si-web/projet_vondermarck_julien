@@ -26,8 +26,9 @@
     "info-sign-up": "Nuovo cliente?",
     "sign-up": "Creare il mio account",
     "categories": "Categorie",
-    "account": "Account",
+    "account": "Conto",
     "language": "Lingua",
+    "checkout": "Guardare",
     "nav-links": {
       "products": "Prodotti",
       "about": "Chi siamo",
@@ -94,5 +95,12 @@
     "title": "Prodotti",
     "description": "prodotti italiani sono disponibili, oserete dare un'occhiata?",
     "results-for-search" : "Risultati della ricerca per :"
+  },
+  "checkout": {
+    "title": "Guardare",
+    "empty-cart": "Il tuo carrello è vuoto.",
+    "continue-shopping": "Continua a fare acquisti",
+    "connect-to-see-cart": "Connettiti per vedere il tuo carrello.",
+    "login": "Login"
   }
 }
