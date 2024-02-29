@@ -6,6 +6,7 @@ import {AccountComponent} from "./features/account/account.component";
 import { ProductsComponent } from './features/products/products.component';
 import { ProductDetailComponent } from './features/products/product-detail/product-detail.component';
 import { CheckoutComponent } from './features/checkout/checkout.component';
+import { productGuard } from './core/guards/product.guard';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,7 @@ export const routes: Routes = [
     path: 'product/:id',
     component: ProductDetailComponent,
     title: 'Product | Livalie',
+    canActivate: [productGuard]
   },
   {
     path: 'checkout',
