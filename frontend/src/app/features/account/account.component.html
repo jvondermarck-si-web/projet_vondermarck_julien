@@ -1,9 +1,9 @@
 <section class="px-8">
   <h1 class="text-3xl sm:text-4xl font-bold lg:mt-10 mt-5">{{ 'account.title' | transloco }}</h1>
 
-  <div class="flex shadow-xl bg-white min-h-screen w-full">
+  <div class="flex shadow-xl bg-white mt-5 min-h-screen w-full">
     <!-- Navigation Section -->
-    <div *ngIf="shouldDisplaySection('Navigation')" class="flex-none w-full sm:w-56 mt-5 rounded-tl-xl border">
+    <div *ngIf="shouldDisplaySection('Navigation')" class="flex-none w-full sm:w-56  rounded-tl-xl border">
       <div class="py-8 px-5 h-full">
         <app-nav-item label="{{ 'account.my-details' | transloco }}" icon="assets/img/account/my_details.svg" (tabSelected)="setActiveSectionTab('MyDetails')"></app-nav-item>
         <app-nav-item label="{{ 'account.my-orders' | transloco }}" icon="assets/img/account/my_orders.svg" (tabSelected)="setActiveSectionTab('MyOrders')" [isLastItem]="true"></app-nav-item>
@@ -11,7 +11,7 @@
     </div>
 
     <!-- Details Section -->
-    <div *ngIf="shouldDisplaySection('Details')" class="grow-1 w-full mt-5 rounded-tr-xl border">
+    <div *ngIf="shouldDisplaySection('Details')" class="grow-1 w-full rounded-tr-xl border">
       <div class="px-10 py-6">
         <!-- Common Header -->
         <div class="flex items-center">
