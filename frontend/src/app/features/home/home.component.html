@@ -19,12 +19,12 @@
   <!-- Categories -->
   <h1 class="text-3xl sm:text-4xl font-bold lg:mt-12">{{ 'home.title-categories' | transloco }}</h1>
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:mt-10 mt-5 mb-20">
-    <app-category-card *ngFor="let category of categories" [category]="category"></app-category-card>
+    <app-category-card *ngFor="let category of categories$ | async" [category]="category"></app-category-card>
   </div>
 
   <!-- Best Sellers -->
   <h1 class="text-3xl sm:text-4xl font-bold lg:mt-12">{{ 'home.best-sellers' | transloco }}</h1>
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:mt-10 mt-5 mb-20 ">
-      <app-product-card *ngFor="let product of bestSellersProducts" [product]="product"></app-product-card>
+      <app-product-card *ngFor="let product of bestSellersProducts$ | async" [product]="product"></app-product-card>
   </div>
 </section>

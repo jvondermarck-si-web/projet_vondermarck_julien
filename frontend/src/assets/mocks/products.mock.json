@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "categoryID": 1,
         "image": "assets/img/products/caputo.png",
         "title": "Caputo - Farina TIP0 '00' Pizzeria",
         "info": "1 kg - Il Mulino di Napoli",
@@ -10,6 +11,7 @@
       },
       {
         "id": 2,
+        "categoryID": 1,
         "image": "assets/img/products/olive_oil.png",
         "title": "De Cecco Olio di Oliva",
         "info": "1L - Extra Virgin",
@@ -19,6 +21,7 @@
       },
       {
         "id": 3,
+        "categoryID": 2,
         "image": "assets/img/products/tshirt_girl.png",
         "title": "T-Shirt Everybody Loves Italian Girls",
         "info": "Sizes from S to XL",
@@ -28,6 +31,7 @@
       },
       {
         "id": 4,
+        "categoryID": 3,
         "image": "assets/img/products/kimbo.png",
         "title": "Kimbo Espresso Crema Intensa",
         "info": "1kg - Caffè di Napoli",
@@ -37,6 +41,7 @@
       },
       {
         "id": 5,
+        "categoryID": 3,
         "image": "assets/img/products/mascarpone.png",
         "title": "Galbani Mascarpone",
         "info": "250mg - Best for Tiramisù",

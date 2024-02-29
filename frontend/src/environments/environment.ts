@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    APIEndpoint : '../assets/mocks/products.mock.json',
+    API_Endpoint : '../assets/mocks/',
 };
