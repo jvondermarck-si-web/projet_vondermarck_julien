@@ -70,11 +70,15 @@
 
       <!-- Nest the directive so it is considered the same active zone -->
       <div *tuiSidebar="openBurgerMenu; direction: 'right'">
-        <tui-accordion [rounded]="false" class="">
-          <tui-accordion-item borders="top-bottom" routerLink="/products" rel="noreferrer" (click)="toggleBurgerMenu(false)">
+        <div class="flex items-center gap-2 m-5">
+          <tui-svg src="tuiIconListLarge"></tui-svg>
+          <p class="font-bold text-2xl">Menu</p>
+        </div>
+        <tui-accordion [rounded]="false">
+          <tui-accordion-item [showArrow]="false" borders="top-bottom" routerLink="/products" rel="noreferrer" (click)="toggleBurgerMenu(false)">
             <p class="font-bold text-xl" >{{ 'header.nav-links.products' | transloco }}</p>
           </tui-accordion-item>
-          <tui-accordion-item borders="top-bottom">
+          <tui-accordion-item [open]="true" borders="top-bottom">
             <p class="font-bold text-xl">{{ 'header.account' | transloco }}</p>
             <ng-template tuiAccordionItemContent>
               <a
@@ -88,7 +92,7 @@
               </a>
             </ng-template>
           </tui-accordion-item>
-          <tui-accordion-item borders="top-bottom">
+          <tui-accordion-item [open]="true" borders="top-bottom">
             <p class="font-bold text-xl">{{ 'header.language' | transloco }}</p>
             <ng-template tuiAccordionItemContent>
               <app-language-switcher></app-language-switcher>

@@ -90,9 +90,9 @@
             <input tuiTextfield type="text" />
           </tui-input>
 
-          <tui-combo-box tuiTextfieldIconLeft="tuiIconNavigationLarge" formControlName="countryFormControl" *tuiLet="countriesNames$ | async as countryNames">
+          <tui-combo-box tuiTextfieldIconLeft="tuiIconNavigationLarge" formControlName="countryFormControl" *tuiLet="countriesNames$ | async as countryNames" class="w-full">
             {{ 'sign-up.country' | transloco }}
-            <input  placeholder="{{ 'sign-up.country-placeholder' | transloco }}"  tuiTextfield type="text" />
+            <input class="break-all	w-full" placeholder="{{ 'sign-up.country-placeholder' | transloco }}"  tuiTextfield type="text" />
             <tui-data-list-wrapper *tuiDataList
                                    [items]="countries | tuiMapper:countryNameMapper:countryNames | tuiFilterByInput">
             </tui-data-list-wrapper>
