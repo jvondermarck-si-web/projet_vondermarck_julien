@@ -92,6 +92,6 @@ export class SearchProductComponent {
   onProductSelected(product: Product) {
     // TODO: display the selected product in the UI
     //this.productSearchControl.setValue(product.title);
-    this.productSearchControl.reset();
+    this.productSearchControl.reset('', { emitEvent: false });
   }
 }
