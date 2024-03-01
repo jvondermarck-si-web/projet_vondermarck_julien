@@ -94,7 +94,9 @@
   "products": {
     "title": "Produits",
     "description": "produits italiens sont disponibles, allez-vous oser y jeter un oeil ?",
-    "results-for-search" : "Résultats de la recherche pour :" 
+    "results-for-search" : "Résultats de la recherche pour :",
+    "filter": "Filtrer",
+    "sort-by": "Trier par"
   },
   "checkout": {
     "title": "Panier",

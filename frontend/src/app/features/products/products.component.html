@@ -1,10 +1,80 @@
 <section class="relative px-8 mt-10">
     <h1 class="text-3xl sm:text-4xl font-bold">{{ 'products.title' | transloco }} 🛒</h1>
-    <p *ngIf="searchText" class="text-xl sm:text-2xl text-gray-500 mb-5">
-        {{ 'products.results-for-search' | transloco }} '{{ searchText }}'
-    </p>
+
+    @if (searchText) {
+        <p class="text-xl sm:text-2xl text-gray-500 mb-5">
+            {{ 'products.results-for-search' | transloco }} '{{ searchText }}'
+        </p>
+    }
+    
     <p class="text-lg sm:text-xl text-gray-500 mb-5">{{ products.length }} {{ 'products.description' | transloco }} </p>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:mt-10 mb-20 ">
-        <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+    
+    <!-- MOBILE : button to show filter sidebar -->
+    <button tuiButton type="button" (click)="toggleFilterMenu(true)" (tuiActiveZoneChange)="toggleFilterMenu($event)"  class="sm:hidden bg-[#008C45]  w-full text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2">
+        <tui-svg src="tuiIconFilterLarge"></tui-svg>
+        {{ 'products.filter' | transloco }}
+        <div *tuiSidebar="openFilterMenu; direction: 'right';" class="m-5">
+            <div class="hidden" *ngTemplateOutlet="filter"></div>
+            <ng-container *ngTemplateOutlet="accordion_filter" class="p-5"></ng-container>
+        </div>
+    </button>
+
+    <div class="hidden sm:block">
+        <ng-container *ngTemplateOutlet="filter"></ng-container>
+    </div>
+
+    <div class="mt-5 mb-20 w-full sm:flex gap-5">
+        <!-- Filter left section -->
+        <div class="w-3/12 sm:block hidden">
+            <ng-container *ngTemplateOutlet="accordion_filter"></ng-container>
+        </div>
+
+        <!-- Products right section -->
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+            @if(products.length === 0) {
+                <p class="text-xl sm:text-2xl text-gray-500 mb-5 flex justify-center">No articles</p>
+            } @else {
+                @for(product of products; track $index) {
+                    <app-product-card [product]="product"></app-product-card>
+                }
+            }
+        </div>
     </div>
 </section>
+
+
+<ng-template #filter>
+    <div class="flex flex-col sm:flex-row gap-3 pl-0 sm:pl-2 mb-4 sm:mb-0">
+        <div class="flex items-center gap-2">
+            <tui-svg src="tuiIconFilterLarge"></tui-svg>
+            <p class="font-bold text-2xl">{{ 'products.filter' | transloco }}</p>
+        </div>
+        <tui-filter [formControl]="formCategoryFilterSelected" [content]="filter_item" size="s" [items]="formCategoryFilterSelected.value">
+            <ng-template #filter_item let-category>
+                {{ 'home.categories.' + category.name.toLowerCase() | transloco }}
+                <tui-svg class="tui-space_left-2" src="tuiIconX" (click)="deleteFilter(category)"></tui-svg>
+            </ng-template>
+        </tui-filter>
+    </div>
+</ng-template>
+
+<ng-template #accordion_filter>
+    <tui-accordion class="container" >
+        <tui-accordion-item [open]="true">
+            {{ 'header.categories' | transloco }}
+            <ng-template tuiAccordionItemContent>
+                <tui-data-list size="l" class="-m-4">
+                    <tui-opt-group [formControl]="formCategoryFilterSelected" tuiMultiSelectGroup>
+                        <tui-opt-group>
+                            @for (category of categoriesList$ | async; track $index) {
+                                <button tuiOption [value]="category">
+                                    {{ 'home.categories.' + category.name.toLowerCase() | transloco }}
+                                </button>
+                            }
+                        </tui-opt-group>
+                    </tui-opt-group>
+                </tui-data-list>                  
+            </ng-template>
+        </tui-accordion-item>
+      </tui-accordion>
+</ng-template>

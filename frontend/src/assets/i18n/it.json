@@ -94,7 +94,9 @@
   "products": {
     "title": "Prodotti",
     "description": "prodotti italiani sono disponibili, oserete dare un'occhiata?",
-    "results-for-search" : "Risultati della ricerca per :"
+    "results-for-search" : "Risultati della ricerca per :",
+    "filter": "Filtro",
+    "sort-by": "Ordina per"
   },
   "checkout": {
     "title": "Guardare",

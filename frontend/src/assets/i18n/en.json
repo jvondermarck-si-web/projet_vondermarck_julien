@@ -94,7 +94,9 @@
   "products": {
     "title": "Products",
     "description": "Italian products are available, will you dare to take a look?",
-    "results-for-search" : "Search results for:" 
+    "results-for-search" : "Search results for:",
+    "filter": "Filter",
+    "sort-by": "Sort by"
   },
   "checkout": {
     "title": "Checkout",

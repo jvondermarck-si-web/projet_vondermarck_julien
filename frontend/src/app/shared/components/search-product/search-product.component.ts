@@ -7,7 +7,7 @@ import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 import { TuiDataListWrapperModule, TuiInputModule } from '@taiga-ui/kit';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { TuiDataListModule, TuiHostedDropdownModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HighlightPipe } from '../../pipes/highlight.pipe';
 
 @Component({
@@ -36,7 +36,7 @@ export class SearchProductComponent {
   public showProductList : boolean = false;
   readonly MIN_SEARCH_LENGTH : number = 1;
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     // Subscribe to the products observable
@@ -55,13 +55,31 @@ export class SearchProductComponent {
         this.filteredProducts = this.allProducts.filter(product => product.title.toLowerCase().includes(searchControlValue.toLowerCase()));
       }
     });
+
+    // Subscribe to the productSearchControl value changes
+    this.productSearchControl.valueChanges.subscribe(searchText => {
+      if (!searchText || searchText.length === 0) {
+        // check if actual route is /products and if so, delete the search query param
+        const currentRoute = this.router.url;
+        if (currentRoute.includes('/products')) {
+          this.router.navigate([], { 
+            relativeTo: this.route,
+            queryParams: { search: null }, 
+            queryParamsHandling: 'merge' 
+          });
+        }   
+      }
+    });
   }
 
   navigateToProductsPageWithQueryParam(): void {
     const searchText = this.productSearchControl.value;
     if (searchText) {
       this.showProductList = false;
-      this.router.navigate(['/products'], { queryParams: { search: searchText } });
+      this.router.navigate(['/products'], { 
+        queryParams: { search: searchText }, 
+        queryParamsHandling: 'merge' // preserve the current query params
+      });    
     }
   }
 

@@ -13,3 +13,8 @@
 @layer components {
 
 }
+
+:root {
+    --tui-primary: #008C45;
+}
+  
