@@ -7,7 +7,7 @@
         </p>
     }
     
-    <p class="text-lg sm:text-xl text-gray-500 mb-5">{{ products.length }} {{ 'products.description' | transloco }} </p>
+    <p class="text-lg sm:text-xl text-gray-500 mb-5">{{  (products$ | async)?.length }} {{ 'products.description' | transloco }} </p>
     
     <!-- MOBILE : button to show filter sidebar -->
     <button tuiButton type="button" (click)="toggleFilterMenu(true)" (tuiActiveZoneChange)="toggleFilterMenu($event)"  class="sm:hidden bg-[#008C45]  w-full text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2">
@@ -31,10 +31,10 @@
 
         <!-- Products right section -->
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 w-full">
-            @if(products.length === 0) {
+            @if( (products$ | async)?.length === 0) {
                 <p class="text-xl sm:text-2xl text-gray-500 mb-5 flex justify-center">No articles</p>
             } @else {
-                @for(product of products; track $index) {
+                @for((product of products$ | async); track $index) {
                     <app-product-card [product]="product"></app-product-card>
                 }
             }

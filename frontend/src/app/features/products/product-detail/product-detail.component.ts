@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductDetailComponent implements OnInit {
 
-  public product$!: Observable<Product | undefined>;
+  public declare product$: Observable<Product | undefined>;
 
   constructor(
     private route: ActivatedRoute,
