@@ -47,7 +47,7 @@ import { SearchProductComponent } from "../../../shared/components/search-produc
 export class HeaderComponent {
 
   /** Links for the burger menu */
-  readonly accountLinks = ['account', 'sign-in', 'sign-up', 'checkout'];
+  readonly accountLinks = ['account', 'sign-in', 'sign-up', 'basket'];
   openBurgerMenu = false;
   isUserLoggedIn = false;
 

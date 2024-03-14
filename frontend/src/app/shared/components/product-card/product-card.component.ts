@@ -3,6 +3,7 @@ import {Product} from "../../models/product.interface";
 import {TuiAlertService} from "@taiga-ui/core";
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { BasketService } from '../../../core/services/basket.service';
 
 @Component({
   selector: 'app-product-card',
@@ -16,20 +17,13 @@ export class ProductCardComponent {
   @Input() product!: Product;
   isHoveringFavoriteBtn = false;
 
+  constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService, private basketService: BasketService) {}
 
-  /**
-   * Constructor
-   * @param alerts - Service to display notifications
-   */
-  constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}
-
-  /**
-   * Displays a notification when a product is added to the cart.
-   */
-  showAddToCartNotification(): void {
+  addProductToBasket(): void {
     if (this.product?.title) {
-      const message = `${this.product.title} has been added successfully.`;
-      this.alerts.open(message, { label: 'Added to cart!', status: 'success' }).subscribe();
+      
+      this.basketService.addProduct(this.product);
+
     } else {
       console.error('Product title is missing.'); // Handle the error appropriately.
     }
