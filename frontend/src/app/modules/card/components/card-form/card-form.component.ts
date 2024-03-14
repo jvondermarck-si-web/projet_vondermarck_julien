@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CardService } from '../../services/card.service';
 import { Card } from '../../interfaces/card.interface';
 
@@ -9,11 +9,11 @@ import { Card } from '../../interfaces/card.interface';
 })
 export class CardFormComponent {
   readonly form = new FormGroup({
-      name: new FormControl(''),
-      code: new FormControl(''),
-      ccv: new FormControl(''),
-      month: new FormControl(''),
-      year: new FormControl(''),
+      name: new FormControl('', Validators.required),
+      code: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
+      ccv: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]),
+      month: new FormControl('', [Validators.required, Validators.min(1), Validators.max(12)]),
+      year: new FormControl('', Validators.required),
   });
 
   constructor(private cardService: CardService) {}
@@ -27,21 +27,21 @@ export class CardFormComponent {
 
     // ... rest of your code ...
 
-      return null;
+    return null;
   }
 
   onSubmit() {
     if (this.form.valid) {
         // create card and add it to the list
         let card: Card = {
-            name: this.form.value.name || '',
-            code: this.form.value.code || '',
-            ccv: this.form.value.ccv || '',
-            month: this.form.value.month || '',
-            year: this.form.value.year || ''
+            name: this.form.value.name!,
+            code: this.form.value.code!,
+            ccv: this.form.value.ccv!,
+            month: this.form.value.month!,
+            year: this.form.value.year!
         };
         this.cardService.addCard(card);
         this.form.reset();
     }
-}
+  }
 }

@@ -2,7 +2,7 @@
 <form tuiGroup [formGroup]="form" (ngSubmit)="onSubmit()" 
     class="flex sm:flex-row flex-col w-full">
     <tui-input formControlName="name">Card name</tui-input>
-    <tui-input-card formControlName="code" [cardSrc]="card">Card number</tui-input-card>
+    <tui-input-card formControlName="code"  [cardSrc]="card">Card number</tui-input-card>
     <tui-input-cvc class="w-max-full" formControlName="ccv">CVC/CVV</tui-input-cvc>
     <tui-input-number formControlName="month">Month</tui-input-number>
     <tui-input-number formControlName="year">Year</tui-input-number>

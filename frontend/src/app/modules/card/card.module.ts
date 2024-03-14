@@ -8,10 +8,11 @@ import { TuiInputModule, TuiInputNumberModule } from "@taiga-ui/kit";
 import { TuiGroupModule, TuiRootModule } from "@taiga-ui/core";
 import { CommonModule } from "@angular/common";
 import { CardDashboardComponent } from "./components/card-dashboard/card-dashboard.component";
+import { HideCardPipe } from "./pipes/hide-card.pipe";
 
 
 @NgModule({
-  declarations: [CardFormComponent, CardListComponent, CardDashboardComponent],
+  declarations: [CardFormComponent, CardListComponent, CardDashboardComponent,HideCardPipe],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -25,7 +26,7 @@ import { CardDashboardComponent } from "./components/card-dashboard/card-dashboa
     TuiRootModule,
     TuiGroupModule,
   ],
-  exports: [CardDashboardComponent]
+  exports: [CardDashboardComponent, HideCardPipe]
 })
 export class CardModule { }
 

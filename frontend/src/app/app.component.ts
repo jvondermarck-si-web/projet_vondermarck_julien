@@ -6,6 +6,7 @@ import {HeaderComponent} from "./core/layout/header/header.component";
 import {FooterComponent} from "./core/layout/footer/footer.component";
 import { ScrollToTopDirective } from "./core/directives/scroll-to-top.directive";
 import { CardModule } from "./modules/card/card.module";
+import { HideCardPipe } from "./modules/card/pipes/hide-card.pipe";
 
 @Component({
   selector: 'app-root',
