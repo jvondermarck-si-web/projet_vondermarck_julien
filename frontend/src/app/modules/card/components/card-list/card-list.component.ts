@@ -13,4 +13,8 @@ export class CardListComponent {
   constructor(private cardService: CardService) {
     this.cards$ = this.cardService.cards$;
   }
+
+  deleteCard(code: string) {
+    this.cardService.deleteCard(code);
+  }
 }
