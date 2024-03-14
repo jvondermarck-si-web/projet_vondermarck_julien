@@ -5,8 +5,8 @@ import {SignUpComponent} from "./features/sign-up/sign-up.component";
 import {AccountComponent} from "./features/account/account.component";
 import { ProductsComponent } from './features/products/products.component';
 import { ProductDetailComponent } from './features/products/product-detail/product-detail.component';
-import { CheckoutComponent } from './features/checkout/checkout.component';
 import { productGuard } from './core/guards/product.guard';
+import { BasketComponent } from './features/basket/basket.component';
 
 export const routes: Routes = [
   {
@@ -41,9 +41,9 @@ export const routes: Routes = [
     canActivate: [productGuard]
   },
   {
-    path: 'checkout',
-    component: CheckoutComponent,
-    title: 'Checkout | Livalie',
+    path: 'basket',
+    component: BasketComponent,
+    title: 'Basket | Livalie',
   },
   {
     path: '**',

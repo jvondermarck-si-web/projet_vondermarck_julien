@@ -3,11 +3,11 @@ import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-checkout',
+  selector: 'app-basket',
   standalone: true,
   imports: [TranslocoPipe, RouterLink],
-  templateUrl: './checkout.component.html'
+  templateUrl: './basket.component.html'
 })
-export class CheckoutComponent {
+export class BasketComponent {
 
 }
