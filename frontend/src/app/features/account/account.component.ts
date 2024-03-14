@@ -9,6 +9,8 @@ import {CommonModule} from "@angular/common";
 import {TabComponent} from "./models/tab-component.interface";
 import {TabSectionDetailsName} from "./models/tab-section-details-name.type";
 import {Observable} from "rxjs";
+import { CardDashboardComponent } from '../../modules/card/components/card-dashboard/card-dashboard.component';
+import { CardModule } from '../../modules/card/card.module';
 
 @Component({
   selector: 'app-account',
@@ -21,6 +23,7 @@ import {Observable} from "rxjs";
     MyDetailsComponent,
     MyOrdersComponent,
     CommonModule,
+    CardModule,
   ],
   templateUrl: './account.component.html'
 })
@@ -49,6 +52,7 @@ export class AccountComponent {
   tabSectionComponents: { [key: string]: Type<TabComponent> } = {
     'MyDetails': MyDetailsComponent,
     'MyOrders': MyOrdersComponent,
+    'MyCards': CardDashboardComponent,
   };
 
   /** Map of tab names to titles */
@@ -58,6 +62,7 @@ export class AccountComponent {
     this.tabTitles = {
       'MyDetails': this.translocoService.selectTranslate('account.my-details'),
       'MyOrders': this.translocoService.selectTranslate('account.my-orders'),
+      'MyCards': this.translocoService.selectTranslate('account.my-cards'),
     };
   }
 

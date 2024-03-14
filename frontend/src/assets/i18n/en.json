@@ -78,7 +78,8 @@
   "account": {
     "title": "My account",
     "my-orders": "My orders",
-    "my-details": "My details"
+    "my-details": "My details",
+    "my-cards": "My cards"
   },
   "footer": {
     "company": "Company",

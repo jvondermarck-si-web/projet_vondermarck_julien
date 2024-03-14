@@ -6,7 +6,8 @@
     <div *ngIf="shouldDisplaySection('Navigation')" class="flex-none w-full sm:w-56  rounded-tl-xl border">
       <div class="py-8 px-5 h-full">
         <app-nav-item label="{{ 'account.my-details' | transloco }}" icon="assets/img/account/my_details.svg" (tabSelected)="setActiveSectionTab('MyDetails')"></app-nav-item>
-        <app-nav-item label="{{ 'account.my-orders' | transloco }}" icon="assets/img/account/my_orders.svg" (tabSelected)="setActiveSectionTab('MyOrders')" [isLastItem]="true"></app-nav-item>
+        <app-nav-item label="{{ 'account.my-orders' | transloco }}" icon="assets/img/account/my_orders.svg" (tabSelected)="setActiveSectionTab('MyOrders')" [isLastItem]="false"></app-nav-item>
+        <app-nav-item label="{{ 'account.my-cards' | transloco }}" icon="assets/img/account/my_cards.svg" (tabSelected)="setActiveSectionTab('MyCards')" [isLastItem]="true"></app-nav-item>
       </div>
     </div>
 

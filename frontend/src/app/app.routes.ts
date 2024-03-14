@@ -46,6 +46,10 @@ export const routes: Routes = [
     title: 'Basket | Livalie',
   },
   {
+    path: 'card-form',
+    loadChildren: () => import('./modules/card/card.routes').then(m => m.CardRoutingModule)
+  },
+  {
     path: '**',
     redirectTo: '',
   },

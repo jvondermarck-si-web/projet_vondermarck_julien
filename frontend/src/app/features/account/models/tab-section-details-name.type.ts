@@ -1,1 +1,1 @@
-export type TabSectionDetailsName = 'MyDetails' | 'MyOrders';
+export type TabSectionDetailsName = 'MyDetails' | 'MyOrders' | 'MyCards';
