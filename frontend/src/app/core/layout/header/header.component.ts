@@ -16,6 +16,8 @@ import {CommonModule, NgForOf} from "@angular/common";
 import {LanguageSwitcherComponent} from "../../../shared/components/language-switcher/language-switcher.component";
 import {TranslocoPipe} from "@ngneat/transloco";
 import { SearchProductComponent } from "../../../shared/components/search-product/search-product.component";
+import { BasketService } from '../../services/basket.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-header',
@@ -47,7 +49,7 @@ import { SearchProductComponent } from "../../../shared/components/search-produc
 export class HeaderComponent {
 
   /** Links for the burger menu */
-  readonly accountLinks = ['account', 'sign-in', 'sign-up', 'basket'];
+  readonly accountLinks = ['account', 'sign-in', 'sign-up'];
   openBurgerMenu = false;
   isUserLoggedIn = false;
 
@@ -55,6 +57,12 @@ export class HeaderComponent {
   isOpenDropdownAccount = false;
 
   searchProduct: FormControl = new FormControl('');
+
+  numberOfProductsInBasket$ : Observable<number>;
+
+  constructor(private basketService: BasketService) {
+    this.numberOfProductsInBasket$ = this.basketService.numberOfProductsInBasket;
+  }
 
   /**
    * Toggles the burger menu (on mobile)

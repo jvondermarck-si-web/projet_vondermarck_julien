@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Product } from '../../shared/models/product.interface';
 import { TuiAlertService } from '@taiga-ui/core';
 
@@ -14,6 +14,10 @@ export class BasketService {
 
   get basketProducts() {
     return this._basketProducts.asObservable();
+  }
+
+  get numberOfProductsInBasket() : Observable<number> {
+    return this.basketProducts.pipe(map(products => products.length));
   }
 
   addProduct(product: Product) {

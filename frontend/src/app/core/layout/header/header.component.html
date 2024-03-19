@@ -20,11 +20,18 @@
     <app-search-product class="w-full"></app-search-product>
 
     <!-- Shopping cart icon (visible on small screens) -->
-    <a routerLink="/basket" class="hidden sm:block">
-      <button class="w-full h-full relative block after:block after:content-[''] after:mt-1 after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
-        <img class="hover:opacity-70 transition-opacity" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
-      </button>
-    </a>
+    <div class="relative flex ">
+      <a routerLink="/basket" class="hidden sm:block">
+        <button class="w-full h-full relative block after:block after:content-[''] after:mt-1 after:absolute after:h-[3px] after:bg-[#008C45] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
+          <img class="hover:opacity-70 transition-opacity" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
+        </button>
+        @if((numberOfProductsInBasket$ | async)! > 0) {
+          <div class="absolute bottom-0 left-6 h-5 w-5 rounded-full bg-green-600 text-white text-center flex items-center justify-center">
+            {{ numberOfProductsInBasket$ |async }}
+          </div>
+        }
+      </a>
+    </div>
 
     <ng-container *ngIf="!isUserLoggedIn">
       <div class="hidden sm:block">
@@ -77,6 +84,16 @@
         <tui-accordion [rounded]="false">
           <tui-accordion-item [showArrow]="false" borders="top-bottom" routerLink="/products" rel="noreferrer" (click)="toggleBurgerMenu(false)">
             <p class="font-bold text-xl" >{{ 'header.nav-links.products' | transloco }}</p>
+          </tui-accordion-item>
+          <tui-accordion-item [showArrow]="false" borders="top-bottom" routerLink="/basket" rel="noreferrer" (click)="toggleBurgerMenu(false)">
+            <div class="flex items-center gap-2">
+              @if((numberOfProductsInBasket$ | async)! > 0) {
+                <div class="h-6 w-6 text-sm rounded-full bg-green-600 text-white text-center flex items-center justify-center">
+                  {{ numberOfProductsInBasket$ |async }}
+                </div>
+              }
+              <p class="font-bold text-xl" >{{ 'header.nav-links.basket' | transloco }}</p>
+            </div>         
           </tui-accordion-item>
           <tui-accordion-item [open]="true" borders="top-bottom">
             <p class="font-bold text-xl">{{ 'header.account' | transloco }}</p>

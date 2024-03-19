@@ -32,7 +32,8 @@
     "nav-links": {
       "products": "Prodotti",
       "about": "Chi siamo",
-      "contact": "Contatti"
+      "contact": "Contatti",
+      "basket": "Carrello"
     }
   },
   "sign-in": {

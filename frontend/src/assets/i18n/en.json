@@ -32,7 +32,8 @@
     "nav-links": {
       "products": "Products",
       "about": "About",
-      "contact": "Contact"
+      "contact": "Contact",
+      "basket": "Basket"
     }
   },
   "sign-in": {
