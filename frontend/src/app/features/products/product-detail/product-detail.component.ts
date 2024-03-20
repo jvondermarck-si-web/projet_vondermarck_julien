@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ProductService } from '../../../core/services/product.service';
 import { TuiAlertService } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
+import { BasketService } from '../../../core/services/basket.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,7 +20,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private readonly tuiAlertService: TuiAlertService
+    private readonly tuiAlertService: TuiAlertService,
+    private basketService: BasketService
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +30,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   showAddToCartNotification(product: Product): void {
-    this.tuiAlertService.open(`${product.title} has been added successfully.`, { label: 'Added to cart!', status: 'success' }).subscribe();
+    this.basketService.addProduct(product);
   }
 }

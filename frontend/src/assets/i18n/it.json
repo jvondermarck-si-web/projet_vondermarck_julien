@@ -106,6 +106,15 @@
     "continue-shopping": "Continua a fare acquisti",
     "connect-to-see-cart": "Connettiti per vedere il tuo carrello.",
     "login": "Login",
-    "order-summary": "Riepilogo dell'ordine"
+    "order-summary": "Riepilogo dell'ordine",
+    "error-title": "Errore durante l'aggiunta al carrello!",
+    "error-max-product-quantity": "Non è possibile aggiungere più di {{maxQuantity}} volte lo stesso prodotto.",
+    "error-min-product-quantity": "Non è possibile aggiungere meno di 1 prodotto dello stesso tipo.",
+    "alreadyInCartTitle": "Già nel carrello!",
+    "alreadyInCart": "{{product}} è già nel carrello.",
+    "addedToCartTitle": "Aggiunto al carrello!",
+    "addedToCart": "{{product}} è stato aggiunto con successo.",
+    "removedFromCartTitle": "Rimosso dal carrello!",
+    "removedFromCart": "Prodotto {{product}} è stato rimosso dal carrello."
   }
 }
