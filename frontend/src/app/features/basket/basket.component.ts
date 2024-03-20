@@ -5,13 +5,14 @@ import { BasketService } from '../../core/services/basket.service';
 import { Observable } from 'rxjs';
 import { Product } from '../../shared/models/product.interface';
 import { CommonModule } from '@angular/common';
-import { BasketProductComponent } from "./basket-product/basket-product.component";
+import { BasketProductComponent } from "./components/basket-product/basket-product.component";
+import { BasketSummaryComponent } from "./components/basket-summary/basket-summary.component";
 
 @Component({
     selector: 'app-basket',
     standalone: true,
     templateUrl: './basket.component.html',
-    imports: [TranslocoPipe, RouterLink, CommonModule, BasketProductComponent]
+    imports: [TranslocoPipe, RouterLink, CommonModule, BasketProductComponent, BasketSummaryComponent]
 })
 export class BasketComponent {
 

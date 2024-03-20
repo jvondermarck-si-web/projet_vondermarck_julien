@@ -115,6 +115,10 @@
     "addedToCartTitle": "Ajouté au panier !",
     "addedToCart": "{{product}} a été ajouté avec succès.",
     "removedFromCartTitle": "Retiré du panier !",
-    "removedFromCart": "Produit {{product}} a été retiré du panier."
+    "removedFromCart": "Produit {{product}} a été retiré du panier.",
+    "subtotal": "Sous-total",
+    "discount": "Réduction",
+    "total": "Total",
+    "continue-to-checkout": "Continuer vers le paiement"
   }
 }

@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
-import { Product } from '../../../shared/models/product.interface';
+import { Product } from '../../../../shared/models/product.interface';
 import { TuiAlertService, TuiSvgModule } from '@taiga-ui/core';
-import { BasketService } from '../../../core/services/basket.service';
+import { BasketService } from '../../../../core/services/basket.service';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
