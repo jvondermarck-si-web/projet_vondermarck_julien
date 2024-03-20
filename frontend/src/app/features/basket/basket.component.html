@@ -1,21 +1,29 @@
 <section class="relative px-8 mt-10 mb-10">
-
     @if( (basketProducts$ | async)?.length === 0) {
         <div class="flex flex-col items-center gap-10 w-full">
             <img src="assets/img/checkout/empty_cart.png" alt="Empty cart" class="w-20 sm:w-40">
-            <h1 class="text-3xl sm:text-4xl font-bold text-center">{{ 'checkout.empty-cart' | transloco }}</h1>
+            <h1 class="text-3xl sm:text-4xl font-bold text-center">{{ 'basket.empty-cart' | transloco }}</h1>
     
             <div class="flex flex-col gap-2">
-                <p class="text-lg text-gray-500 text-center">{{ 'checkout.connect-to-see-cart' | transloco }}</p>
-                <button class="w-full bg-green-700 py-1 px-5 rounded-xl text-white text-lg font-bold" routerLink="/sign-in">{{ 'checkout.login' | transloco }}</button>
+                <p class="text-lg text-gray-500 text-center">{{ 'basket.connect-to-see-cart' | transloco }}</p>
+                <button class="w-full bg-green-700 py-1 px-5 rounded-xl text-white text-lg font-bold" routerLink="/sign-in">{{ 'basket.login' | transloco }}</button>
             </div>
     
-            <a routerLink="/products" class="text-green-600 font-bold text-xl underline cursor-pointer">{{ 'checkout.continue-shopping' | transloco }}</a>
+            <a routerLink="/products" class="text-green-600 font-bold text-xl underline cursor-pointer">{{ 'basket.continue-shopping' | transloco }}</a>
         </div>
     } @else {
-        @for((product of basketProducts$ | async); track $index) {
-            <p>{{product.title}}</p>
-        }
+        <div class="flex gap-5 sm:gap-20 sm:flex-row flex-col">
+            <div class="sm:w-4/6">
+                <h1 class="text-4xl font-bold mb-5">{{ 'basket.title' | transloco }}</h1>
+                <div class="flex flex-col gap-3">
+                    @for((product of basketProducts$ | async); track $index) {
+                        <app-basket-product [product]="product"></app-basket-product>
+                    }
+                </div>
+            </div>
+            <div class="sm:w-2/6">
+                <h1 class="text-2xl font-bold">{{ 'basket.order-summary' | transloco }}</h1>
+            </div>
+        </div>
     }
-    
 </section>

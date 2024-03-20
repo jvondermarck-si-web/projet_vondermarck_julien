@@ -5,12 +5,13 @@ import { BasketService } from '../../core/services/basket.service';
 import { Observable } from 'rxjs';
 import { Product } from '../../shared/models/product.interface';
 import { CommonModule } from '@angular/common';
+import { BasketProductComponent } from "./basket-product/basket-product.component";
 
 @Component({
-  selector: 'app-basket',
-  standalone: true,
-  imports: [TranslocoPipe, RouterLink, CommonModule],
-  templateUrl: './basket.component.html'
+    selector: 'app-basket',
+    standalone: true,
+    templateUrl: './basket.component.html',
+    imports: [TranslocoPipe, RouterLink, CommonModule, BasketProductComponent]
 })
 export class BasketComponent {
 

@@ -100,11 +100,12 @@
     "filter": "Filter",
     "sort-by": "Sort by"
   },
-  "checkout": {
-    "title": "Checkout",
+  "basket": {
+    "title": "Basket",
     "empty-cart": "Your cart is empty.",
     "continue-shopping": "Continue shopping",
     "connect-to-see-cart": "Connect to see your cart.",
-    "login": "Login"
+    "login": "Login",
+    "order-summary": "Order summary"
   }
 }

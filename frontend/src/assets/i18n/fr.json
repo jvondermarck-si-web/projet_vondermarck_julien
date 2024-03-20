@@ -100,11 +100,12 @@
     "filter": "Filtrer",
     "sort-by": "Trier par"
   },
-  "checkout": {
+  "basket": {
     "title": "Panier",
     "empty-cart": "Votre panier est vide.",
     "continue-shopping": "Continuer vos achats",
     "connect-to-see-cart": "Connectez-vous pour voir votre panier.",
-    "login": "Se connecter"
+    "login": "Se connecter",
+    "order-summary": "Résumé de la commande"
   }
 }
