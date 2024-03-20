@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-2 text-gray-400 text-xl">
     <div class="flex justify-between">
         <p>{{ 'basket.subtotal' | transloco }}</p>
-        <p>1€</p>
+        <p>{{ totalBasketPrice$ | async }}</p>
     </div>
     <div class="flex justify-between">
         <p>{{ 'basket.discount' | transloco }}</p>
@@ -10,7 +10,7 @@
     <div class="h-[1.5px] bg-[#008C45]"></div>
     <div class="flex justify-between">
         <p class="text-black font-bold">{{ 'basket.total' | transloco }}</p>
-        <p class="text-black font-bold">1€</p>
+        <p class="text-black font-bold">{{  totalBasketPrice$ | async }}</p>
     </div>
     <button class="bg-green-700 py-2 px-4 rounded-xl text-white text-lg font-bold" routerLink="/sign-in">{{ 'basket.continue-to-checkout' | transloco }}
         <tui-svg src="tuiIconChevronsRight" class="ml-2"></tui-svg>

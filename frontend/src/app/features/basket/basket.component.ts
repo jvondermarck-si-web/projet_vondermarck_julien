@@ -7,6 +7,7 @@ import { Product } from '../../shared/models/product.interface';
 import { CommonModule } from '@angular/common';
 import { BasketProductComponent } from "./components/basket-product/basket-product.component";
 import { BasketSummaryComponent } from "./components/basket-summary/basket-summary.component";
+import { BaseProduct } from '../../shared/models/base-product.interface';
 
 @Component({
     selector: 'app-basket',
@@ -16,7 +17,7 @@ import { BasketSummaryComponent } from "./components/basket-summary/basket-summa
 })
 export class BasketComponent {
 
-  public declare basketProducts$: Observable<Product[]>;
+  public declare basketProducts$: Observable<BaseProduct[]>;
 
   constructor(private basketService: BasketService) {
     this.basketProducts$ = this.basketService.basketProducts;

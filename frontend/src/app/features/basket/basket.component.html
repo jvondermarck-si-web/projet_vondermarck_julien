@@ -16,8 +16,8 @@
             <div class="sm:w-4/6">
                 <h1 class="text-4xl font-bold mb-5">{{ 'basket.title' | transloco }}</h1>
                 <div class="flex flex-col gap-3">
-                    @for((product of basketProducts$ | async); track $index) {
-                        <app-basket-product [product]="product"></app-basket-product>
+                    @for((baseProduct of basketProducts$ | async); track $index) {
+                        <app-basket-product [baseProduct]="baseProduct"></app-basket-product>
                     }
                 </div>
             </div>
