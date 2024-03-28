@@ -3,18 +3,18 @@
         <img [src]="baseProduct().product.image" alt="{{ baseProduct().product.title }}" class="object-scale-down w-32 h-32 bg-white">
     </div>
     <div class="w-full flex flex-col justify-between">
-        <div class="flex justify-between">
+        <div class="flex justify-between ">
             <div>
                 <p class="text-gray-700 text-xl font-bold">{{ baseProduct().product.title }}</p>
                 <p class="text-gray-700 mb-2">{{ baseProduct().product.info }}</p>
             </div>
-            <tui-svg class="cursor-pointer" (click)="onRemoveProduct()" src="tuiIconXLarge"></tui-svg>
         </div>
         <div class="flex justify-between">
             <div class="flex items-center gap-2">
-                <img class="cursor-pointer w-8 h-8 sm:w-full sm:h-full" src="assets/img/basket/plus_btn.svg" (click)="incrementProductQuantity()">
+                <img class="cursor-pointer w-6 h-6 sm:w-8 sm:h-8" src="assets/img/basket/plus_btn.svg" (click)="incrementProductQuantity()">
                 <span class="text-xl">{{ baseProduct().quantity }}</span>
-                <img class="cursor-pointer w-8 h-8 sm:w-full sm:h-full" src="assets/img/basket/minus_btn.svg" (click)="decrementProductQuantity()">
+                <img class="cursor-pointer w-6 h-6 sm:w-8 sm:h-8" src="assets/img/basket/minus_btn.svg" (click)="decrementProductQuantity()">
+                <tui-svg class="cursor-pointer" (click)="onRemoveProduct()" src="tuiIconTrash2Large"></tui-svg>
             </div>
             <p class="text-green-600 mt-1 text-2xl sm:text-3xl font-medium">{{ totalProductPrice }}<span class="text-sm sm:text-xl">€</span> </p>        
         </div>
