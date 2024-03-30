@@ -58,9 +58,13 @@ export class BasketState {
   @Action(RemoveProduct)
   removeProduct(ctx: StateContext<BasketStateModel>, action: RemoveProduct) {
     const state = ctx.getState();
+    const productToRemove = state.products.find(product => product.product.id === action.id)?.product;
     ctx.patchState({
       products: state.products.filter(product => product.product.id !== action.id)
     });
+
+    const message = this.translocoService.translate('basket.removedFromCart', { product: productToRemove!.title });
+    this.alerts.open(message, { label: this.translocoService.translate('basket.removedFromCartTitle'), status: 'info' }).subscribe();
   }
 
   @Action(UpdateProductQuantity)
