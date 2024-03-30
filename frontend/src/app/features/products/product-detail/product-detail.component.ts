@@ -3,9 +3,9 @@ import { Product } from '../../../shared/models/product.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProductService } from '../../../core/services/product.service';
-import { TuiAlertService } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
-import { BasketService } from '../../../core/services/basket.service';
+import { Store } from '@ngxs/store';
+import { AddProduct } from '../../../shared/actions/basket-action';
 
 @Component({
   selector: 'app-product-detail',
@@ -20,8 +20,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private readonly tuiAlertService: TuiAlertService,
-    private basketService: BasketService
+    private store: Store
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +29,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   showAddToCartNotification(product: Product): void {
-    this.basketService.addProduct(product);
+    this.store.dispatch(new AddProduct(product));
   }
 }

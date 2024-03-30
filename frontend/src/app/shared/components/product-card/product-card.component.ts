@@ -1,9 +1,9 @@
-import {Component, Inject, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Product} from "../../models/product.interface";
-import {TuiAlertService} from "@taiga-ui/core";
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { BasketService } from '../../../core/services/basket.service';
+import { Store } from '@ngxs/store';
+import { AddProduct } from '../../actions/basket-action';
 
 @Component({
   selector: 'app-product-card',
@@ -17,12 +17,12 @@ export class ProductCardComponent {
   @Input() product!: Product;
   isHoveringFavoriteBtn = false;
 
-  constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService, private basketService: BasketService) {}
+  constructor(private store: Store) {}
 
   addProductToBasket(): void {
     if (this.product?.title) {
       
-      this.basketService.addProduct(this.product);
+      this.store.dispatch(new AddProduct(this.product));
 
     } else {
       console.error('Product title is missing.'); // Handle the error appropriately.

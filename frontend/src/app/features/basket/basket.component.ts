@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
-import { BasketService } from '../../core/services/basket.service';
 import { Observable } from 'rxjs';
-import { Product } from '../../shared/models/product.interface';
 import { CommonModule } from '@angular/common';
 import { BasketProductComponent } from "./components/basket-product/basket-product.component";
 import { BasketSummaryComponent } from "./components/basket-summary/basket-summary.component";
 import { BaseProduct } from '../../shared/models/base-product.interface';
+import { Select } from '@ngxs/store';
+import { BasketState } from '../../shared/states/basket-state';
 
 @Component({
     selector: 'app-basket',
@@ -17,14 +17,7 @@ import { BaseProduct } from '../../shared/models/base-product.interface';
 })
 export class BasketComponent {
 
-  public declare basketProducts$: Observable<BaseProduct[]>;
+  @Select(BasketState.getBasketProducts) declare basketProducts$: Observable<BaseProduct[]>;
 
-  constructor(private basketService: BasketService) {
-    this.basketProducts$ = this.basketService.basketProducts;
-   }
-
-  public removeProduct(id: number) {
-    this.basketService.removeProduct(id);
-  }
-
+  constructor() {}
 }

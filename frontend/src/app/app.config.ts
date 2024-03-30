@@ -7,9 +7,11 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@ngneat/transloco';
+import { NgxsModule } from '@ngxs/store';
+import { BasketState } from "./shared/states/basket-state";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideAnimations(), provideRouter(routes), importProvidersFrom(TuiRootModule), provideHttpClient(), provideTransloco({
+  providers: [provideAnimations(), provideRouter(routes), importProvidersFrom(NgxsModule.forRoot([BasketState])), importProvidersFrom(TuiRootModule), provideHttpClient(), provideTransloco({
         config: { 
           availableLangs: ['en', 'it', 'fr'],
           defaultLang: 'en',

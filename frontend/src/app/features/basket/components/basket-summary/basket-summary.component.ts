@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { TranslocoModule } from '@ngneat/transloco';
 import { TuiSvgModule } from '@taiga-ui/core';
-import { BasketService } from '../../../../core/services/basket.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { BasketState } from '../../../../shared/states/basket-state';
+import { Select } from '@ngxs/store';
 
 @Component({
   selector: 'app-basket-summary',
@@ -12,10 +13,5 @@ import { CommonModule } from '@angular/common';
   templateUrl: './basket-summary.component.html'
 })
 export class BasketSummaryComponent {
-  declare totalBasketPrice$ : Observable<number>;
-
-  constructor(private basketService: BasketService) {
-    this.totalBasketPrice$ = this.basketService.totalBasketPrice;
-  }
-
+  @Select(BasketState.totalBasketPrice) declare totalBasketPrice$: Observable<number>;
 }
