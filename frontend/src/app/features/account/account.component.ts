@@ -86,12 +86,13 @@ export class AccountComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     this.isMobile = window.innerWidth < this.MOBILE_BREAKPOINT;
-    if(!this.isMobile) {
-      this.activeTab = this.TAB_SECTION_DETAILS;
+    if(!this.isMobile && this.activeTab === this.TAB_SECTION_NAVIGATION) {
+      this.setActiveSectionTab(this.TAB_SECTION_DETAILS);
     }
   }
 
   setActiveSectionTab(tab: string): void {
+    this.activeTab = tab;
     this.router.navigate([], { queryParams: { tab: tab } });
   }
 
