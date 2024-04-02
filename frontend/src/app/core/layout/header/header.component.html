@@ -53,9 +53,8 @@
               <p class="text-green-700 font-bold">{{ 'header.info-sign-up' | transloco }} <span class="underline cursor-pointer font-regular" routerLink="/sign-up">{{ 'header.sign-up' | transloco }}</span>🍕</p>
               <div class="h-0.5 bg-gray-300 w-full"></div>
               <div class="cursor-pointer">
-                <p class="text-gray-600 font-bold underline" routerLink="/account">{{ 'header.my-account' | transloco }}</p>
-                <p class="text-gray-600 font-bold underline" routerLink="/account">{{ 'header.my-orders' | transloco }}</p>
-                <p class="text-gray-600 font-bold underline" routerLink="/account">{{ 'header.my-favorites' | transloco }}</p>
+                <p class="text-gray-600 font-bold underline" routerLink="/account" [queryParams]="{tab: 'MyDetails'}">{{ 'header.my-account' | transloco }}</p>
+                <p class="text-gray-600 font-bold underline" [routerLink]="['/account']" [queryParams]="{tab: 'MyCards'}">{{ 'header.my-cards' | transloco }}</p>
               </div>
             </div>
             

@@ -1,4 +1,4 @@
-import {Component, HostListener, Type} from '@angular/core';
+import {Component, HostListener, OnInit, Type} from '@angular/core';
 import {TranslocoPipe, TranslocoService} from "@ngneat/transloco";
 import {TuiInputModule} from "@taiga-ui/kit";
 import {FormInputComponent} from "../../shared/components/form-input/form-input.component";
@@ -8,9 +8,10 @@ import {MyOrdersComponent} from "./components/my-orders/my-orders.component";
 import {CommonModule} from "@angular/common";
 import {TabComponent} from "./models/tab-component.interface";
 import {TabSectionDetailsName} from "./models/tab-section-details-name.type";
-import {Observable} from "rxjs";
+import {Observable, Subject, takeUntil} from "rxjs";
 import { CardDashboardComponent } from '../../modules/card/components/card-dashboard/card-dashboard.component';
 import { CardModule } from '../../modules/card/card.module';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -27,7 +28,7 @@ import { CardModule } from '../../modules/card/card.module';
   ],
   templateUrl: './account.component.html'
 })
-export class AccountComponent {
+export class AccountComponent implements OnInit {
 
   /** Mobile breakpoint */
   readonly MOBILE_BREAKPOINT = 640;
@@ -58,12 +59,28 @@ export class AccountComponent {
   /** Map of tab names to titles */
   tabTitles: { [key in string]: Observable<string> };
 
-  constructor(private translocoService: TranslocoService) {
+  constructor(private translocoService: TranslocoService, private router: Router, private route: ActivatedRoute) {
     this.tabTitles = {
       'MyDetails': this.translocoService.selectTranslate('account.my-details'),
       'MyOrders': this.translocoService.selectTranslate('account.my-orders'),
       'MyCards': this.translocoService.selectTranslate('account.my-cards'),
     };
+  }
+
+  private destroy$ = new Subject<void>();
+
+  ngOnInit(): void {
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+      const tab = params['tab'];
+      if (tab && this.tabSectionComponents[tab]) {
+        this.activeTab = tab;
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -75,7 +92,7 @@ export class AccountComponent {
   }
 
   setActiveSectionTab(tab: string): void {
-    this.activeTab = tab;
+    this.router.navigate([], { queryParams: { tab: tab } });
   }
 
   shouldDisplaySection(section: string): boolean {
