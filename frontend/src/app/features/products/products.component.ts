@@ -76,7 +76,11 @@ export class ProductsComponent {
       : [];
 
     this.searchText = search;
-
+    
+    this.formCategoryFilterSelected.setValue(
+      categories.filter((category) => categoryIds.includes(category.id))
+    );
+    
     return products.filter((product) => {
       if (search && !product.title.toLowerCase().includes(search.toLowerCase())) {
         return false;
@@ -86,6 +90,8 @@ export class ProductsComponent {
       }
       return true;
     });
+
+
   }
 
   private updateCategoryQueryParam(selectedCategories: Category[]) {

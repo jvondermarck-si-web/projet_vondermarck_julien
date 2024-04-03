@@ -1,4 +1,4 @@
-<div class="bg-white rounded-lg shadow-lg py-4 lg:py-10 px-4 flex flex-col items-center sm:transition-transform duration-500 sm:hover:-translate-y-2 sm:hover:scale-105 h-full">
+<a routerLink="/products" [queryParams]="{categories: category.id}" class="bg-white rounded-lg shadow-lg py-4 lg:py-10 px-4 flex flex-col items-center sm:transition-transform duration-500 sm:hover:-translate-y-2 sm:hover:scale-105 h-full">
   <img src="{{ category.image }}" alt="food" class="object-contain lg:w-60 lg:h-52 h-40 w-auto">
   <h2 class="lg:mt-10 text-3xl sm:text-4xl font-bold mt-2 uppercase font-italiana justify-center flex">{{ 'home.categories.' + category.name.toLowerCase() | transloco }}</h2>
-</div>
+</a>
