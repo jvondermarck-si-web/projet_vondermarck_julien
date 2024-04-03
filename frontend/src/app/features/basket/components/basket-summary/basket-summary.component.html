@@ -8,11 +8,11 @@
         <p>0€</p>
     </div>
     <div class="h-[1.5px] bg-[#008C45]"></div>
-    <div class="flex justify-between">
+    <div class="flex justify-between text-lg sm:text-xl">
         <p class="text-black font-bold">{{ 'basket.total' | transloco }}</p>
         <p class="text-black font-bold">{{  totalBasketPrice$ | async }}€</p>
     </div>
-    <button class="bg-green-700 py-2 px-4 rounded-xl text-white text-lg sm:text-xl font-bold flex items-center justify-center" routerLink="/sign-in">{{ 'basket.continue-to-checkout' | transloco }}
+    <button class="bg-green-700 py-2 px-4 rounded-xl text-white text-lg font-bold flex items-center justify-center" routerLink="/sign-in">{{ 'basket.continue-to-checkout' | transloco }}
         <tui-svg src="tuiIconTruck" class="ml-2"></tui-svg>
     </button>
 </div>

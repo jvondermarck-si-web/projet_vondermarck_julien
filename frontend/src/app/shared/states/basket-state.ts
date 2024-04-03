@@ -28,7 +28,7 @@ export class BasketState {
 
   @Selector()
   static totalBasketPrice(state: BasketStateModel) {
-    return state.products.reduce((acc, product) => acc + product.product.price * product.quantity, 0);
+    return state.products.reduce((acc, product) => acc + product.product.price * product.quantity, 0).toFixed(2);
   }
 
   @Selector()
