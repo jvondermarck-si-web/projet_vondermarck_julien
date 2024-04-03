@@ -9,6 +9,7 @@ import { TuiGroupModule, TuiRootModule, TuiTextfieldControllerModule } from "@ta
 import { CommonModule } from "@angular/common";
 import { CardDashboardComponent } from "./components/card-dashboard/card-dashboard.component";
 import { HideCardPipe } from "./pipes/hide-card.pipe";
+import { TranslocoModule, TranslocoPipe } from "@ngneat/transloco";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HideCardPipe } from "./pipes/hide-card.pipe";
     TuiInputModule,
     TuiRootModule,
     TuiGroupModule,
-    TuiTextfieldControllerModule
+    TuiTextfieldControllerModule,
+    TranslocoPipe
   ],
   exports: [CardDashboardComponent, HideCardPipe]
 })

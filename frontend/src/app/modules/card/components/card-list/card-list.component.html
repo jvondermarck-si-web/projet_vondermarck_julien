@@ -1,6 +1,6 @@
-<h1 class="text-xl font-bold mb-5">Your cards</h1>
+<h1 class="text-xl font-bold mb-5">{{ 'my-cards.your-cards' | transloco }}</h1>
 @if( (cards$ | async)?.length === 0) {
-    <p class="text-lg">You don't have any cards yet.</p>
+    <p class="text-lg">{{ 'my-cards.no-cards' | transloco }}</p>
 } @else {
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -10,19 +10,19 @@
                 <thead class="bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Nom de la carte
+                        {{ 'my-cards.card-name' | transloco }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Code de la carte
+                        {{ 'my-cards.card-number' | transloco }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    CCV
+                        {{ 'my-cards.cvv' | transloco }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Mois / Année
+                        {{ 'my-cards.month' | transloco }}/{{ 'my-cards.year' | transloco }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
+                        {{ 'my-cards.actions' | transloco }}
                     </th>
                 </tr>
                 </thead>
@@ -41,7 +41,7 @@
                     {{ card.month }} / {{ card.year }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button class="text-red-600 hover:text-red-900 ml-4" (click)="deleteCard(card.code)">Delete</button>
+                        <button class="text-red-600 hover:text-red-900" (click)="deleteCard(card.code)">{{ 'my-cards.delete' | transloco }}</button>
                     </td>
                 </tr>
                 </tbody>

@@ -10,7 +10,7 @@ import { Card } from '../../interfaces/card.interface';
 export class CardFormComponent {
   readonly form = new FormGroup({
       name: new FormControl('', Validators.required),
-      code: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
+      code: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(19)]),
       ccv: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(4)]),
       month: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(12)]),
       year: new FormControl(null, Validators.required),

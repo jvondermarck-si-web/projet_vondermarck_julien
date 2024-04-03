@@ -121,5 +121,18 @@
     "discount": "Discount",
     "total": "Total",
     "continue-to-checkout": "Continue to checkout"
+  },
+  "my-cards": {
+    "add-card": "Add a card",
+    "card-name": "Card name",
+    "card-number": "Card number",
+    "month": "Month",
+    "year": "Year",
+    "cvv": "CVV",
+    "add-card-button": "Add card",
+    "no-cards": "You don't have any cards yet.",
+    "your-cards": "Your cards",
+    "actions": "Actions",
+    "delete": "Delete"
   }
 }
