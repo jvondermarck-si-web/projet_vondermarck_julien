@@ -1,11 +1,17 @@
 <h1 class="text-xl font-bold mb-5">Add a new card</h1>
-<form tuiGroup [formGroup]="form" (ngSubmit)="onSubmit()" 
-    class="flex sm:flex-row flex-col w-full">
-    <tui-input formControlName="name">Card name</tui-input>
-    <tui-input-card formControlName="code"  [cardSrc]="card">Card number</tui-input-card>
-    <tui-input-cvc class="w-max-full" formControlName="ccv">CVC/CVV</tui-input-cvc>
-    <tui-input-number formControlName="month">Month</tui-input-number>
-    <tui-input-number formControlName="year">Year</tui-input-number>
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" [disabled]="!form.valid">Submit</button>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" 
+    class="grid grid-cols-1 sm:grid-cols-3 gap-2 lg:w-2/3">
+    <tui-input class="sm:col-span-3" formControlName="name">Card name</tui-input>
+    <tui-input-card class="sm:col-span-3" formControlName="code"  [cardSrc]="card">Card number</tui-input-card>
+    <tui-input-number formControlName="month" [max]="12">Month
+        <input tuiTextfield type="text" placeholder="00" />
+    </tui-input-number>
+    <tui-input-number formControlName="year" [max]="9999">Year
+        <input tuiTextfield type="text" placeholder="0000" />
+    </tui-input-number>
+    <tui-input-number formControlName="ccv" [max]="9999">CCV
+        <input tuiTextfield type="text" placeholder="000" />
+    </tui-input-number>
+    <button type="submit" class="sm:col-span-3 bg-green-700 text-white font-bold py-2 px-4 rounded-lg cursor-pointer" [disabled]="!form.valid">Submit</button>
 </form>
 

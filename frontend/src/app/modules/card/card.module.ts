@@ -5,7 +5,7 @@ import { CardRoutingModule } from "./card.routes";
 import { CardListComponent } from "./components/card-list/card-list.component";
 import { TuiInputCVCModule, TuiInputCardModule, TuiInputExpireModule } from "@taiga-ui/addon-commerce";
 import { TuiInputModule, TuiInputNumberModule } from "@taiga-ui/kit";
-import { TuiGroupModule, TuiRootModule } from "@taiga-ui/core";
+import { TuiGroupModule, TuiRootModule, TuiTextfieldControllerModule } from "@taiga-ui/core";
 import { CommonModule } from "@angular/common";
 import { CardDashboardComponent } from "./components/card-dashboard/card-dashboard.component";
 import { HideCardPipe } from "./pipes/hide-card.pipe";
@@ -25,6 +25,7 @@ import { HideCardPipe } from "./pipes/hide-card.pipe";
     TuiInputModule,
     TuiRootModule,
     TuiGroupModule,
+    TuiTextfieldControllerModule
   ],
   exports: [CardDashboardComponent, HideCardPipe]
 })
