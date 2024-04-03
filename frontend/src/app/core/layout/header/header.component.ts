@@ -16,7 +16,7 @@ import {CommonModule, NgForOf} from "@angular/common";
 import {LanguageSwitcherComponent} from "../../../shared/components/language-switcher/language-switcher.component";
 import {TranslocoPipe} from "@ngneat/transloco";
 import { SearchProductComponent } from "../../../shared/components/search-product/search-product.component";
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { BasketState } from '../../../shared/states/basket-state';
 import { Select } from '@ngxs/store';
 
@@ -61,7 +61,24 @@ export class HeaderComponent {
 
   @Select(BasketState.numberOfProductsInBasket) declare numberOfProductsInBasket$: Observable<number>;
 
-  constructor() {}
+  animate = false;
+  private destroy$ = new Subject<void>();
+
+  constructor() {
+    this.numberOfProductsInBasket$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.animate = true;
+
+        // Remove the animation class after a delay
+        setTimeout(() => this.animate = false, 4000); 
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   /**
    * Toggles the burger menu (on mobile)

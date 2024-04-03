@@ -26,7 +26,7 @@
           <img class="hover:opacity-70 transition-opacity" src="assets/img/shopping_cart_logo.svg" alt="Shopping cart" />
         </button>
         @if((numberOfProductsInBasket$ | async)! > 0) {
-          <div class="absolute bottom-0 left-6 h-5 w-5 rounded-full bg-green-600 text-white text-center flex items-center justify-center">
+          <div [class.animate-pulse]="animate" class="absolute bottom-0 left-6 h-5 w-5 rounded-full bg-green-600 text-white text-center flex items-center justify-center">
             {{ numberOfProductsInBasket$ |async }}
           </div>
         }
@@ -87,7 +87,7 @@
           <tui-accordion-item [showArrow]="false" borders="top-bottom" routerLink="/basket" rel="noreferrer" (click)="toggleBurgerMenu(false)">
             <div class="flex items-center gap-2">
               @if((numberOfProductsInBasket$ | async)! > 0) {
-                <div class="h-6 w-6 text-sm rounded-full bg-green-600 text-white text-center flex items-center justify-center">
+                <div class="h-7 w-7 text-sm rounded-full bg-green-600 text-white text-center flex items-center justify-center">
                   {{ numberOfProductsInBasket$ |async }}
                 </div>
               }
