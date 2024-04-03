@@ -4,6 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {TuiButtonModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {RouterLink} from "@angular/router";
 import {TranslocoPipe} from "@ngneat/transloco";
+import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'app-sign-in',
@@ -17,6 +18,7 @@ import {TranslocoPipe} from "@ngneat/transloco";
         TuiNotificationModule,
         RouterLink,
         TranslocoPipe,
+        NgOptimizedImage
     ],
   templateUrl: './sign-in.component.html'
 })

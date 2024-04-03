@@ -17,7 +17,7 @@
 
         <tui-input formControlName="passwordFormControl" tuiTextfieldIconLeft="tuiIconLockLarge">
           {{ 'sign-in.type-password' | transloco }}
-          <input tuiTextfield type="password" />
+          <input tuiTextfield type="password" autocomplete="on" />
         </tui-input>
 
         <div class="flex justify-between items-center">
@@ -45,7 +45,7 @@
 
   <!-- Right side - Image -->
   <div class="justify-self-start hidden lg:block w-[440px] h-[440px]">
-    <img src="assets/img/sign-in/sign-in_visual.png" alt="Visual italy sign in" />
+    <img ngSrc="assets/img/sign-in/sign-in_visual.png" priority width="440" height="440" alt="Visual italy sign in" />
   </div>
 
 </section>
