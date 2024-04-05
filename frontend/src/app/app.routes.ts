@@ -42,7 +42,7 @@ export const routes: Routes = [
   },
   {
     path: 'basket',
-    component: BasketComponent,
+    loadComponent: () => import('./features/basket/basket.component').then(m => m.BasketComponent),
     title: 'Basket | Livalie',
   },
   {
