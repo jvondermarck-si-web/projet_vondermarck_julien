@@ -36,14 +36,13 @@ RUN mkdir -p /var/log/supervisor
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Copy projects
-COPY --from=builder-frontend /app/dist/projet-angular/browser/ /var/www/html
+COPY --from=builder-frontend /app/dist/livalie/browser/ /var/www/html
 COPY --from=builder-backend /app/build /app/backend
 
 # Set working directory
 WORKDIR /app/backend
 # Install dependencies
-RUN corepack enable && npm install --prod --frozen-lockfile
-
+RUN npm ci --production
 
 # Copy nginx configuration
 COPY docker/nginx.conf /etc/nginx/nginx.conf
