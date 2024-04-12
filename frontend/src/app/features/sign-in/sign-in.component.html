@@ -9,7 +9,7 @@
     </div>
 
     <div class="w-full h-full mt-5">
-      <form class="flex flex-col gap-4 lg:w-full" [formGroup]="signInFormGroup">
+      <form class="flex flex-col gap-4 lg:w-full" [formGroup]="signInFormGroup" (submit)="signIn()">
         <tui-input formControlName="emailFormControl" tuiTextfieldIconLeft="tuiIconMailLarge">
           {{ 'sign-in.type-email' | transloco }}
           <input tuiTextfield type="email" />
