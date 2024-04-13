@@ -11,12 +11,8 @@ import { Category } from '../../shared/models/category.interface';
 export class ApiService {
 
   constructor(private http:HttpClient) { }
-  
-  public getProducts() : Observable<Product[]> {
-      return this.http.get<Product[]>(environment.API_Endpoint + 'products.mock.json');
-  }
 
   public getCategories() : Observable<Category[]> {
-      return this.http.get<Category[]>(environment.API_Endpoint + 'categories.mock.json');
+      return this.http.get<Category[]>(environment.API_Endpoint + 'categories');
   }
 }

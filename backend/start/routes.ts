@@ -10,6 +10,7 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 
+const CategoriesController = () => import('#controllers/categories_controller')
 const UsersController = () => import('#controllers/users_controller')
 
 router.get('/', async () => 'It works!')
@@ -21,3 +22,7 @@ router
     router.put('/', [UsersController, 'update']).middleware(middleware.jwt())
   })
   .prefix('auth')
+
+router.group(() => {
+  router.get('/categories', [CategoriesController, 'getAll'])
+})
