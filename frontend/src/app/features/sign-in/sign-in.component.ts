@@ -1,9 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import {TuiCheckboxModule, TuiInputModule} from "@taiga-ui/kit";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {TuiButtonModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {TuiAlertService, TuiButtonModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {RouterLink} from "@angular/router";
-import {TranslocoPipe} from "@ngneat/transloco";
+import {TranslocoPipe, TranslocoService} from "@ngneat/transloco";
 import { NgOptimizedImage } from '@angular/common'
 import { AuthService } from '../../core/services/auth.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -28,12 +28,12 @@ export class SignInComponent implements OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
   signInFormGroup = new FormGroup({
-    emailFormControl: new FormControl('', Validators.required),
-    passwordFormControl: new FormControl('', Validators.required),
+    emailFormControl: new FormControl('livalie@italy.it', Validators.required),
+    passwordFormControl: new FormControl('livalie', Validators.required),
     rememberMeFormControl: new FormControl(false),
   });
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private readonly alerts: TuiAlertService, private translocoService: TranslocoService) { }
 
   signIn() {
     const { emailFormControl, passwordFormControl } = this.signInFormGroup.controls;
@@ -43,7 +43,19 @@ export class SignInComponent implements OnDestroy {
     this.authService
       .login(emailFormControl.value!, passwordFormControl.value!)
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe();
+      .subscribe({
+        next: user => {
+          console.log(user);
+          const message = this.translocoService.translate('sign-in.success-login', { user: user.firstName });
+          console.log(message);
+
+          this.alerts.open('', { label: message, status: 'success' }).subscribe();
+        },
+        error: () => {
+          console.log('error');
+          this.alerts.open('',{ label: this.translocoService.translate('sign-in.error-login'), status: 'error' }).subscribe();
+        }
+      })
   }
 
   ngOnDestroy() {

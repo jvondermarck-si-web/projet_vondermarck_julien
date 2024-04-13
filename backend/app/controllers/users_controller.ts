@@ -27,7 +27,7 @@ export default class UsersController {
       return response.unauthorized('Invalid credentials')
     }
 
-    const user = { id: crypto.randomUUID(), email: data.email }
+    const user = { id: crypto.randomUUID(), email: data.email, firstName: 'Livia' }
 
     const jwt = this.jwtService.generateAccessToken(user)
 

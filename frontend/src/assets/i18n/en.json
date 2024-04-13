@@ -48,7 +48,9 @@
     "sign-in": "Sign in",
     "no-account": "You don’t have any account?",
     "sign-up": "Sign up",
-    "to-get-free-pizza": "here to get a free pizza..."
+    "to-get-free-pizza": "here to get a free pizza...",
+    "success-login": "Welcome back, {{user}} !",
+    "error-login": "Wrong email or password. Please try again."
   },
   "sign-up": {
     "title": "🍕 Ready to live the dolce vita?",
