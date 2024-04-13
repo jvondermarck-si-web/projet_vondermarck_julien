@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import {TuiCheckboxModule, TuiInputModule} from "@taiga-ui/kit";
+import {TuiCheckboxModule, TuiInputModule, TuiInputPasswordModule} from "@taiga-ui/kit";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {TuiButtonModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {Router, RouterLink} from "@angular/router";
@@ -20,7 +20,8 @@ import { Subject, takeUntil } from 'rxjs';
         TuiNotificationModule,
         RouterLink,
         TranslocoPipe,
-        NgOptimizedImage
+        NgOptimizedImage,
+        TuiInputPasswordModule,
     ],
   templateUrl: './sign-in.component.html'
 })
