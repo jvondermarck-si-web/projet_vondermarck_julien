@@ -19,6 +19,7 @@ import { SearchProductComponent } from "../../../shared/components/search-produc
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { BasketState } from '../../../shared/states/basket-state';
 import { Select } from '@ngxs/store';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -52,7 +53,8 @@ export class HeaderComponent {
   /** Links for the burger menu */
   readonly accountLinks = ['account', 'sign-in', 'sign-up'];
   openBurgerMenu = false;
-  isUserLoggedIn = false;
+  isUserAuthenticated$ = this.authService.isAuthenticated;
+  user$ = this.authService.user;
 
   /** Dropdown on links */
   isOpenDropdownAccount = false;
@@ -64,7 +66,7 @@ export class HeaderComponent {
   animate = false;
   private destroy$ = new Subject<void>();
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.numberOfProductsInBasket$
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
@@ -73,6 +75,10 @@ export class HeaderComponent {
         // Remove the animation class after a delay
         setTimeout(() => this.animate = false, 4000); 
       });
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {

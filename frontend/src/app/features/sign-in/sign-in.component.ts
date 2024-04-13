@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import {TuiCheckboxModule, TuiInputModule} from "@taiga-ui/kit";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {TuiAlertService, TuiButtonModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
-import {RouterLink} from "@angular/router";
+import {TuiButtonModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {Router, RouterLink} from "@angular/router";
 import {TranslocoPipe, TranslocoService} from "@ngneat/transloco";
 import { NgOptimizedImage } from '@angular/common'
 import { AuthService } from '../../core/services/auth.service';
@@ -33,7 +33,7 @@ export class SignInComponent implements OnDestroy {
     rememberMeFormControl: new FormControl(false),
   });
 
-  constructor(private authService: AuthService, private readonly alerts: TuiAlertService, private translocoService: TranslocoService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   signIn() {
     const { emailFormControl, passwordFormControl } = this.signInFormGroup.controls;
@@ -43,19 +43,13 @@ export class SignInComponent implements OnDestroy {
     this.authService
       .login(emailFormControl.value!, passwordFormControl.value!)
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe({
-        next: user => {
-          console.log(user);
-          const message = this.translocoService.translate('sign-in.success-login', { user: user.firstName });
-          console.log(message);
-
-          this.alerts.open('', { label: message, status: 'success' }).subscribe();
-        },
-        error: () => {
-          console.log('error');
-          this.alerts.open('',{ label: this.translocoService.translate('sign-in.error-login'), status: 'error' }).subscribe();
+      .subscribe(
+        {
+          next: () => {
+            this.router.navigate(['/account']);
+          },
         }
-      })
+      )
   }
 
   ngOnDestroy() {

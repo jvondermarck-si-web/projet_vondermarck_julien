@@ -35,7 +35,8 @@
       "about": "À propos",
       "contact": "Contact",
       "basket": "Panier"
-    }
+    },
+    "logout": "Se déconnecter"
   },
   "sign-in": {
     "title": "👋🏼 Prêt à vous reconnecter avec l'Italie ?",
@@ -50,6 +51,7 @@
     "sign-up": "Inscrivez-vous",
     "to-get-free-pizza": "ici pour obtenir une pizza gratuite...",
     "success-login": "Bienvenue, {{user}} !",
+    "success-logout": "Vous avez été déconnecté.",
     "error-login": "Mauvais identifiants, veuillez réessayer."
   },
   "sign-up": {
@@ -136,5 +138,9 @@
     "your-cards": "Vos cartes",
     "actions": "Actions",
     "delete": "Supprimer"
+  },
+  "auth-guard": {
+    "error-title": "Oups, une erreur est survenue !",
+    "login-required": "Vous devez être connecté pour accéder à cette page."
   }
 }

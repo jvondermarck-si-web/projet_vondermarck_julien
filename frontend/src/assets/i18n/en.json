@@ -35,7 +35,8 @@
       "about": "About",
       "contact": "Contact",
       "basket": "Basket"
-    }
+    },
+    "logout": "Logout"
   },
   "sign-in": {
     "title": "👋🏼 Ready to reconnect with Italy?",
@@ -50,6 +51,7 @@
     "sign-up": "Sign up",
     "to-get-free-pizza": "here to get a free pizza...",
     "success-login": "Welcome back, {{user}} !",
+    "success-logout": "You have been successfully logged out.",
     "error-login": "Wrong email or password. Please try again."
   },
   "sign-up": {
@@ -136,5 +138,9 @@
     "your-cards": "Your cards",
     "actions": "Actions",
     "delete": "Delete"
+  },
+  "auth-guard": {
+    "error-title": "An error occured",
+    "login-required": "You need to be logged in to access this page."
   }
 }

@@ -7,6 +7,7 @@ import { ProductsComponent } from './features/products/products.component';
 import { ProductDetailComponent } from './features/products/product-detail/product-detail.component';
 import { productGuard } from './core/guards/product.guard';
 import { BasketComponent } from './features/basket/basket.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,7 @@ export const routes: Routes = [
     path: 'account',
     component: AccountComponent,
     title: 'Account | Livalie',
+    canActivate: [authGuard]
   },
   {
     path: 'products',

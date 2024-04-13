@@ -35,7 +35,8 @@
       "about": "Chi siamo",
       "contact": "Contatti",
       "basket": "Carrello"
-    }
+    },
+    "logout": "Disconnettersi"
   },
   "sign-in": {
     "title": "👋🏼 Pronto a riconnetterti con l'Italia?",
@@ -50,6 +51,7 @@
     "sign-up": "Iscriviti",
     "to-get-free-pizza": "qui per ottenere una pizza gratuita...",
     "success-login": "Bentornato, {{user}} !",
+    "success-logout": "Disconnesso con successo.",
     "error-login": "Email o password errata ! Riprova."
   },
   "sign-up": {
@@ -136,5 +138,9 @@
     "your-cards": "Le tue carte",
     "actions": "Azioni",
     "delete": "Elimina"
+  },
+  "auth-guard": {
+    "error-title": "Accesso negato",
+    "login-required": "Devi essere connesso per accedere a questa pagina."
   }
 }

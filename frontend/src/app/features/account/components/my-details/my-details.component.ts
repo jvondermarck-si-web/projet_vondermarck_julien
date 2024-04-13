@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, OnDestroy, OnInit, Output} from '@angular/core';
 import {TranslocoPipe} from "@ngneat/transloco";
 import {FormInputComponent} from "../../../../shared/components/form-input/form-input.component";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -15,9 +15,10 @@ import {TuiCountryIsoCode} from "@taiga-ui/i18n";
 import {mapCountryNames} from "../../../../shared/utils/taiga-country-name-mapper";
 import {TuiLetModule, TuiMapperPipeModule} from "@taiga-ui/cdk";
 import {AsyncPipe, CommonModule} from "@angular/common";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {TuiButtonModule, TuiDataListModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {RouterLink} from "@angular/router";
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-my-details',
@@ -42,7 +43,7 @@ import {RouterLink} from "@angular/router";
   ],
   templateUrl: './my-details.component.html'
 })
-export class MyDetailsComponent implements TabComponent {
+export class MyDetailsComponent implements TabComponent, OnInit, OnDestroy {
 
   updateUserAccountFormGroup = new FormGroup({
     emailFormControl: new FormControl(''),
@@ -62,24 +63,32 @@ export class MyDetailsComponent implements TabComponent {
   countryNameMapper = mapCountryNames;
   countryIsoCode = TuiCountryIsoCode.FR;
 
-  constructor(private userService: UserService, @Inject(TUI_COUNTRIES) readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>)
-  {
-    const userData = this.userService.getUserData();
-    if (userData) {
-      this.updateUserAccountFormGroup.patchValue({
-        emailFormControl: userData.email,
-        loginFormControl: userData.login,
-        passwordFormControl: userData.password,
-        firstNameFormControl: userData.firstName,
-        lastNameFormControl: userData.lastName,
-        civilityFormControl: userData.civility,
-        phoneNumberFormControl: userData.phoneNumber,
-        addressFormControl: userData.address,
-        cityFormControl: userData.city,
-        postalCodeFormControl: userData.postalCode,
-        countryFormControl: userData.country,
-      });
+  private subscription: Subscription = new Subscription();
+
+  constructor(private authService: AuthService, @Inject(TUI_COUNTRIES) readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>) { }
+
+  ngOnInit() {
+    this.subscription = this.authService.user.subscribe(userData => {
+      if (userData) {
+        this.updateUserAccountFormGroup.patchValue({
+          emailFormControl: userData.email,
+          loginFormControl: userData.login,
+          passwordFormControl: userData.password,
+          firstNameFormControl: userData.firstName,
+          lastNameFormControl: userData.lastName,
+          civilityFormControl: userData.civility,
+          phoneNumberFormControl: userData.phoneNumber,
+          addressFormControl: userData.address,
+          cityFormControl: userData.city,
+          postalCodeFormControl: userData.postalCode,
+          countryFormControl: userData.country,
+        });
       }
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
