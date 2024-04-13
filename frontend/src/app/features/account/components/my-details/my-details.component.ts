@@ -2,22 +2,21 @@ import {Component, EventEmitter, Inject, OnDestroy, OnInit, Output} from '@angul
 import {TranslocoPipe} from "@ngneat/transloco";
 import {FormInputComponent} from "../../../../shared/components/form-input/form-input.component";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {UserService} from "../../../../core/services/user.service";
 import {TabComponent} from "../../models/tab-component.interface";
 import {
   TUI_COUNTRIES, TuiCheckboxModule,
   TuiComboBoxModule,
   TuiDataListWrapperModule, TuiFilterByInputPipeModule,
   TuiInputModule,
-  TuiInputPhoneInternationalModule
+  TuiInputPhoneInternationalModule,
+  TuiInputPhoneModule
 } from "@taiga-ui/kit";
 import {TuiCountryIsoCode} from "@taiga-ui/i18n";
 import {mapCountryNames} from "../../../../shared/utils/taiga-country-name-mapper";
 import {TuiLetModule, TuiMapperPipeModule} from "@taiga-ui/cdk";
 import {AsyncPipe, CommonModule} from "@angular/common";
 import {Observable, Subscription} from "rxjs";
-import {TuiButtonModule, TuiDataListModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
-import {RouterLink} from "@angular/router";
+import {TuiDataListModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
@@ -61,7 +60,7 @@ export class MyDetailsComponent implements TabComponent, OnInit, OnDestroy {
 
   countries: TuiCountryIsoCode[] = Object.values(TuiCountryIsoCode)
   countryNameMapper = mapCountryNames;
-  countryIsoCode = TuiCountryIsoCode.FR;
+  countryIsoCode = TuiCountryIsoCode.FR
 
   private subscription: Subscription = new Subscription();
 
@@ -70,6 +69,8 @@ export class MyDetailsComponent implements TabComponent, OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.authService.user.subscribe(userData => {
       if (userData) {
+        console.log(userData);
+        
         this.updateUserAccountFormGroup.patchValue({
           emailFormControl: userData.email,
           loginFormControl: userData.login,
@@ -83,6 +84,8 @@ export class MyDetailsComponent implements TabComponent, OnInit, OnDestroy {
           postalCodeFormControl: userData.postalCode,
           countryFormControl: userData.country,
         });
+
+        this.countryIsoCode = this.countries.find(country => country === userData.countryCode) || TuiCountryIsoCode.FR;
       }
     });
   }

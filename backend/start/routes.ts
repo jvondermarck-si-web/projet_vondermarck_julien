@@ -19,7 +19,7 @@ router
   .group(() => {
     router.post('/register', [UsersController, 'register'])
     router.post('/login', [UsersController, 'login'])
-    router.put('/', [UsersController, 'update']).middleware(middleware.jwt())
+    router.put('/update', [UsersController, 'update']).middleware(middleware.jwt())
   })
   .prefix('auth')
 

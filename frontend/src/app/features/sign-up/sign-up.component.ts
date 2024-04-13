@@ -121,6 +121,7 @@ export class SignUpComponent {
         firstName: signUpFormGroup.value.firstNameFormControl!,
         lastName: signUpFormGroup.value.lastNameFormControl!,
         civility: signUpFormGroup.value.civilityFormControl!,
+        countryCode: this.countryIsoCode,
         phoneNumber: signUpFormGroup.value.phoneNumberFormControl!,
         address: signUpFormGroup.value.addressFormControl!,
         city: signUpFormGroup.value.cityFormControl!,
