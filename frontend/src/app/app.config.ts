@@ -4,14 +4,22 @@ import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@ngneat/transloco';
 import { NgxsModule } from '@ngxs/store';
 import { BasketState } from "./shared/states/basket-state";
+import { jwtInterceptor } from "./core/interceptors/jwt.interceptor";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideAnimations(), provideRouter(routes), importProvidersFrom(NgxsModule.forRoot([BasketState])), importProvidersFrom(TuiRootModule), provideHttpClient(), provideTransloco({
+  providers: [
+    provideAnimations(), 
+    provideRouter(routes), 
+    importProvidersFrom(NgxsModule.forRoot([BasketState])), 
+    importProvidersFrom(TuiRootModule), 
+    provideHttpClient(), 
+    provideHttpClient(withInterceptors([jwtInterceptor])),
+    provideTransloco({
         config: { 
           availableLangs: ['en', 'it', 'fr'],
           defaultLang: 'en',
