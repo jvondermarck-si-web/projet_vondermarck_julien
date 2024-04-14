@@ -4,11 +4,13 @@
             <img src="assets/img/checkout/empty_cart.png" alt="Empty cart" class="w-20 sm:w-40">
             <h1 class="text-3xl sm:text-4xl font-bold text-center">{{ 'basket.empty-cart' | transloco }}</h1>
     
-            <div class="flex flex-col gap-2">
-                <p class="text-lg text-gray-500 text-center">{{ 'basket.connect-to-see-cart' | transloco }}</p>
-                <button class="w-full bg-green-700 py-1 px-5 rounded-xl text-white text-lg font-bold" routerLink="/sign-in">{{ 'basket.login' | transloco }}</button>
-            </div>
-    
+            @if(!(isAuthenticated$ | async)) {
+                <div class="flex flex-col gap-2">
+                    <p class="text-lg text-gray-500 text-center">{{ 'basket.connect-to-see-cart' | transloco }}</p>
+                    <button class="w-full bg-green-700 py-1 px-5 rounded-xl text-white text-lg font-bold" routerLink="/sign-in">{{ 'basket.login' | transloco }}</button>
+                </div>    
+            }
+
             <a routerLink="/products" class="text-green-600 font-bold text-xl underline cursor-pointer">{{ 'basket.continue-shopping' | transloco }}</a>
         </div>
     } @else {

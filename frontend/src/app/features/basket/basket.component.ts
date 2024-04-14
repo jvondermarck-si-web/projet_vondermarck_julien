@@ -8,6 +8,7 @@ import { BasketSummaryComponent } from "./components/basket-summary/basket-summa
 import { BaseProduct } from '../../shared/models/base-product.interface';
 import { Select } from '@ngxs/store';
 import { BasketState } from '../../shared/states/basket-state';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
     selector: 'app-basket',
@@ -18,6 +19,7 @@ import { BasketState } from '../../shared/states/basket-state';
 export class BasketComponent {
 
   @Select(BasketState.getBasketProducts) declare basketProducts$: Observable<BaseProduct[]>;
+  isAuthenticated$ = this.authService.isAuthenticated;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 }

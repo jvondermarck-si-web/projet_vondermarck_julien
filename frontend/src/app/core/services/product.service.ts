@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import {Product} from "../../shared/models/product.interface";
-import { ApiService } from './api.service';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, map } from 'rxjs';
 import { CategoryService } from './category.service';
 import { Category } from '../../shared/models/category.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductService implements OnDestroy {
 
   private _bestSellersProducts = new BehaviorSubject<Product[]>([]);
   private _products = new BehaviorSubject<Product[]>([]);
+  private categorySubscription = new Subscription();
 
   constructor(private categoryService: CategoryService) {
-    this.categoryService.categories.subscribe((categories: Category[]) => {
+    this.categorySubscription = this.categoryService.categories.subscribe((categories: Category[]) => {
       const products = categories.reduce((acc: Product[], category: Category) => {
         return acc.concat(category.products);
       }, []);
@@ -36,6 +36,10 @@ export class ProductService {
     return this.products.pipe(
       map(products => products.find(product => product.id === id))
     );
+  }
+
+  ngOnDestroy() {
+    this.categorySubscription.unsubscribe();
   }
 
 }
