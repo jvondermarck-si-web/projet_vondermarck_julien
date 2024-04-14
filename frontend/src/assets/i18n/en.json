@@ -84,7 +84,7 @@
   },
   "account": {
     "title": "My account",
-    "title-greetings": "Hello, {{user}} !",
+    "title-greetings": "Hello, {{user}} !👋🏼",
     "my-orders": "My orders",
     "my-details": "My details",
     "my-cards": "My cards",
@@ -112,7 +112,7 @@
   },
   "basket": {
     "title": "Basket",
-    "empty-cart": "Your cart is empty.",
+    "empty-cart": "Your cart is empty 😭",
     "continue-shopping": "Continue shopping",
     "connect-to-see-cart": "Connect to see your cart.",
     "login": "Login",

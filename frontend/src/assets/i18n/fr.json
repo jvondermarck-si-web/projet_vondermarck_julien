@@ -84,7 +84,7 @@
   },
   "account": {
     "title": "Mon compte",
-    "title-greetings": "Bonjour, {{user}} !",
+    "title-greetings": "Bonjour, {{user}} !👋🏼",
     "my-orders": "Mes commandes",
     "my-details": "Mes détails",
     "my-cards": "Mes cartes",
@@ -112,7 +112,7 @@
   },
   "basket": {
     "title": "Panier",
-    "empty-cart": "Votre panier est vide.",
+    "empty-cart": "Votre panier est vide 😭",
     "continue-shopping": "Continuer vos achats",
     "connect-to-see-cart": "Connectez-vous pour voir votre panier.",
     "login": "Se connecter",

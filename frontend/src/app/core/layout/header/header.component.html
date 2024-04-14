@@ -53,7 +53,7 @@
 
               @if(isUserAuthenticated$ | async)
               {
-                <p class="text-green-700 font-bold text-xl">Hello {{ (user$ |async)?.firstName }} !</p>
+                <p class="text-green-700 font-bold text-xl">{{ 'account.title-greetings' | transloco: { user: (user$ | async)!.firstName } }}</p>
 
                 <div class="h-0.5 bg-gray-300 w-full"></div>
 
