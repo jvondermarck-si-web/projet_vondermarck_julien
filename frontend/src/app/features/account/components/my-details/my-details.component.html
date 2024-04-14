@@ -33,10 +33,10 @@
 
     <!-- 4th Row -->
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-      <tui-input formControlName="civilityFormControl" tuiTextfieldIconLeft="tuiIconUserLarge">
+      <tui-select formControlName="civilityFormControl" tuiTextfieldIconLeft="tuiIconUserLarge">
         {{ 'sign-up.civility' | transloco }}
-        <input tuiTextfield type="text" />
-      </tui-input>
+        <tui-data-list-wrapper *tuiDataList [items]="civilities"></tui-data-list-wrapper>
+      </tui-select>
 
       <tui-input-phone-international formControlName="phoneNumberFormControl" [countries]="countries"
                                      [(countryIsoCode)]="countryIsoCode">
@@ -78,4 +78,10 @@
       </tui-combo-box>
     </div>
   </form>
+
+  <div class="flex justify-end mt-5 w-full">
+    <button tuiButton class="bg-green-700 py-1 px-5 rounded-xl text-white text-lg font-bold w-full" (click)="updateUserAccount()" [disabled]="updateUserAccountFormGroup.invalid">
+      {{ 'account.update-account' | transloco }}
+    </button>
+  </div>
 </div>

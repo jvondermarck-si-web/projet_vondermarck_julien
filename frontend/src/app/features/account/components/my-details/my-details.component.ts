@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Inject, OnDestroy, OnInit, Output} from '@angular/core';
 import {TranslocoPipe} from "@ngneat/transloco";
 import {FormInputComponent} from "../../../../shared/components/form-input/form-input.component";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {TabComponent} from "../../models/tab-component.interface";
 import {
   TUI_COUNTRIES, TuiCheckboxModule,
@@ -9,7 +9,8 @@ import {
   TuiDataListWrapperModule, TuiFilterByInputPipeModule,
   TuiInputModule,
   TuiInputPhoneInternationalModule,
-  TuiInputPhoneModule
+  TuiInputPhoneModule,
+  TuiSelectModule
 } from "@taiga-ui/kit";
 import {TuiCountryIsoCode} from "@taiga-ui/i18n";
 import {mapCountryNames} from "../../../../shared/utils/taiga-country-name-mapper";
@@ -39,59 +40,90 @@ import { AuthService } from '../../../../core/services/auth.service';
     FormsModule,
     TuiDataListModule,
     TuiLetModule,
+    TuiSelectModule
   ],
   templateUrl: './my-details.component.html'
 })
-export class MyDetailsComponent implements TabComponent, OnInit, OnDestroy {
-
-  updateUserAccountFormGroup = new FormGroup({
-    emailFormControl: new FormControl(''),
-    loginFormControl: new FormControl(''),
-    passwordFormControl: new FormControl(''),
-    firstNameFormControl: new FormControl(''),
-    lastNameFormControl: new FormControl(''),
-    civilityFormControl: new FormControl(''),
-    phoneNumberFormControl: new FormControl(''),
-    addressFormControl: new FormControl(''),
-    cityFormControl: new FormControl(''),
-    postalCodeFormControl: new FormControl(''),
-    countryFormControl: new FormControl(''),
-  });
-
-  countries: TuiCountryIsoCode[] = Object.values(TuiCountryIsoCode)
+export class MyDetailsComponent implements OnInit, OnDestroy {
+  updateUserAccountFormGroup: FormGroup;
+  countries: TuiCountryIsoCode[] = Object.values(TuiCountryIsoCode);
   countryNameMapper = mapCountryNames;
-  countryIsoCode = TuiCountryIsoCode.FR
+  countryIsoCode = TuiCountryIsoCode.FR;
+  userId = '';
+  userSubscription: Subscription = new Subscription();
+  civilities = ['Male', 'Female'];
 
-  private subscription: Subscription = new Subscription();
-
-  constructor(private authService: AuthService, @Inject(TUI_COUNTRIES) readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>) { }
-
-  ngOnInit() {
-    this.subscription = this.authService.user.subscribe(userData => {
-      if (userData) {
-        console.log(userData);
-        
-        this.updateUserAccountFormGroup.patchValue({
-          emailFormControl: userData.email,
-          loginFormControl: userData.login,
-          passwordFormControl: userData.password,
-          firstNameFormControl: userData.firstName,
-          lastNameFormControl: userData.lastName,
-          civilityFormControl: userData.civility,
-          phoneNumberFormControl: userData.phoneNumber,
-          addressFormControl: userData.address,
-          cityFormControl: userData.city,
-          postalCodeFormControl: userData.postalCode,
-          countryFormControl: userData.country,
-        });
-
-        this.countryIsoCode = this.countries.find(country => country === userData.countryCode) || TuiCountryIsoCode.FR;
-      }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    @Inject(TUI_COUNTRIES) readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>
+  ) {
+    this.updateUserAccountFormGroup = this.fb.group({
+      emailFormControl: ['', Validators.required],
+      loginFormControl: ['', Validators.required],
+      passwordFormControl: ['', Validators.required],
+      firstNameFormControl: ['', Validators.required],
+      lastNameFormControl: ['', Validators.required],
+      civilityFormControl: ['', Validators.required],
+      phoneNumberFormControl: ['', Validators.required],
+      addressFormControl: ['', Validators.required],
+      cityFormControl: ['', Validators.required],
+      postalCodeFormControl: ['', Validators.required],
+      countryFormControl: ['', Validators.required],
     });
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  ngOnInit() {
+    this.userSubscription = this.authService.user.subscribe(userData => {
+      if (!userData) return;
+
+      this.updateUserAccountFormGroup.patchValue({
+        emailFormControl: userData.email,
+        loginFormControl: userData.login,
+        passwordFormControl: userData.password,
+        firstNameFormControl: userData.firstName,
+        lastNameFormControl: userData.lastName,
+        civilityFormControl: userData.civility,
+        phoneNumberFormControl: userData.phoneNumber,
+        addressFormControl: userData.address,
+        cityFormControl: userData.city,
+        postalCodeFormControl: userData.postalCode,
+        countryFormControl: userData.country,
+      });
+
+      this.countryIsoCode = this.countries.find(country => country === userData.countryCode) || TuiCountryIsoCode.FR;
+      this.userId = userData.id!;
+    });
   }
 
+  updateUserAccount() {
+    const user = {
+      id: this.userId,
+      email: this.updateUserAccountFormGroup.value.emailFormControl!,
+      login: this.updateUserAccountFormGroup.value.loginFormControl!,
+      password: this.updateUserAccountFormGroup.value.passwordFormControl!,
+      firstName: this.updateUserAccountFormGroup.value.firstNameFormControl!,
+      lastName: this.updateUserAccountFormGroup.value.lastNameFormControl!,
+      civility: this.updateUserAccountFormGroup.value.civilityFormControl!,
+      countryCode: this.countryIsoCode,
+      phoneNumber: this.updateUserAccountFormGroup.value.phoneNumberFormControl!,
+      address: this.updateUserAccountFormGroup.value.addressFormControl!,
+      city: this.updateUserAccountFormGroup.value.cityFormControl!,
+      postalCode: this.updateUserAccountFormGroup.value.postalCodeFormControl!,
+      country: this.updateUserAccountFormGroup.value.countryFormControl!,
+    }
+
+    this.authService.update(user).subscribe(
+      success => {
+        // handle success
+      },
+      error => {
+        // handle error
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
+  }
 }

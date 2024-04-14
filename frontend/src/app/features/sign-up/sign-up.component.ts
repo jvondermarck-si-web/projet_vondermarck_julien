@@ -5,7 +5,7 @@ import {Component, Inject} from '@angular/core';
   TuiComboBoxModule,
   TuiDataListWrapperModule,
   TuiFilterByInputPipeModule,
-  TuiInputModule, TuiInputPhoneInternationalModule, TuiInputPhoneModule
+  TuiInputModule, TuiInputPhoneInternationalModule, TuiInputPhoneModule, TuiSelectModule
 } from "@taiga-ui/kit";
   import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
   import {
@@ -19,13 +19,13 @@ import {Component, Inject} from '@angular/core';
 import {TranslocoPipe, TranslocoService} from "@ngneat/transloco";
 import {FormInputComponent} from "../../shared/components/form-input/form-input.component";
 import { User} from "../../shared/models/user.interface";
-import {UserService} from "../../core/services/user.service";
 import {TuiCountryIsoCode} from "@taiga-ui/i18n";
 import {Observable} from "rxjs";
 import {AsyncPipe, CommonModule} from "@angular/common";
 import { TuiLetModule, TuiMapperPipeModule } from '@taiga-ui/cdk';
 import {confirmPasswordValidator} from "../../shared/validators/confirm-password.validator";
 import { mapCountryNames } from "../../shared/utils/taiga-country-name-mapper";
+import { AuthService } from '../../core/services/auth.service';
 
   @Component({
   selector: 'app-sign-up',
@@ -52,6 +52,7 @@ import { mapCountryNames } from "../../shared/utils/taiga-country-name-mapper";
       TuiLetModule,
       TuiPrimitiveTextfieldModule,
       TuiInputPhoneModule,
+      TuiSelectModule
     ],
   templateUrl: './sign-up.component.html'
 })
@@ -64,7 +65,7 @@ export class SignUpComponent {
       confirmPasswordFormControl: new FormControl('', Validators.required),
       firstNameFormControl: new FormControl('', Validators.required),
       lastNameFormControl: new FormControl('', Validators.required),
-      civilityFormControl: new FormControl('', Validators.required),
+      civilityFormControl: new FormControl(null, Validators.required),
       phoneNumberFormControl: new FormControl('', Validators.required),
       addressFormControl: new FormControl('', Validators.required),
       cityFormControl: new FormControl('', Validators.required),
@@ -77,9 +78,10 @@ export class SignUpComponent {
     countries: TuiCountryIsoCode[] = Object.values(TuiCountryIsoCode)
     countryNameMapper = mapCountryNames;
     countryIsoCode = TuiCountryIsoCode.FR;
+    civilities = ['Male', 'Female'];
 
     constructor(private router: Router,
-                private userService: UserService,
+                private authService: AuthService,
                 private translocoService: TranslocoService,
                 @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
                 @Inject(TUI_COUNTRIES) readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
@@ -98,13 +100,12 @@ export class SignUpComponent {
       }
       else {
         let userData: User = this.mapSignupFormGroupToUser(this.signUpFormGroup);
-        this.userService.updateUserData(userData);
-
-        this.router.navigate(['/account'])
-          .then(() =>
-            this.alerts.open( this.translocoService.translate("sign-up.success-sign-up"), { label: this.translocoService.translate("sign-up.success-welcome") + ' ' + userData.firstName + '!', status: 'success'}
-            ).subscribe()
-          );
+        this.authService.register(userData).subscribe({
+          next: () => {
+            this.router.navigate(['/account']);
+          }
+        }
+        );
       }
     }
 

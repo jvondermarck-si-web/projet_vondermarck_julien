@@ -12,13 +12,12 @@ export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   const tokenService = inject(JwtService);
 
   req = tokenService.updateRequest(req);
-
+  
   return next(req)
     .pipe(
       tap((event: HttpEvent<unknown>) => {
         if (event instanceof HttpResponse) {
           tokenService.getTokenFromResponse(event);
-          console.log(event);
         }
       }),
       catchError((error: HttpErrorResponse) => {

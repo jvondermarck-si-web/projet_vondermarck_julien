@@ -30,20 +30,22 @@ export default class UsersController {
   async register({ request, response }: HttpContext) {
     const data = await request.validateUsing(registerUserValidator)
 
-    console.log(data)
+    const user = data as User
+    user.id = crypto.randomUUID()
 
-    return response.json({ message: 'User registered' })
+    const jwt = this.jwtService.generateAccessToken(user)
+
+    return response.header('Authorization', `Bearer ${jwt}`).json(user)
   }
 
   async login({ request, response }: HttpContext) {
     const data = await request.validateUsing(loginUserValidator)
     const userMocked = userMock[0] as User
 
-    if (data.email === userMocked.email && data.password === userMocked.password) {
+    if (data.email !== userMocked.email && data.password !== userMocked.password) {
       return response.unauthorized('Invalid credentials')
     }
 
-    console.log(userMocked)
     userMocked.id = crypto.randomUUID()
     const user = userMocked
 
@@ -54,9 +56,8 @@ export default class UsersController {
 
   async update({ request, response }: HttpContext) {
     const data = await request.validateUsing(updateUserValidator)
-    console.log(data)
 
-    const user = { id: crypto.randomUUID(), email: data.email, firstName: 'Test' }
+    const user = data as User
 
     const jwt = this.jwtService.generateAccessToken(user)
 

@@ -16,7 +16,6 @@ export const authGuard: CanActivateFn = (route, state) => {
       return true;
     } else {
       router.navigate(['/sign-in']);
-      console.log('User is not authenticated');
       
       translocoService.selectTranslate('auth-guard.login-required').pipe(take(1)).subscribe(message => {
         translocoService.selectTranslate('auth-guard.error-title').pipe(take(1)).subscribe(title => {

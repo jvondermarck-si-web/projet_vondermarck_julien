@@ -79,13 +79,17 @@
     "error-password-message": "Passwords must match",
     "error-title": "An error occured",
     "success-sign-up": "Successfully signed up",
-    "success-welcome": "Welcome"
+    "success-welcome": "Welcome",
+    "error-register": "An error occured while registering your account"
   },
   "account": {
     "title": "My account",
     "my-orders": "My orders",
     "my-details": "My details",
-    "my-cards": "My cards"
+    "my-cards": "My cards",
+    "update-account": "Update account",
+    "update-success": "Account updated successfully",
+    "update-error": "An error occured while updating your account"
   },
   "footer": {
     "company": "Company",

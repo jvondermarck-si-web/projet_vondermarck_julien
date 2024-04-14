@@ -115,7 +115,6 @@ export class ProductsComponent {
   }
 
   toggleFilterMenu(open: boolean) {
-    console.log(open);
     this.openFilterMenu = open;
   }
 }

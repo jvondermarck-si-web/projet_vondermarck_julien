@@ -16,7 +16,6 @@ export class JwtService {
       });
     }
 
-    console.log(request);
     return request;
   }
 
@@ -31,8 +30,6 @@ export class JwtService {
         this.jwtToken = undefined;
       }
     }
-
-    console.log(this.jwtToken);
   }
 
   public clearToken() {

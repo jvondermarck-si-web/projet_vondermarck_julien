@@ -79,13 +79,17 @@
     "error-password-message": "Le password non corrispondono.",
     "error-title": "Errore durante la registrazione.",
     "success-sign-up": "Iscritta con successo",
-    "success-welcome": "Benvenuto"
+    "success-welcome": "Benvenuto",
+    "error-register": "Errore durante la registrazione. Riprova."
   },
   "account": {
     "title": "Il mio account",
     "my-orders": "I miei ordini",
     "my-details": "I miei dettagli",
-    "my-cards": "Le mie carte"
+    "my-cards": "Le mie carte",
+    "update-account": "Aggiorna account",
+    "update-success": "Il tuo account è stato aggiornato con successo.",
+    "update-error": "Errore durante l'aggiornamento dell'account."
   },
   "footer": {
     "company": "Azienda",
