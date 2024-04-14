@@ -107,15 +107,25 @@
           <tui-accordion-item [open]="true" borders="top-bottom">
             <p class="font-bold text-xl">{{ 'header.account' | transloco }}</p>
             <ng-template tuiAccordionItemContent>
-              <a
-                *ngFor="let accountLink of accountLinks"
-                routerLink="/{{accountLink.toLowerCase()}}"
-                rel="noreferrer"
-                class="block text-gray-600 text-lg"
-                (click)="toggleBurgerMenu(false)"
-              >
-                {{ 'header.'+ accountLink | transloco }}
-              </a>
+              @if(isUserAuthenticated$ | async){
+                <a routerLink="/account" rel="noreferrer" class="block text-gray-600 text-lg" (click)="toggleBurgerMenu(false)">
+                  {{ 'header.my-account' | transloco }}
+                </a>
+                <a (click)="logout()" class="block text-gray-600 text-lg" (click)="toggleBurgerMenu(false)">
+                  {{ 'header.logout' | transloco }}
+                </a>
+              } @else {
+                  <a
+                  *ngFor="let accountLink of accountLinksUnauthenticated"
+                  routerLink="/{{accountLink.toLowerCase()}}"
+                  rel="noreferrer"
+                  class="block text-gray-600 text-lg"
+                  (click)="toggleBurgerMenu(false)"
+                >
+                  {{ 'header.'+ accountLink | transloco }}
+                </a>
+              }
+                
             </ng-template>
           </tui-accordion-item>
           <tui-accordion-item [open]="true" borders="top-bottom">

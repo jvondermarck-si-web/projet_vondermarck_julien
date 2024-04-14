@@ -84,6 +84,7 @@
   },
   "account": {
     "title": "My account",
+    "title-greetings": "Hello, {{user}} !",
     "my-orders": "My orders",
     "my-details": "My details",
     "my-cards": "My cards",

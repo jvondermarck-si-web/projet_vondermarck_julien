@@ -1,5 +1,5 @@
 <section class="px-8">
-  <h1 class="text-3xl sm:text-4xl font-bold lg:mt-10 mt-5">{{ 'account.title' | transloco }}</h1>
+  <h1 class="text-3xl sm:text-4xl font-bold lg:mt-10 mt-5">{{ 'account.title-greetings' | transloco: { user: (user$ | async)!.firstName } }}</h1>
 
   <div class="flex shadow-xl bg-white mt-5 min-h-screen w-full">
     <!-- Navigation Section -->

@@ -51,7 +51,7 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent {
 
   /** Links for the burger menu */
-  readonly accountLinks = ['account', 'sign-in', 'sign-up'];
+  readonly accountLinksUnauthenticated = ['sign-in', 'sign-up'];
   openBurgerMenu = false;
   isUserAuthenticated$ = this.authService.isAuthenticated;
   user$ = this.authService.user;

@@ -12,6 +12,7 @@ import {Observable, Subject, takeUntil} from "rxjs";
 import { CardDashboardComponent } from '../../modules/card/components/card-dashboard/card-dashboard.component';
 import { CardModule } from '../../modules/card/card.module';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-account',
@@ -59,7 +60,9 @@ export class AccountComponent implements OnInit {
   /** Map of tab names to titles */
   tabTitles: { [key in string]: Observable<string> };
 
-  constructor(private translocoService: TranslocoService, private router: Router, private route: ActivatedRoute) {
+  user$ = this.authService.user;
+
+  constructor(private translocoService: TranslocoService, private router: Router, private route: ActivatedRoute, private authService: AuthService) {
     this.tabTitles = {
       'MyDetails': this.translocoService.selectTranslate('account.my-details'),
       'MyOrders': this.translocoService.selectTranslate('account.my-orders'),
