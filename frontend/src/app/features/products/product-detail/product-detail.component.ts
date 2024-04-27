@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../../../shared/models/product.interface';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ProductService } from '../../../core/services/product.service';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngxs/store';
 import { AddProduct } from '../../../shared/actions/basket-action';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,9 +14,10 @@ import { AddProduct } from '../../../shared/actions/basket-action';
   imports: [CommonModule],
   templateUrl: './product-detail.component.html'
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnDestroy {
 
   public declare product$: Observable<Product | undefined>;
+  private productControlSubscription!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +26,14 @@ export class ProductDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    this.product$ = this.productService.getProductFromId(+id)!;
+    this.productControlSubscription = this.route.paramMap.subscribe(params => {
+      const id = +params.get('id')!;
+      this.product$ = this.productService.getProductFromId(id)!;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.productControlSubscription.unsubscribe();
   }
 
   showAddToCartNotification(product: Product): void {

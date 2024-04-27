@@ -7,6 +7,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { TuiAlertService } from '@taiga-ui/core';
 import { Router } from '@angular/router';
 import { JwtService } from './jwt.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,7 @@ export class AuthService {
           this.alerts.open('', { label: message, status: 'success' }).subscribe();
       }),
       catchError(error => {
-        this.alerts.open('',{ label: this.translocoService.translate('sign-in.error-login'), status: 'error' }).subscribe();
+        this.alerts.open('',{ label: this.translocoService.translate('sign-in.error-login'), status: 'error' }).pipe(takeUntilDestroyed()).subscribe();
         return error;
       })
     );
@@ -54,11 +55,11 @@ export class AuthService {
       tap(user => {
         this._user.next(user);
         this._isAuthenticated.next(!!user);
-        this.alerts.open( this.translocoService.translate("sign-up.success-sign-up"), { label: this.translocoService.translate("sign-up.success-welcome") + ' ' + user.firstName + '!', status: 'success'}).subscribe()
+        this.alerts.open( this.translocoService.translate("sign-up.success-sign-up"), { label: this.translocoService.translate("sign-up.success-welcome") + ' ' + user.firstName + '!', status: 'success'}).pipe(takeUntilDestroyed()).subscribe();
       }),
       catchError(error => {
         const errors = error.error.errors.map((error: { message: string }) => error.message);
-        this.alerts.open(errors, { label: this.translocoService.translate('sign-up.error-register'), status: 'error' }).subscribe();
+        this.alerts.open(errors, { label: this.translocoService.translate('sign-up.error-register'), status: 'error' }).pipe(takeUntilDestroyed()).subscribe();
         return error;
       })
     );
@@ -69,11 +70,11 @@ export class AuthService {
       tap(user => {
         this._user.next(user);
         this._isAuthenticated.next(!!user);
-        this.alerts.open('', { label: this.translocoService.translate('account.update-success'), status: 'success' }).subscribe();
+        this.alerts.open('', { label: this.translocoService.translate('account.update-success'), status: 'success' }).pipe(takeUntilDestroyed()).subscribe();
       }),
       catchError(error => {
         const errors = error.error.errors.map((error: { message: string }) => error.message);
-        this.alerts.open(errors, { label: this.translocoService.translate('account.update-error'), status: 'error' }).subscribe();
+        this.alerts.open(errors, { label: this.translocoService.translate('account.update-error'), status: 'error' }).pipe(takeUntilDestroyed()).subscribe();
         return error;
       })
     );
@@ -84,8 +85,8 @@ export class AuthService {
     this._isAuthenticated.next(false);
     this.router.navigate(['/sign-in']);
 
-    this.translocoService.selectTranslate('sign-in.success-logout').subscribe(message => {
-      this.alerts.open('', { label: message, status: 'info' }).subscribe();
+    this.translocoService.selectTranslate('sign-in.success-logout').pipe(takeUntilDestroyed()).subscribe(message => {
+      this.alerts.open('', { label: message, status: 'info' }).pipe(takeUntilDestroyed()).subscribe();
     });
   }
 }

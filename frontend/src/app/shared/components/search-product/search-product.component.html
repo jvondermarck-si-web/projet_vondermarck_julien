@@ -2,29 +2,30 @@
     <tui-input (keyup.enter)="navigateToProductsPageWithQueryParam()" class="w-full" [formControl]="productSearchControl" [tuiTextfieldCleaner]="true" tuiTextfieldIconLeft="tuiIconSearch" tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
         {{ 'header.search-placeholder' | transloco }}
     </tui-input>
-
-    <ng-template #dropdown >
-        <tui-data-list-wrapper
-            [items]="filteredProducts"
-            [itemContent]="productItemTemplate"
-            [emptyContent]="noResultsTemplate">
-
-            <ng-template #productItemTemplate let-product>
-                <div class="flex" (click)="onProductSelected(product)" routerLink="/product/{{product.id}}">
-                    <img class="object-scale-down w-12 h-12 mr-2" [src]="product.image"  alt="Product {{ product.title }}"/>
-                    <p [innerHTML]="product.title | highlight:productSearchControl.value!"></p>
-                </div>
-            </ng-template>
-            
-            <ng-template #noResultsTemplate>
-                <p>{{ 'header.no-results' | transloco }}</p>
-            </ng-template>            
-        </tui-data-list-wrapper>
-
-        <div *ngIf="filteredProducts.length > 0" class="flex justify-center text-sm py-2 font-bold text-green-700 hover:bg-slate-100">
-            <button tuiButton (click)="navigateToProductsPageWithQueryParam()" class="w-full">{{ 'header.see-all-products' | transloco }} ({{ filteredProducts.length }})</button>
-        </div>
-    </ng-template>
+        <ng-template #dropdown>
+            <tui-data-list-wrapper
+                [items]="(filteredProducts | async)"
+                [itemContent]="productItemTemplate"
+                [emptyContent]="noResultsTemplate">
+    
+                <ng-template #productItemTemplate let-product>
+                    <div class="flex" (click)="onProductSelected(product)" routerLink="/product/{{product.id}}">
+                        <img class="object-scale-down w-12 h-12 mr-2" [src]="product.image"  alt="Product {{ product.title }}"/>
+                        <p [innerHTML]="product.title | highlight:productSearchControl.value!"></p>
+                    </div>
+                </ng-template>
+                
+                <ng-template #noResultsTemplate>
+                    <p>{{ 'header.no-results' | transloco }}</p>
+                </ng-template>            
+            </tui-data-list-wrapper>
+    
+            @if((filteredProducts | async) && (filteredProducts | async) !== undefined) {
+                <div class="flex justify-center text-sm py-2 font-bold text-green-700 hover:bg-slate-100">
+                    <button tuiButton (click)="navigateToProductsPageWithQueryParam()" class="w-full">
+                        {{ 'header.see-all-products' | transloco }} ({{ (filteredProducts | async)?.length || 0 }})
+                    </button>  
+                </div> 
+              }
+    </ng-template>    
 </tui-hosted-dropdown>
-
-

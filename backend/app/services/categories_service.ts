@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core'
 import { categoriesMock } from '../mocks/categories_mock.js'
-import { productsMock } from '../mocks/products_mock.js'
+import { Product, ProductsService } from './products_service.js'
 
 export interface Category {
   id: number
@@ -9,23 +9,14 @@ export interface Category {
   products: Product[]
 }
 
-export interface Product {
-  id: number
-  categoryID: number
-  image: string
-  title: string
-  info: string
-  price: number
-  isBestSeller: boolean
-  isFavorite: boolean
-}
-
 @inject()
 export class CategoriesService {
+  constructor(private productsService: ProductsService) {}
+
   async getAll() {
     // Retrieve the categories from a mock json file
     const categories = categoriesMock as Category[]
-    const products = productsMock as Product[]
+    const products = await this.productsService.getAll()
 
     // Assign products to their respective categories
     categories.forEach((category) => {
