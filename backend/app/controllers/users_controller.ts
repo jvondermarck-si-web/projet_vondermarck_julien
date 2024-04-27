@@ -34,7 +34,7 @@ export default class UsersController {
       // Save user to database
       await user.save()
 
-      const jwt = this.jwtService.generateAccessToken(user)
+      const jwt = this.jwtService.generateAccessToken({ id: user.id, email: user.email })
 
       return response.header('Authorization', `Bearer ${jwt}`).json(user)
     } catch (e) {
