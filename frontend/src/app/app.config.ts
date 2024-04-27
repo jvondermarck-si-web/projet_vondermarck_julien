@@ -10,6 +10,7 @@ import { provideTransloco } from '@ngneat/transloco';
 import { NgxsModule } from '@ngxs/store';
 import { BasketState } from "./shared/states/basket-state";
 import { jwtInterceptor } from "./core/interceptors/jwt.interceptor";
+import { loaderInterceptor } from "./core/interceptors/loader.interceptor";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(NgxsModule.forRoot([BasketState])), 
     importProvidersFrom(TuiRootModule), 
     provideHttpClient(), 
-    provideHttpClient(withInterceptors([jwtInterceptor])),
+    provideHttpClient(withInterceptors([jwtInterceptor, loaderInterceptor])),
     provideTransloco({
         config: { 
           availableLangs: ['en', 'it', 'fr'],

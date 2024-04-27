@@ -47,7 +47,6 @@ export class SignInComponent implements OnDestroy {
       .subscribe(
         {
           next: () => {
-            console.log('User logged in');
             this.router.navigate(['/account']);
           },
         }

@@ -7,6 +7,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { TuiAlertService } from '@taiga-ui/core';
 import { Router } from '@angular/router';
 import { JwtService } from './jwt.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class AuthService implements OnDestroy {
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>('/api/auth/login', { email, password }).pipe(
+    return this.http.post<User>(`${environment.API_Endpoint}/auth/login`, { email, password }).pipe(
       tap(user => {
         this._user.next(user);
         this._isAuthenticated.next(!!user);

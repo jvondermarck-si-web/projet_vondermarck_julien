@@ -44,7 +44,7 @@ export class ProductService implements OnDestroy {
 
   getProductsFromSearch(search: string): Observable<Product[]> {
     let params = new HttpParams().set('search', search);
-    return this.http.get<Product[]>(`${environment.API_Endpoint}products/search`, { params: params });  
+    return this.http.get<Product[]>(`${environment.API_Endpoint}/products/search`, { params: params });  
   }
 
   ngOnDestroy() {
