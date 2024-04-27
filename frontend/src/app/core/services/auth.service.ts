@@ -1,27 +1,26 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../../shared/models/user.interface';
-import { catchError, of, tap, throwError } from 'rxjs';
+import { Subject, catchError, of, takeUntil, tap, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { TranslocoService } from '@ngneat/transloco';
 import { TuiAlertService } from '@taiga-ui/core';
 import { Router } from '@angular/router';
 import { JwtService } from './jwt.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnDestroy {
   private _user: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   private _isAuthenticated = new BehaviorSubject<boolean>(false);
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(
     private http: HttpClient, 
     private translocoService: TranslocoService, 
     private readonly alerts: TuiAlertService, 
-    private router: Router, 
-    private jwtService: JwtService) { }
+    private router: Router) { }
 
   public get user() {
     return this._user.asObservable();
@@ -41,10 +40,10 @@ export class AuthService {
         this._user.next(user);
         this._isAuthenticated.next(!!user);
         const message = this.translocoService.translate('sign-in.success-login', { user: user.firstName });
-          this.alerts.open('', { label: message, status: 'success' }).subscribe();
+          this.alerts.open('', { label: message, status: 'success' }).pipe(takeUntil(this._unsubscribeAll)).subscribe();
       }),
       catchError(error => {
-        this.alerts.open('',{ label: this.translocoService.translate('sign-in.error-login'), status: 'error' }).pipe(takeUntilDestroyed()).subscribe();
+        this.alerts.open('',{ label: this.translocoService.translate('sign-in.error-login'), status: 'error' }).pipe(takeUntil(this._unsubscribeAll)).subscribe();
         return error;
       })
     );
@@ -55,11 +54,11 @@ export class AuthService {
       tap(user => {
         this._user.next(user);
         this._isAuthenticated.next(!!user);
-        this.alerts.open( this.translocoService.translate("sign-up.success-sign-up"), { label: this.translocoService.translate("sign-up.success-welcome") + ' ' + user.firstName + '!', status: 'success'}).pipe(takeUntilDestroyed()).subscribe();
+        this.alerts.open( this.translocoService.translate("sign-up.success-sign-up"), { label: this.translocoService.translate("sign-up.success-welcome") + ' ' + user.firstName + '!', status: 'success'}).pipe(takeUntil(this._unsubscribeAll)).subscribe();
       }),
       catchError(error => {
         const errors = error.error.errors.map((error: { message: string }) => error.message);
-        this.alerts.open(errors, { label: this.translocoService.translate('sign-up.error-register'), status: 'error' }).pipe(takeUntilDestroyed()).subscribe();
+        this.alerts.open(errors, { label: this.translocoService.translate('sign-up.error-register'), status: 'error' }).pipe(takeUntil(this._unsubscribeAll)).subscribe();
         return error;
       })
     );
@@ -70,11 +69,11 @@ export class AuthService {
       tap(user => {
         this._user.next(user);
         this._isAuthenticated.next(!!user);
-        this.alerts.open('', { label: this.translocoService.translate('account.update-success'), status: 'success' }).pipe(takeUntilDestroyed()).subscribe();
+        this.alerts.open('', { label: this.translocoService.translate('account.update-success'), status: 'success' }).pipe(takeUntil(this._unsubscribeAll)).subscribe();
       }),
       catchError(error => {
         const errors = error.error.errors.map((error: { message: string }) => error.message);
-        this.alerts.open(errors, { label: this.translocoService.translate('account.update-error'), status: 'error' }).pipe(takeUntilDestroyed()).subscribe();
+        this.alerts.open(errors, { label: this.translocoService.translate('account.update-error'), status: 'error' }).pipe(takeUntil(this._unsubscribeAll)).subscribe();
         return error;
       })
     );
@@ -85,9 +84,14 @@ export class AuthService {
     this._isAuthenticated.next(false);
     this.router.navigate(['/sign-in']);
 
-    this.translocoService.selectTranslate('sign-in.success-logout').pipe(takeUntilDestroyed()).subscribe(message => {
-      this.alerts.open('', { label: message, status: 'info' }).pipe(takeUntilDestroyed()).subscribe();
+    this.translocoService.selectTranslate('sign-in.success-logout').pipe(takeUntil(this._unsubscribeAll)).subscribe(message => {
+      this.alerts.open('', { label: message, status: 'info' }).pipe(takeUntil(this._unsubscribeAll)).subscribe();
     });
+  }
+
+  ngOnDestroy() {
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
   }
 }
 

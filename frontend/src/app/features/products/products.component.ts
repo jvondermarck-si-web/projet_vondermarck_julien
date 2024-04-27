@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Observable, combineLatest, map } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Observable, Subscription, combineLatest, map } from 'rxjs';
 import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../shared/models/product.interface';
 import { ProductCardComponent } from "../../shared/components/product-card/product-card.component";
@@ -34,7 +34,9 @@ import { TuiActiveZoneModule } from '@taiga-ui/cdk';
       TuiActiveZoneModule,
     ]
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnDestroy {
+
+  private subscriptionFormCategory: Subscription = new Subscription();
 
   public declare categoriesList$: Observable<Category[]>;
   public declare products$: Observable<Product[]>;
@@ -64,9 +66,13 @@ export class ProductsComponent {
       )
     );
 
-    this.formCategoryFilterSelected.valueChanges
+    this.subscriptionFormCategory = this.formCategoryFilterSelected.valueChanges
       .pipe(map((selectedCategories) => this.updateCategoryQueryParam(selectedCategories)))
       .subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionFormCategory.unsubscribe();
   }
 
   private updateProducts(products: Product[], queryParams: any, categories: Category[]): Product[] {

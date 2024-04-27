@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {TranslocoService} from "@ngneat/transloco";
 import {TuiDataListWrapperModule, TuiSelectModule} from "@taiga-ui/kit";
 import {TuiFlagPipeModule, TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import { Subscription } from 'rxjs';
 
 interface Language {
   lang: string;
   iso: TuiCountryIsoCode;
 }
-
 
 @Component({
   selector: 'app-language-switcher',
@@ -24,7 +24,9 @@ interface Language {
   ],
   templateUrl: './language-switcher.component.html'
 })
-export class LanguageSwitcherComponent {
+export class LanguageSwitcherComponent implements OnDestroy {
+
+  private subscriptionFormLanguage: Subscription = new Subscription();
 
   languages: Language[] = [
     { lang: 'EN', iso: TuiCountryIsoCode.GB },
@@ -40,12 +42,17 @@ export class LanguageSwitcherComponent {
   constructor(private translocoService: TranslocoService) {
     this.translocoService.setActiveLang(this.formLanguage.value!.lang.toLowerCase());
 
-    this.formLanguage.valueChanges.subscribe((selectedLanguage: Language | null) => {
+    this.subscriptionFormLanguage = this.formLanguage.valueChanges
+    .subscribe((selectedLanguage: Language | null) => {
       if (selectedLanguage) {
         this.translocoService.setActiveLang(selectedLanguage.lang.toLowerCase());
         localStorage.setItem('appLanguage', selectedLanguage.lang);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionFormLanguage.unsubscribe();
   }
 
   getLanguage(lang: string | null): Language {

@@ -39,7 +39,7 @@ export class SearchProductComponent {
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {    
-    this.productSearchControl.valueChanges.pipe(
+    this.productControlSubscription = this.productSearchControl.valueChanges.pipe(
       debounceTime(300), // reduce the number of API calls
       distinctUntilChanged(), // only emit when the current value is different than the last
       switchMap((searchControlValue) => { // switch to a new Observable each time the search value changes

@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import {Product} from "../../shared/models/product.interface";
-import { BehaviorSubject, Observable, Subscription, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, filter, map } from 'rxjs';
 import { CategoryService } from './category.service';
 import { Category } from '../../shared/models/category.interface';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -36,9 +36,11 @@ export class ProductService implements OnDestroy {
 
   getProductFromId(id: number): Observable<Product | undefined> {
     return this.products.pipe(
+      filter(products => products.length > 0), // Wait for the products to be loaded before filtering
       map(products => products.find(product => product.id === id))
     );
   }
+  
 
   getProductsFromSearch(search: string): Observable<Product[]> {
     let params = new HttpParams().set('search', search);

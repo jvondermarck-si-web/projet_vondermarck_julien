@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnDestroy} from '@angular/core';
   import {
   TUI_COUNTRIES,
   TuiCheckboxModule,
@@ -20,7 +20,7 @@ import {TranslocoPipe, TranslocoService} from "@ngneat/transloco";
 import {FormInputComponent} from "../../shared/components/form-input/form-input.component";
 import { User} from "../../shared/models/user.interface";
 import {TuiCountryIsoCode} from "@taiga-ui/i18n";
-import {Observable} from "rxjs";
+import {Observable, Subject, takeUntil} from "rxjs";
 import {AsyncPipe, CommonModule} from "@angular/common";
 import { TuiLetModule, TuiMapperPipeModule } from '@taiga-ui/cdk';
 import {confirmPasswordValidator} from "../../shared/validators/confirm-password.validator";
@@ -56,7 +56,9 @@ import { AuthService } from '../../core/services/auth.service';
     ],
   templateUrl: './sign-up.component.html'
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnDestroy {
+
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     signUpFormGroup = new FormGroup({
       emailFormControl: new FormControl('', Validators.email),
@@ -87,6 +89,11 @@ export class SignUpComponent {
                 @Inject(TUI_COUNTRIES) readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
     ) {}
 
+    ngOnDestroy(): void {
+      this._unsubscribeAll.next(null);
+      this._unsubscribeAll.complete();
+    }
+
     /**
      * Submits the form and updates the user data
      */
@@ -96,14 +103,16 @@ export class SignUpComponent {
         if (this.signUpFormGroup.errors && this.signUpFormGroup.errors['passwordMismatch']) {
           errorMessage = this.translocoService.translate('sign-up.error-password-message');
         }
-        this.alerts.open(errorMessage, { status: 'error' }).subscribe();
+        this.alerts.open(errorMessage, { status: 'error' }).pipe(takeUntil(this._unsubscribeAll)).subscribe();
       }
       else {
         let userData: User = this.mapSignupFormGroupToUser(this.signUpFormGroup);
-        this.authService.register(userData).subscribe({
-          next: () => {
-            this.router.navigate(['/account']);
-          }
+        this.authService.register(userData)
+          .pipe(takeUntil(this._unsubscribeAll))
+          .subscribe({
+            next: () => {
+              this.router.navigate(['/account']);
+            }
         }
         );
       }
