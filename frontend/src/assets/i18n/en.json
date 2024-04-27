@@ -1,4 +1,7 @@
 {
+  "general": {
+    "loading": "Loading..."
+  },
   "home": {
     "title": {
       "the": "The",

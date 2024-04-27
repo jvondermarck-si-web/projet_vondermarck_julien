@@ -1,4 +1,7 @@
 {
+  "general": {
+    "loading": "Caricamento..."
+  },
   "home": {
     "title": {
       "the": "La",

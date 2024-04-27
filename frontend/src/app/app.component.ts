@@ -9,11 +9,12 @@ import { CardModule } from "./modules/card/card.module";
 import { Subject } from "rxjs";
 import { LoaderService } from "./core/services/loader.service";
 import { CommonModule } from "@angular/common";
+import { TranslocoPipe } from "@ngneat/transloco";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TuiRootModule, TuiDialogModule, TuiAlertModule, HeaderComponent, FooterComponent, ScrollToTopDirective, CardModule, CommonModule],
+  imports: [RouterOutlet, TuiRootModule, TuiDialogModule, TuiAlertModule, HeaderComponent, FooterComponent, ScrollToTopDirective, CardModule, CommonModule, TranslocoPipe],
   templateUrl: './app.component.html',
     providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
 })
