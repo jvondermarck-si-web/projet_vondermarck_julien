@@ -14,7 +14,7 @@ export const registerUserValidator = vine.compile(
     password: vine.string().minLength(6).alphaNumeric(),
     firstName: vine.string().minLength(3),
     lastName: vine.string().minLength(3),
-    civility: vine.enum(['male', 'female']),
+    civility: vine.enum(['Male', 'Female']),
     countryCode: vine.string().minLength(2).maxLength(2),
     phoneNumber: vine.string(),
     address: vine.string().minLength(3),
@@ -26,6 +26,7 @@ export const registerUserValidator = vine.compile(
 
 export const updateUserValidator = vine.compile(
   vine.object({
+    id: vine.number(),
     login: vine.string().minLength(3),
     email: vine.string().email(),
     password: vine.string().minLength(6).alphaNumeric(),
@@ -38,5 +39,11 @@ export const updateUserValidator = vine.compile(
     city: vine.string(),
     postalCode: vine.string(),
     country: vine.string(),
+  })
+)
+
+export const deleteUserValidator = vine.compile(
+  vine.object({
+    id: vine.number(),
   })
 )
