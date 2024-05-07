@@ -11,7 +11,6 @@ export default class CategoriesController {
   async getAll({ response }: HttpContext) {
     try {
       const categories = await this.categoryService.getAll()
-      console.log(categories)
       return response.json(categories)
     } catch (error) {
       return response.status(500).json({ message: 'Internal server error' })
