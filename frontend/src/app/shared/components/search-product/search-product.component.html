@@ -10,7 +10,7 @@
     
                 <ng-template #productItemTemplate let-product>
                     <div class="flex" (click)="onProductSelected(product)" routerLink="/product/{{product.id}}">
-                        <img class="object-scale-down w-12 h-12 mr-2" [src]="product.image"  alt="Product {{ product.title }}"/>
+                        <img class="object-scale-down w-12 h-12 mr-2" [src]="'/api/' + product.image"  alt="Product {{ product.title }}"/>
                         <p [innerHTML]="product.title | highlight:productSearchControl.value!"></p>
                     </div>
                 </ng-template>

@@ -8,7 +8,9 @@ export class ProductsService {
   }
 
   async getProductsSearch(search: string): Promise<Product[]> {
-    const products = await Product.query().where('title', 'like', `%${search}%`)
+    const products = await Product.query().whereRaw('LOWER(title) LIKE ?', [
+      `%${search.toLowerCase()}%`,
+    ])
     return products
   }
 }

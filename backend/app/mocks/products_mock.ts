@@ -1,7 +1,7 @@
 export const productsMock = [
   {
     id: 1,
-    categoryID: 1,
+    categoryId: 1,
     image: 'assets/img/products/caputo.png',
     title: "Caputo® - Farina TIP0 '00' Pizzeria",
     info: '1 kg - Il Mulino di Napoli',
@@ -11,7 +11,7 @@ export const productsMock = [
   },
   {
     id: 2,
-    categoryID: 1,
+    categoryId: 1,
     image: 'assets/img/products/olive_oil.png',
     title: 'De Cecco Olio di Oliva',
     info: '1L - Extra Virgin',
@@ -21,7 +21,7 @@ export const productsMock = [
   },
   {
     id: 3,
-    categoryID: 3,
+    categoryId: 3,
     image: 'assets/img/products/tshirt_girl.png',
     title: "T-Shirt 'Everybody Loves Italian Girls'",
     info: 'Sizes from S to XL',
@@ -31,7 +31,7 @@ export const productsMock = [
   },
   {
     id: 4,
-    categoryID: 1,
+    categoryId: 1,
     image: 'assets/img/products/kimbo.png',
     title: 'Kimbo® Espresso Crema Intensa',
     info: '1kg - Caffè di Napoli',
@@ -41,7 +41,7 @@ export const productsMock = [
   },
   {
     id: 5,
-    categoryID: 1,
+    categoryId: 1,
     image: 'assets/img/products/mascarpone.png',
     title: 'Galbani® Mascarpone',
     info: '250mg - Best for Tiramisù',
@@ -51,7 +51,7 @@ export const productsMock = [
   },
   {
     id: 6,
-    categoryID: 1,
+    categoryId: 1,
     image: 'assets/img/products/bacio_latte.png',
     title: 'Baci® Latte Vellutato Scatola Bijou',
     info: '200g - quotes by famous poets inside!',
@@ -61,7 +61,7 @@ export const productsMock = [
   },
   {
     id: 7,
-    categoryID: 3,
+    categoryId: 3,
     image: 'assets/img/products/scarf.png',
     title: 'Sciarpa rossa',
     info: '70% wool / 30% acrylic',

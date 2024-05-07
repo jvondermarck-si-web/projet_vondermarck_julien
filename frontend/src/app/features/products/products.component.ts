@@ -88,22 +88,21 @@ export class ProductsComponent implements OnDestroy {
     );
     
     return products.filter((product) => {
+      console.log(product.categoryId);
       if (search && !product.title.toLowerCase().includes(search.toLowerCase())) {
         return false;
       }
-      if (categoryIds.length > 0 && !categoryIds.includes(product.categoryID)) {
+      if (categoryIds.length > 0 && !categoryIds.includes(product.categoryId)) {
         return false;
       }
       return true;
     });
-
-
   }
 
   private updateCategoryQueryParam(selectedCategories: Category[]) {
-    const selectedCategoryIds = selectedCategories.map((category) => category.id);
+    const selectedcategoryIds = selectedCategories.map((category) => category.id);
     const categoryParam: string | null =
-      selectedCategories.length > 0 ? selectedCategoryIds.join(',') : null;
+      selectedCategories.length > 0 ? selectedcategoryIds.join(',') : null;
 
     this.router.navigate([], {
       relativeTo: this.route,
