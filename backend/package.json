@@ -51,6 +51,7 @@
   "dependencies": {
     "@adonisjs/core": "^6.2.2",
     "@adonisjs/lucid": "^20.5.1",
+    "@adonisjs/static": "^1.1.1",
     "@types/jsonwebtoken": "^9.0.6",
     "@vinejs/vine": "^1.8.0",
     "jsonwebtoken": "^9.0.2",

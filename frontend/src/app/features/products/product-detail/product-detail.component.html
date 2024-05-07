@@ -1,6 +1,6 @@
 <div *ngIf="product$ | async as product" class="mt-10 px-8 flex flex-col md:flex-row min-h-screen">
     <div class="w-auto mr-10">
-        <img [src]="product.image" alt="{{ product.title }}" class="object-scale-down w-72 h-72 bg-white">
+        <img [src]="'/api/' + product.image" alt="{{ product.title }}" class="object-scale-down w-72 h-72 bg-white">
     </div>
     <div class="w-full">
       <h1 class="text-2xl font-bold mb-2">{{ product.title }}</h1>
