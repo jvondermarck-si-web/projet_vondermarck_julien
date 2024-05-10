@@ -31,6 +31,16 @@ export default class UsersController {
       user.postalCode = data.postalCode
       user.country = data.country
 
+      // Check if user already exists checking email and login
+      const existingUser = await User.query()
+        .where('email', data.email)
+        .orWhere('login', data.login)
+        .first()
+
+      if (existingUser) {
+        return response.badRequest('User already exists')
+      }
+
       // Save user to database
       await user.save()
 

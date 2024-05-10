@@ -18,6 +18,7 @@ export default class extends BaseSchema {
   }
 
   async down() {
+    // delete foreign key constraints and table
     this.schema.dropTable(this.tableName)
   }
 }
