@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, OnDestroy} from '@angular/core';
   import {
   TUI_COUNTRIES,
   TuiCheckboxModule,
@@ -54,7 +54,8 @@ import { AuthService } from '../../core/services/auth.service';
       TuiInputPhoneModule,
       TuiSelectModule
     ],
-  templateUrl: './sign-up.component.html'
+  templateUrl: './sign-up.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpComponent implements OnDestroy {
 

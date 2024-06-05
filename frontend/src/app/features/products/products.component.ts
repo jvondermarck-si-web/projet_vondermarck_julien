@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Observable, Subscription, combineLatest, map } from 'rxjs';
 import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../shared/models/product.interface';
@@ -32,7 +32,8 @@ import { TuiActiveZoneModule } from '@taiga-ui/cdk';
       TuiFilterModule,
       TuiSidebarModule,
       TuiActiveZoneModule,
-    ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent implements OnDestroy {
 

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import {TuiCheckboxModule, TuiInputModule, TuiInputPasswordModule} from "@taiga-ui/kit";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {TuiButtonModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
@@ -23,7 +23,8 @@ import { Subject, takeUntil } from 'rxjs';
         NgOptimizedImage,
         TuiInputPasswordModule,
     ],
-  templateUrl: './sign-in.component.html'
+  templateUrl: './sign-in.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent implements OnDestroy {
   private unsubscribe$ = new Subject<void>();
