@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Product} from "../../shared/models/product.interface";
 import {ProductService} from "../../core/services/product.service";
 import {CategoryService} from "../../core/services/category.service";
@@ -19,6 +19,7 @@ import { Observable, Subscription } from 'rxjs';
         TranslocoPipe,
     ],
   templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
 

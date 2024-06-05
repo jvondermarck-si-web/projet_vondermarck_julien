@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit, Type} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener, OnInit, Type} from '@angular/core';
 import {TranslocoPipe, TranslocoService} from "@ngneat/transloco";
 import {TuiInputModule} from "@taiga-ui/kit";
 import {FormInputComponent} from "../../shared/components/form-input/form-input.component";
@@ -27,7 +27,8 @@ import { AuthService } from '../../core/services/auth.service';
     CommonModule,
     CardModule,
   ],
-  templateUrl: './account.component.html'
+  templateUrl: './account.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountComponent implements OnInit {
 

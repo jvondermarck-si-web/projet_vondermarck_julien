@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslocoModule } from '@ngneat/transloco';
 import { TuiSvgModule } from '@taiga-ui/core';
 import { Observable } from 'rxjs';
@@ -10,7 +10,8 @@ import { Select } from '@ngxs/store';
   selector: 'app-basket-summary',
   standalone: true,
   imports: [TranslocoModule, TuiSvgModule, CommonModule],
-  templateUrl: './basket-summary.component.html'
+  templateUrl: './basket-summary.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasketSummaryComponent {
   @Select(BasketState.totalBasketPrice) declare totalBasketPrice$: Observable<number>;

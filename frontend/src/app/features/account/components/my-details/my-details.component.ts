@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, OnDestroy, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Inject, OnDestroy, OnInit, Output} from '@angular/core';
 import {TranslocoPipe} from "@ngneat/transloco";
 import {FormInputComponent} from "../../../../shared/components/form-input/form-input.component";
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -42,7 +42,8 @@ import { AuthService } from '../../../../core/services/auth.service';
     TuiLetModule,
     TuiSelectModule
   ],
-  templateUrl: './my-details.component.html'
+  templateUrl: './my-details.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MyDetailsComponent implements OnInit, OnDestroy {
   updateUserAccountFormGroup: FormGroup;

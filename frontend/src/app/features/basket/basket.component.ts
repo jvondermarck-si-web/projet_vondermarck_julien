@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { Observable } from 'rxjs';
@@ -14,7 +14,8 @@ import { AuthService } from '../../core/services/auth.service';
     selector: 'app-basket',
     standalone: true,
     templateUrl: './basket.component.html',
-    imports: [TranslocoPipe, RouterLink, CommonModule, BasketProductComponent, BasketSummaryComponent]
+    imports: [TranslocoPipe, RouterLink, CommonModule, BasketProductComponent, BasketSummaryComponent],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasketComponent {
 

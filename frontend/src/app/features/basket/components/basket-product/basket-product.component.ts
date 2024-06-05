@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, input } from '@angular/core';
 import { TuiAlertService, TuiSvgModule } from '@taiga-ui/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { BaseProduct } from '../../../../shared/models/base-product.interface';
@@ -10,7 +10,8 @@ import { Subject, takeUntil } from 'rxjs';
   selector: 'app-basket-product',
   standalone: true,
   imports: [TuiSvgModule],
-  templateUrl: './basket-product.component.html'
+  templateUrl: './basket-product.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasketProductComponent implements OnInit, OnDestroy {
 

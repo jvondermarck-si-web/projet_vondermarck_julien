@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {Category} from "../../../../shared/models/category.interface";
 import {TranslocoPipe} from "@ngneat/transloco";
 import { RouterModule } from '@angular/router';
@@ -10,7 +10,8 @@ import { RouterModule } from '@angular/router';
     TranslocoPipe,
     RouterModule
   ],
-  templateUrl: './category-card.component.html'
+  templateUrl: './category-card.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryCardComponent {
 
