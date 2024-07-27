@@ -8,7 +8,7 @@ const dbConfig = defineConfig({
     sqlite: {
       client: 'sqlite',
       connection: {
-        filename: env.get('DB_DATABASE'),
+        filename: "database.sqlite"
       },
       useNullAsDefault: true,
       migrations: {
