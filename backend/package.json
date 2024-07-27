@@ -57,7 +57,8 @@
     "jsonwebtoken": "^9.0.2",
     "luxon": "^3.4.4",
     "pg": "^8.11.5",
-    "reflect-metadata": "^0.2.1"
+    "reflect-metadata": "^0.2.1",
+    "sqlite3": "^5.1.7"
   },
   "eslintConfig": {
     "extends": "@adonisjs/eslint-config/app"
